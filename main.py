@@ -82,7 +82,7 @@ def create_account(usernames, passwords):
             print("Error: password must contain at least 1 capital letter")
 
     # following code updates the database file
-    with open('accounts.txt', 'w') as write_file:
+    with open('accounts.txt', 'w', newline='') as write_file:
         csv_writer = csv.writer(write_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
         x = 0
