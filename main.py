@@ -1,5 +1,87 @@
 import csv
 
+# Function to pull up the login screen.
+def login_screen(usernames,passwords):
+    print("Login to your existing account")
+    
+    user_found = False
+
+    while user_found is not True:   # while loop allows user to keep entering until input is valid
+        
+        user = input("Username: ")
+        user_pass = input("Password: ")
+        
+        for x in usernames:
+            if user == x: # User is found in dataset
+                pass_id = usernames.index(x)
+                valid_pass = passwords[pass_id]
+                if valid_pass == user_pass:
+                    user_found = True
+                else:
+                    break # Password is incorrect
+
+        if user_found is not True:
+            print("Incorrect username / password, please try again")
+
+    print("You have successfully logged in")
+    
+    return user_found
+
+# Function to pull up the options menu
+def options_screen():
+
+    menu_opt = {"1":"Search for a Job",
+                "2":"Find Someone you know",
+                "3":"Learn a new skill"}
+
+    menu_skills = {"1":"Communication",
+                "2":"Software",
+                "3":"Marketing",
+                "4":"Project Management",
+                "5":"Design",
+                "q":"Quit"}
+
+    while True:
+
+        print("\n ********* InCollege Options ********* \n")
+        
+        options = menu_opt.keys()
+        for x in options: 
+            print (x,")", menu_opt[x])
+
+        selection = input("Select an Option: ")
+        if selection =='1': 
+            print("\nUnder Construction\n")
+        elif selection == '2': 
+            print("\nUnder Construction\n")
+        elif selection == '3':
+            
+            while True:
+                print("\n ********* Learn a Skill! ********* \n")
+
+                skills = menu_skills.keys()
+                for x in skills: 
+                    print (x,")", menu_skills[x])
+            
+                selection = input("Select a skill: ")
+                if selection =='1': 
+                    print("\nUnder Construction\n")
+                elif selection == '2': 
+                    print("\nUnder Construction\n")
+                elif selection == '3': 
+                    print("\nUnder Construction\n")                
+                elif selection == '4': 
+                    print("\nUnder Construction\n")
+                elif selection == '5': 
+                    print("\nUnder Construction\n")
+                elif selection == 'q': 
+                    break
+                else:
+                    print("Unknown Selection, Try Again!")
+        else: 
+            print("Unknown Selection, Try Again!")
+
+
 
 # function to pull up main screen
 def main_screen(usernames, passwords):
@@ -11,10 +93,13 @@ def main_screen(usernames, passwords):
 
     if user_input == 'n':
         create_account(usernames, passwords)
+        logged_in = login_screen(usernames,passwords)
     else:
-        # will take user to the 'user login' screen
+        logged_in = login_screen(usernames,passwords)
         pass
 
+    if logged_in == True:
+        options_screen()
 
 # function to pull up account creation screen
 def create_account(usernames, passwords):
@@ -91,6 +176,8 @@ def create_account(usernames, passwords):
             x += 1
 
         csv_writer.writerow([username_, password_])
+    
+    print("You've Successfully created an account!\n")
 
 
 # PROGRAM START #
