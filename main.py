@@ -206,9 +206,15 @@ account_passwords = []
 # following code stores the file contents into lists for later use
 with open('accounts.txt', 'r') as read_file:
     csv_reader = csv.reader(read_file, delimiter=',')
-    for row in csv_reader:
-        account_usernames.append(row[0])
-        account_passwords.append(row[1])
+
+    num_lines = len(list(csv_reader))
+
+    if num_lines == 0:
+        pass
+    else:
+        for row in csv_reader:
+            account_usernames.append(row[0])
+            account_passwords.append(row[1])
 
 if __name__ == '__main__':
     main_screen(account_usernames, account_passwords)
