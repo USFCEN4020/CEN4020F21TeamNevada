@@ -1,31 +1,28 @@
 import csv
 
 
+# Function to check if the user name and password is valid
+def passwd_valid(usernames, passwords, user, user_pass):
+    for x in usernames:
+        if user == x:  # User is found in dataset
+            pass_id = usernames.index(x)
+            valid_pass = passwords[pass_id]
+            if valid_pass == user_pass:
+                return True
+    return False
+
+
 # Function to pull up the login screen.
 def login_screen(usernames, passwords):
     print("Login to your existing account")
-
     user_found = False
-
     while user_found is not True:  # while loop allows user to keep entering until input is valid
-
         user = input("Username: ")
         user_pass = input("Password: ")
-
-        for x in usernames:
-            if user == x:  # User is found in dataset
-                pass_id = usernames.index(x)
-                valid_pass = passwords[pass_id]
-                if valid_pass == user_pass:
-                    user_found = True
-                else:
-                    break  # Password is incorrect
-
+        user_found = passwd_valid(usernames, passwords, user, user_pass)
         if user_found is not True:
             print("Incorrect username / password, please try again")
-
     print("You have successfully logged in")
-
     return user_found
 
 
@@ -43,7 +40,6 @@ def options_screen():
                    "q": "Quit"}
 
     while True:
-
         print("\n ********* InCollege Options ********* \n")
 
         options = menu_opt.keys()
@@ -109,6 +105,34 @@ def main_screen(usernames, passwords):
         options_screen()
 
 
+# Function to check if a password is secure, a secure password should contain
+# minimum of 8 characters, maximum of 12 characters, at least one capital letter, one
+# digit, one non-alpha character
+def is_secure(passwd):
+    if not 8 <= len(passwd) <= 12:
+        return False, 'Error: password must be a minimum of 8 and a maximum of 12 characters'
+    contain_capital = False
+    contain_digit = False
+    contain_non_alpha = False
+    for c in passwd:
+        # check if c is a capital letter
+        if c.isalpha() and c.upper() == c:
+            contain_capital = True
+        # check if c is a digit
+        if c.isdigit():
+            contain_digit = True
+        # check if c is a non-alpha character
+        if not c.isalpha():
+            contain_non_alpha = True
+    if not contain_digit:
+        return False, "Error: password must contain at least 1 digit"
+    if not contain_capital:
+        return False, "Error: password must contain at least 1 capital letter"
+    if not contain_non_alpha:
+        return False, "Error: password must contain at least 1 non-alpha character"
+    return True, ''
+
+
 # function to pull up account creation screen
 def create_account(usernames, passwords):
     username_ = " "
@@ -151,28 +175,12 @@ def create_account(usernames, passwords):
     condition = True
     while condition:  # while loop allows user to keep entering until input is valid
         password_ = input()
-
-        if len(password_) < 8 or len(password_) > 12:
-            print("Error: password must be a minimum of 8 and a maximum of 12 characters")
-            continue
-
-        if password_.isalpha():
-            print("Error: password must contain at least 1 digit")
-            continue
-
-        if password_.isalnum():
-            print("Error: password must contain at least 1 non-alpha character")
-            continue
-
-        for x in password_:
-            if x.isupper():
-                condition = False
-                break
-
+        condition, message = is_secure(password_)
         if not condition:
+            print(message)
             continue
         else:
-            print("Error: password must contain at least 1 capital letter")
+            break
 
     # following code updates the database file
     with open('accounts.txt', 'w', newline='') as write_file:
@@ -198,8 +206,15 @@ account_passwords = []
 # following code stores the file contents into lists for later use
 with open('accounts.txt', 'r') as read_file:
     csv_reader = csv.reader(read_file, delimiter=',')
-    for row in csv_reader:
-        account_usernames.append(row[0])
-        account_passwords.append(row[1])
 
-main_screen(account_usernames, account_passwords)
+    num_lines = len(list(csv_reader))
+
+    if num_lines == 0:
+        pass
+    else:
+        for row in csv_reader:
+            account_usernames.append(row[0])
+            account_passwords.append(row[1])
+
+if __name__ == '__main__':
+    main_screen(account_usernames, account_passwords)
