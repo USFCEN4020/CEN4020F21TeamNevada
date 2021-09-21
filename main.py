@@ -137,6 +137,8 @@ def is_secure(passwd):
 def create_account(usernames, passwords):
     username_ = " "
     password_ = " "
+    lastname_ = " "
+    firstname_ = " "
 
     # following code checks if there are 5 stored passwords already
     line_count = 0
@@ -182,6 +184,13 @@ def create_account(usernames, passwords):
         else:
             break
 
+    # following code allows the user to save their first and last name
+    print("Enter your first name:")
+    firstname_ = input()
+
+    print("Enter your last name: ")
+    lastname_ = input()
+
     # following code updates the database file
     with open('accounts.txt', 'w', newline='') as write_file:
         csv_writer = csv.writer(write_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -191,10 +200,12 @@ def create_account(usernames, passwords):
             csv_writer.writerow([usernames[x], passwords[x]])
             x += 1
 
-        csv_writer.writerow([username_, password_])
+        csv_writer.writerow([username_, password_, lastname_, firstname_])
 
     account_usernames.append(username_)
     account_passwords.append(password_)
+    account_lastnames.append(lastname_)
+    account_firstnames.append(firstname_)
 
     print("You've Successfully created an account!\n")
 
@@ -202,6 +213,8 @@ def create_account(usernames, passwords):
 # PROGRAM START #
 account_usernames = []
 account_passwords = []
+account_lastnames = []
+account_firstnames = []
 
 # following code stores the file contents into lists for later use
 with open('accounts.txt', 'r') as read_file:
@@ -215,6 +228,8 @@ with open('accounts.txt', 'r') as read_file:
         for row in csv_reader:
             account_usernames.append(row[0])
             account_passwords.append(row[1])
+            account_lastnames.append(row[2])
+            account_firstnames.append(row[3])
 
 if __name__ == '__main__':
     main_screen(account_usernames, account_passwords)
