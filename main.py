@@ -1,25 +1,32 @@
 import csv
+from account_class import Account
 
 
 # Function to check if the user name and password is valid
-def passwd_valid(usernames, passwords, user, user_pass):
-    for x in usernames:
-        if user == x:  # User is found in dataset
-            pass_id = usernames.index(x)
-            valid_pass = passwords[pass_id]
+def passwd_valid(accounts, user, user_pass):
+    # if there are no accounts, return false
+    if len(accounts) == 0:
+        return False
+
+    # following code loops through the list of accounts
+    for account in accounts:
+        # check to see if entered username matches the account username
+        if user == account.username:
+            # check to see if the entered password matches the password for the associated username
+            valid_pass = account.password
             if valid_pass == user_pass:
                 return True
     return False
 
 
 # Function to pull up the login screen.
-def login_screen(usernames, passwords):
+def login_screen(accounts):
     print("Login to your existing account")
     user_found = False
     while user_found is not True:  # while loop allows user to keep entering until input is valid
         user = input("Username: ")
         user_pass = input("Password: ")
-        user_found = passwd_valid(usernames, passwords, user, user_pass)
+        user_found = passwd_valid(accounts, user, user_pass)
         if user_found is not True:
             print("Incorrect username / password, please try again")
     print("You have successfully logged in")
@@ -80,7 +87,7 @@ def options_screen():
 
 
 # function to pull up main screen
-def main_screen(usernames, passwords):
+def main_screen(accounts):
     print("WELCOME TO InCollege!")
     print("Would you like to create a new account or log into an existing account?")
 
@@ -89,15 +96,15 @@ def main_screen(usernames, passwords):
     main_condition = True
 
     while main_condition:
-        user_input = input("(Enter 'n' for new account or 'e' for existing account)")
+        user_input = input("(Enter 'n' for new account or 'e' for existing account): ")
 
         if user_input == 'n':
             main_condition = False
-            create_account(usernames, passwords)
-            logged_in = login_screen(usernames, passwords)
+            create_account(accounts)
+            logged_in = login_screen(accounts)
         elif user_input == 'e':
             main_condition = False
-            logged_in = login_screen(account_usernames, account_passwords)
+            logged_in = login_screen(accounts)
         else:
             print("Please enter 'n' or 'e'")
 
@@ -134,18 +141,15 @@ def is_secure(passwd):
 
 
 # function to pull up account creation screen
-def create_account(usernames, passwords):
+def create_account(accounts):
     username_ = " "
     password_ = " "
     lastname_ = " "
     firstname_ = " "
 
     # following code checks if there are 5 stored passwords already
-    line_count = 0
-    for name in usernames:
-        line_count += 1
-
-    if line_count == 5:
+    line_count = len(accounts)
+    if line_count >= 5:
         print("All permitted accounts have been created, please come back later")
         return
 
@@ -157,8 +161,8 @@ def create_account(usernames, passwords):
         exit_loop = False
         username_ = input()
 
-        for x in usernames:
-            if username_ == x:
+        for x in accounts:
+            if username_ == x.username:
                 print("Error: entered username is taken. enter another username")
                 exit_loop = True
                 break
@@ -191,45 +195,32 @@ def create_account(usernames, passwords):
     print("Enter your last name: ")
     lastname_ = input()
 
+    # following code creates an account object for the newly created account
+    created_account_ = Account(username_, password_, firstname_, lastname_)
+    accounts.append(created_account_)
+
     # following code updates the database file
     with open('accounts.txt', 'w', newline='') as write_file:
         csv_writer = csv.writer(write_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-        x = 0
-        while x < len(usernames):
-            csv_writer.writerow([usernames[x], passwords[x]])
-            x += 1
-
-        csv_writer.writerow([username_, password_, lastname_, firstname_])
-
-    account_usernames.append(username_)
-    account_passwords.append(password_)
-    account_lastnames.append(lastname_)
-    account_firstnames.append(firstname_)
+        # loops through the accounts and writes them to the csv file
+        for account in accounts:
+            csv_writer.writerow(account.get_account_details_list())
 
     print("You've Successfully created an account!\n")
 
 
 # PROGRAM START #
-account_usernames = []
-account_passwords = []
-account_lastnames = []
-account_firstnames = []
-
-# following code stores the file contents into lists for later use
-with open('accounts.txt', 'r') as read_file:
-    csv_reader = csv.reader(read_file, delimiter=',')
-
-    num_lines = len(list(csv_reader))
-
-    if num_lines == 0:
-        pass
-    else:
-        for row in csv_reader:
-            account_usernames.append(row[0])
-            account_passwords.append(row[1])
-            account_lastnames.append(row[2])
-            account_firstnames.append(row[3])
-
+accounts_list = []  # global variable that holds all of the account objects
 if __name__ == '__main__':
-    main_screen(account_usernames, account_passwords)
+    # following code reads the csv file and stores the accounts
+    with open('accounts.txt') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=",")
+        try:
+            # stores the data from the csv file to the accounts list
+            for row in csv_reader:
+                accounts_list.append(Account(row[0], row[1], row[2], row[3]))
+        except IndexError:  # handles the error if the csv file is empty
+            pass
+
+    main_screen(accounts_list)
