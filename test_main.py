@@ -1,16 +1,16 @@
 from main import *
 import unittest
+from account_class import Account
 
 
 class TestCases(unittest.TestCase):
     def test_login_screen(self, ):
-        names = ['alice', 'lily']
-        passwords = ['Alice123!', 'J!888888']
-        assert passwd_valid(names, passwords, 'alice', 'Alice123!')
-        assert not passwd_valid(names, passwords, 'alice', 'Alice')
-        assert passwd_valid(names, passwords, 'lily', 'J!888888')
-        assert not passwd_valid(names, passwords, 'lily', 's888')
-        assert not passwd_valid(names, passwords, 'lily', '')
+        test_accounts = [Account('alice', 'Alice123!'), Account('lily', 'J!888888')]
+        assert passwd_valid(test_accounts, 'alice', 'Alice123!')
+        assert not passwd_valid(test_accounts, 'alice', 'Alice')
+        assert passwd_valid(test_accounts, 'lily', 'J!888888')
+        assert not passwd_valid(test_accounts, 'lily', 's888')
+        assert not passwd_valid(test_accounts, 'lily', '')
 
     def test_is_secure(self, ):
         condition, message = is_secure('123')

@@ -5,3 +5,5 @@ Tests that the user is able to log in with a valid username and password, and no
 #### Test Password Security
 Tests that the new account password security requirements are being upheld.
 ### Sprint 2 - 9/20/21 to 9/26/21
+####Test Login Screen
+Updated test to use new Account class
