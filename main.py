@@ -34,10 +34,11 @@ def login_screen(accounts):
 
 
 # Function to pull up the options menu
-def options_screen():
+def options_screen(accounts):
     menu_opt = {"1": "Search for a Job",
                 "2": "Find Someone you know",
-                "3": "Learn a new skill"}
+                "3": "Learn a new skill",
+                "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
                    "2": "Software",
@@ -57,9 +58,9 @@ def options_screen():
         if selection == '1':
             print("\nUnder Construction\n")
         elif selection == '2':
-            print("\nUnder Construction\n")
+            connect_with_users(accounts)
+            # print("\nUnder Construction\n")
         elif selection == '3':
-
             while True:
                 print("\n ********* Learn a Skill! ********* \n")
 
@@ -82,8 +83,34 @@ def options_screen():
                     break
                 else:
                     print("Unknown Selection, Try Again!")
+        elif selection == 'q':
+            print("\nHave a nice day!")
+            break
         else:
             print("Unknown Selection, Try Again!")
+
+
+# Function to connect with other users
+def connect_with_users(accounts):
+    # following code gets the first and last name of the user to search for
+    print("\n ********* Connect with other InCollege users ********* \n")
+    firstname_ = input("Enter the person's first name: ")
+    lastname_ = input("Enter the person's last name: ")
+
+    if user_exists(accounts, firstname_, lastname_):
+        print("\nThey are a part of the InCollege system!\n")
+    else:
+        print("\nThey are not yet part of the InCollege system!\n")
+
+
+# function looks to see if there is an account with the a matching first and last name
+def user_exists(accounts, firstname, lastname):
+    # loop through the accounts
+    for account in accounts:
+        if (firstname, lastname) == account:
+            return True
+
+    return False
 
 
 # function to pull up main screen
@@ -109,7 +136,7 @@ def main_screen(accounts):
             print("Please enter 'n' or 'e'")
 
     if logged_in:
-        options_screen()
+        options_screen(accounts)
 
 
 # Function to check if a password is secure, a secure password should contain
@@ -178,15 +205,12 @@ def create_account(accounts):
           "at least one digit\n",
           "at least one non-alphabetic character")
 
-    condition = True
-    while condition:  # while loop allows user to keep entering until input is valid
+    password_secure = False
+    while not password_secure:  # while loop allows user to keep entering until input is valid
         password_ = input()
-        condition, message = is_secure(password_)
-        if not condition:
+        password_secure, message = is_secure(password_)
+        if not password_secure:
             print(message)
-            continue
-        else:
-            break
 
     # following code allows the user to save their first and last name
     print("Enter your first name:")
