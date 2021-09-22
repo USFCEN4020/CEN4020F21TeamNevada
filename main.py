@@ -205,7 +205,7 @@ def create_account(accounts):
 
         # loops through the accounts and writes them to the csv file
         for account in accounts:
-            csv_writer.writerow(account.get_account_details_list())
+            csv_writer.writerow(account.get_account_details())
 
     print("You've Successfully created an account!\n")
 
