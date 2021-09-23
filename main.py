@@ -60,10 +60,11 @@ def login_screen(accounts):
 
 
 # Function to pull up the options menu
-def options_screen():
+def options_screen(accounts):
     menu_opt = {"1": "Search for a Job",
                 "2": "Find Someone you know",
-                "3": "Learn a new skill"}
+                "3": "Learn a new skill",
+                "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
                    "2": "Software",
@@ -83,9 +84,9 @@ def options_screen():
         if selection == '1':
             print("\nUnder Construction\n")
         elif selection == '2':
+            # connect_with_users(accounts)
             print("\nUnder Construction\n")
         elif selection == '3':
-
             while True:
                 print("\n ********* Learn a Skill! ********* \n")
 
@@ -108,34 +109,94 @@ def options_screen():
                     break
                 else:
                     print("Unknown Selection, Try Again!")
+        elif selection == 'q':
+            print("\nHave a nice day!")
+            break
         else:
             print("Unknown Selection, Try Again!")
 
 
+# Function to connect with other users
+def connect_with_users(accounts):
+    # following code gets the first and last name of the user to search for
+    print("\n ********* Connect with other InCollege users ********* \n")
+    firstname_ = input("Enter the person's first name: ")
+    lastname_ = input("Enter the person's last name: ")
+
+    if user_exists(accounts, firstname_, lastname_):
+        print("\nThey are a part of the InCollege system!")
+        return True
+    else:
+        print("\nThey are not yet part of the InCollege system!")
+        return False
+
+
+# function looks to see if there is an account with the a matching first and last name
+def user_exists(accounts, firstname, lastname):
+    # loop through the accounts
+    for account in accounts:
+        if account.firstname == firstname and account.lastname == lastname:
+            return True
+
+    return False
+
+
 # function to pull up main screen
 def main_screen(accounts):
-
-    print("\nWould you like to create a new account or log into an existing account?")
+    print("WELCOME TO InCollege!")
+    main_screen_opt = {"1": "Create a new account",
+                "2": "Login to existing account",
+                "3": "Connect with friends",
+                "q": "Quit InCollege"}
 
     # accepts user input and will bring them to the appropriate screen
     logged_in = False
     main_condition = True
 
     while main_condition:
-        user_input = input("(Enter 'n' for new account or 'e' for existing account): ")
+        # following code handles the user input for the main screen
+        print("Would you like to create a new account, log into an existing account or connect with friends?")
+        options = main_screen_opt.keys()
+        for x in options:
+            print(x, ")", main_screen_opt[x])
+        selection = input("Select an Option: ")
 
-        if user_input == 'n':
+        if selection == '1':
             main_condition = False
             create_account(accounts)
             logged_in = login_screen(accounts)
-        elif user_input == 'e':
+        elif selection == '2':
             main_condition = False
             logged_in = login_screen(accounts)
+        elif selection == '3':
+            # if the user is able to connect with an existing account, they are given the option to login or sign up
+            if connect_with_users(accounts):
+                print("\nWould you like to login or sign up to join your friend?")
+                connected_condition = True
+
+                while connected_condition:
+                    connected_selection = input("(Enter 'l' to login, 's' for sign up or 'q' to go back): ")
+                    if connected_selection == 'l':  # user selected login
+                        connected_condition = False
+                        logged_in = login_screen(accounts)
+                        main_condition = not logged_in
+                    elif connected_selection == 's':  # user selected sign up
+                        connected_condition = False
+                        create_account(accounts)
+                        logged_in = login_screen(accounts)
+                        main_condition = not logged_in
+                    elif connected_selection == 'q':  # user selected go back
+                        connected_condition = False
+                    else:
+                        print("\nUnknown Selection, Try Again!\n")
+        elif selection == 'q':
+            main_condition = False
+            print("\nHave a nice day!")
         else:
-            print("Please enter 'n' or 'e'")
+            print("\nUnknown Selection, Try Again!\n")
 
     if logged_in:
-        options_screen()
+        options_screen(accounts)
 
 
 # Function to check if a password is secure, a secure password should contain
@@ -204,15 +265,12 @@ def create_account(accounts):
           "at least one digit\n",
           "at least one non-alphabetic character")
 
-    condition = True
-    while condition:  # while loop allows user to keep entering until input is valid
+    password_secure = False
+    while not password_secure:  # while loop allows user to keep entering until input is valid
         password_ = input()
-        condition, message = is_secure(password_)
-        if not condition:
+        password_secure, message = is_secure(password_)
+        if not password_secure:
             print(message)
-            continue
-        else:
-            break
 
     # following code allows the user to save their first and last name
     print("Enter your first name:")
