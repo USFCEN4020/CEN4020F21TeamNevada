@@ -18,6 +18,32 @@ def passwd_valid(accounts, user, user_pass):
                 return True
     return False
 
+# Function for the HomeScreen
+def home_screen():
+
+    # "Homepage" Menu
+    menu = {"1": "Welcome Video",
+            "2": "Login/Register"}
+
+    print("\t***************************\n\t   Welcome to InCollege!\n\t***************************\n")
+    print("\t   ** Success Story! **\n")
+    print("\t   Daniela, USF 21':\n \"InCollege has made my stressful job search a\n thousands times",
+          "easier by connecting with other\n students and applying to jobs in one go!\"\n")
+
+    while True:
+        # prints menu options
+        options = menu.keys()
+        for x in options:
+            print("\t",x, ")", menu[x]) 
+        selection = input("\t Choose an option:")
+        if selection == '1':
+            print("\nVideo is now Playing.\n")
+            input("Press Enter to exit\n")
+        elif selection == '2':
+            break
+        else:
+            print("Unknown Selection, Try Again!")
+
 
 # Function to pull up the login screen.
 def login_screen(accounts):
@@ -88,8 +114,8 @@ def options_screen():
 
 # function to pull up main screen
 def main_screen(accounts):
-    print("WELCOME TO InCollege!")
-    print("Would you like to create a new account or log into an existing account?")
+
+    print("\nWould you like to create a new account or log into an existing account?")
 
     # accepts user input and will bring them to the appropriate screen
     logged_in = False
@@ -223,4 +249,5 @@ if __name__ == '__main__':
         except IndexError:  # handles the error if the csv file is empty
             pass
 
+    home_screen()
     main_screen(accounts_list)
