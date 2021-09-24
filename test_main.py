@@ -25,6 +25,15 @@ class TestCases(unittest.TestCase):
         condition, message = is_secure('ab123C...')
         assert condition and message == ''
 
+    def test_user_exists(self, ):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        condition = user_exists(test_accounts, 'Mark', 'Smith')
+        assert condition
+        condition = user_exists(test_accounts, 'John', 'Doe')
+        assert condition
+        condition = user_exists(test_accounts, 'Sally', 'Hill')
+        assert not condition
+
 
 if __name__ == '__main__':
     unittest.main()
