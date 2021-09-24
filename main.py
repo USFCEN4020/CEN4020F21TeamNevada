@@ -1,5 +1,6 @@
 import csv
 from account_class import Account
+from job_class import Job
 
 
 # Function to check if the user name and password is valid
@@ -32,10 +33,8 @@ def home_screen():
 
     while True:
         # prints menu options
-        options = menu.keys()
-        for x in options:
-            print("\t",x, ")", menu[x]) 
-        selection = input("\t Choose an option:")
+        print_menu(menu)
+        selection = input("Choose an option:")
         if selection == '1':
             print("\nVideo is now Playing.\n")
             input("Press Enter to exit\n")
@@ -56,43 +55,52 @@ def login_screen(accounts):
         if user_found is not True:
             print("Incorrect username / password, please try again")
     print("You have successfully logged in")
-    return user_found
+    return user_found, user # returns a login confirmation and username of logged-in user
 
 
 # Function to pull up the options menu
-def options_screen():
+def options_screen(user):
     menu_opt = {"1": "Search for a Job",
                 "2": "Find Someone you know",
                 "3": "Learn a new skill"}
-
     menu_skills = {"1": "Communication",
                    "2": "Software",
                    "3": "Marketing",
                    "4": "Project Management",
                    "5": "Design",
                    "q": "Quit"}
-
+    menu_jobs = {"1": "Post a Job",
+                 "2": "View Job Listings",
+                 "q": "Quit"}
     while True:
         print("\n ********* InCollege Options ********* \n")
 
-        options = menu_opt.keys()
-        for x in options:
-            print(x, ")", menu_opt[x])
-
+        print_menu(menu_opt)
         selection = input("Select an Option: ")
+        # Selection for "Search for a Job"
         if selection == '1':
-            print("\nUnder Construction\n")
+            while True:
+                print_menu(menu_jobs)
+                selection = input("Select an Option: ")
+                # Post a Job
+                if selection == '1': 
+                    create_job(user)
+                # View Job Listings
+                elif selection == '2':
+                    print("\n Under Construction!\n")
+                # Quit
+                elif selection == 'q':
+                    break
+                else:
+                    print("Unknown Selection, Try Again!")
+        # Selection for "Find Someone you know"
         elif selection == '2':
             print("\nUnder Construction\n")
+        # Selection for "Learn a new skill"
         elif selection == '3':
-
             while True:
                 print("\n ********* Learn a Skill! ********* \n")
-
-                skills = menu_skills.keys()
-                for x in skills:
-                    print(x, ")", menu_skills[x])
-
+                print_menu(menu_skills)
                 selection = input("Select a skill: ")
                 if selection == '1':
                     print("\nUnder Construction\n")
@@ -127,15 +135,15 @@ def main_screen(accounts):
         if user_input == 'n':
             main_condition = False
             create_account(accounts)
-            logged_in = login_screen(accounts)
+            logged_in, user = login_screen(accounts)
         elif user_input == 'e':
             main_condition = False
-            logged_in = login_screen(accounts)
+            logged_in, user = login_screen(accounts)
         else:
             print("Please enter 'n' or 'e'")
 
     if logged_in:
-        options_screen()
+        options_screen(user)
 
 
 # Function to check if a password is secure, a secure password should contain
@@ -165,6 +173,40 @@ def is_secure(passwd):
         return False, "Error: password must contain at least 1 non-alpha character"
     return True, ''
 
+# Function to create job posting 
+def create_job(user):
+
+    title_ = " "
+    description_ = " "
+    employer_ = " "
+    salary_ = " "
+
+    # checks for 5 stored jobs listings
+    line_count = len(jobs_list)
+    if line_count >= 5:
+        print("The listing limit has been reached. Only 5 jobs are permitted to be posted at a time.")
+        return
+    title_ = input("Job Title:")
+    description_ = input("Job Description:")
+    employer_ = input("Job Employer:")
+    salary_ = input("Job Salary:")
+
+    # following code creates a job object to "post" a Job
+    created_job_ = Job(user, title_, description_, employer_, salary_)
+    jobs_list.append(created_job_)
+
+    # following code updates the database file
+    with open('jobs.txt', 'w', newline='') as write_file:
+        csv_writer = csv.writer(write_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+        # loops through the accounts and writes them to the csv file
+        for job in jobs_list:
+            csv_writer.writerow(job.get_job_details())
+
+    print("Your Job was posted successfully!\n")
+
+
+    return
 
 # function to pull up account creation screen
 def create_account(accounts):
@@ -235,9 +277,15 @@ def create_account(accounts):
 
     print("You've Successfully created an account!\n")
 
+# Helpful Function to print a Dictionary-based menu.
+def print_menu(menu):
+    options = menu.keys()
+    for x in options:
+        print(x, ")", menu[x])   
 
 # PROGRAM START #
 accounts_list = []  # global variable that holds all of the account objects
+jobs_list = [] # global variable that holds a list of job objects
 if __name__ == '__main__':
     # following code reads the csv file and stores the accounts
     with open('accounts.txt') as csv_file:
@@ -246,6 +294,16 @@ if __name__ == '__main__':
             # stores the data from the csv file to the accounts list
             for row in csv_reader:
                 accounts_list.append(Account(row[0], row[1], row[2], row[3]))
+        except IndexError:  # handles the error if the csv file is empty
+            pass
+
+    # following code reads the csv file and stores the jobs listings
+    with open('jobs.txt') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=",")
+        try:
+            # stores the data from the csv file to the job list
+            for row in csv_reader:
+                jobs_list.append(Job(row[0], row[1], row[2], row[3], row[4]))
         except IndexError:  # handles the error if the csv file is empty
             pass
 
