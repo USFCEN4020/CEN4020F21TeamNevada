@@ -33,6 +33,8 @@ class TestCases(unittest.TestCase):
         assert condition
         condition = user_exists(test_accounts, 'Sally', 'Hill')
         assert not condition
+        condition = user_exists(test_accounts, 'John', 'Smith')
+        assert not condition
 
 
 if __name__ == '__main__':
