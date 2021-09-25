@@ -1,5 +1,6 @@
 from main import *
 import unittest
+import mock
 from account_class import Account
 
 
@@ -24,6 +25,23 @@ class TestCases(unittest.TestCase):
         assert message == "Error: password must contain at least 1 digit"
         condition, message = is_secure('ab123C...')
         assert condition and message == ''
+
+    def test_create_account(self):
+        test_account = []
+        with mock.patch('builtins.input', side_effect=['john', 'John123!', 'John', 'Doe']):
+            create_account(test_account)
+
+        count = 0
+        with open('accounts.txt') as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            try:
+                for row in csv_reader:
+                    if row[2] == 'Doe' and row[3] == 'John':
+                        count += 1
+            except IndexError:
+                pass
+
+        assert count == 1
 
 
 if __name__ == '__main__':
