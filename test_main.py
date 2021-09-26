@@ -26,6 +26,7 @@ class TestCases(unittest.TestCase):
         condition, message = is_secure('ab123C...')
         assert condition and message == ''
 
+    # Tests if the input first and last name are in the InCollege database
     def test_connect_with_users(self):
         test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
@@ -36,6 +37,7 @@ class TestCases(unittest.TestCase):
             result = connect_with_users(test_accounts)
             assert not result
 
+    # Tests that 'user_exists' functions correctly
     def test_user_exists(self, ):
         test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
         condition = user_exists(test_accounts, 'Mark', 'Smith')
