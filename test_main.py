@@ -1,5 +1,6 @@
 from main import *
 import unittest
+import mock
 from account_class import Account
 
 
@@ -24,6 +25,16 @@ class TestCases(unittest.TestCase):
         assert message == "Error: password must contain at least 1 digit"
         condition, message = is_secure('ab123C...')
         assert condition and message == ''
+
+    def test_connect_with_users(self):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        with mock.patch('builtins.input', side_effect=['John', 'Doe', 'Sally', 'Hill']):
+            result = connect_with_users(test_accounts)
+            assert result
+
+            result = connect_with_users(test_accounts)
+            assert not result
 
     def test_user_exists(self, ):
         test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
