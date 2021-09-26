@@ -63,6 +63,11 @@ class TestCases(unittest.TestCase):
         condition = user_exists(test_accounts, 'John', 'Smith')
         assert not condition
 
+    # Tests that the success story is displayed and tests the two options users are presented with on the home screen
+    def test_home_screen(self):
+        with mock.patch('builtins.input', side_effect=['1', '\n', 'x', '2']):
+            home_screen()
+
 
 if __name__ == '__main__':
     unittest.main()
