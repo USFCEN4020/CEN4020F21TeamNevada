@@ -26,6 +26,20 @@ class TestCases(unittest.TestCase):
         condition, message = is_secure('ab123C...')
         assert condition and message == ''
 
+    # Tests the three options that users are presented with when connecting with friends ('l', 's', 'q')
+    def test_main_screen(self):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        with mock.patch('builtins.input', side_effect=['3', 'John', 'Doe', 'l', 'mark', 'Mark123!', 'q']):
+            main_screen(test_accounts)
+
+        with mock.patch('builtins.input', side_effect=['3', 'John', 'Doe', 's', 'sally', 'Hill123!', 'Sally', 'Hill',
+                                                       'sally', 'Hill123!', 'q']):
+            main_screen(test_accounts)
+
+        with mock.patch('builtins.input', side_effect=['3', 'John', 'Doe', 'q', 'q']):
+            main_screen(test_accounts)
+
     # Tests if the input first and last name are in the InCollege database
     def test_connect_with_users(self):
         test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
@@ -52,4 +66,3 @@ class TestCases(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
