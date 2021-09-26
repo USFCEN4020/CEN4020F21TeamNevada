@@ -26,6 +26,8 @@ class TestCases(unittest.TestCase):
         condition, message = is_secure('ab123C...')
         assert condition and message == ''
 
+    # Tests that the entered first and last name are added to the InCollege database when creating an account
+    # Can check 'accounts.txt' for verification
     def test_create_account(self):
         test_account = []
         with mock.patch('builtins.input', side_effect=['john', 'John123!', 'John', 'Doe']):
