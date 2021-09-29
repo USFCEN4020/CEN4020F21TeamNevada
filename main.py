@@ -1,6 +1,7 @@
 import csv
 import pytest
 from account_class import Account
+from useful_links import useful_links_groups
 
 
 # Function to check if the user name and password is valid
@@ -18,6 +19,7 @@ def passwd_valid(accounts, user, user_pass):
             if valid_pass == user_pass:
                 return True
     return False
+
 
 # Function for the HomeScreen
 def home_screen():
@@ -144,10 +146,11 @@ def user_exists(accounts, firstname, lastname):
 
 # function to pull up main screen
 def main_screen(accounts):
-    print("WELCOME TO InCollege!")
+    print("\nWELCOME TO InCollege!")
     main_screen_opt = {"1": "Create a new account",
                 "2": "Login to existing account",
                 "3": "Connect with friends",
+                "4": "Useful Links",
                 "q": "Quit InCollege"}
 
     # accepts user input and will bring them to the appropriate screen
@@ -156,7 +159,6 @@ def main_screen(accounts):
 
     while main_condition:
         # following code handles the user input for the main screen
-        print("Would you like to create a new account, log into an existing account or connect with friends?")
         options = main_screen_opt.keys()
         for x in options:
             print(x, ")", main_screen_opt[x])
@@ -190,6 +192,14 @@ def main_screen(accounts):
                         connected_condition = False
                     else:
                         print("\nUnknown Selection, Try Again!\n")
+        elif selection == '4':
+            # if the user selected signup from the useful links general group
+            # go to the create account screen
+            signup_selected = useful_links_groups()
+            if signup_selected:
+                main_condition = False
+                create_account(accounts)
+                logged_in = login_screen(accounts)
         elif selection == 'q':
             main_condition = False
             print("\nHave a nice day!")
