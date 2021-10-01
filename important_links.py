@@ -68,7 +68,7 @@ def important_links_groups():
         elif selection == '8':
             print("********* Brand Policy *********"
                   ,"\n","InCollege does not usually permit its members, organizations or individuals to use its name, trademarks, logos, web pages, "
-                  ,"\n","screenshots nor other brand features. To be able to use it, members or organizations must obtain prior approval from CollegeIn.")
+                  ,"\n","screenshots nor other brand features. To be able to use it, members or organizations must obtain prior approval from InCollege.")
         elif selection == 'q':
             print("\n")
             break
