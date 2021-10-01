@@ -1,4 +1,4 @@
-def important_links_groups():
+def important_links_groups(signed_in):
     # Prints the InCollege important Links menu
     menu_opt = {"1": "Copyright Notice",
                 "2": "About",
@@ -8,6 +8,8 @@ def important_links_groups():
                 "6": "Cookie Policy",
                 "7": "Copyright Policy",
                 "8": "Brand Policy",
+                "9": "Guest Controls",
+                "10": "Languages",
                 "q": "Return to home screen"}
     while True:
         print("\n********* Important Link Groups ********* \n")
@@ -69,6 +71,12 @@ def important_links_groups():
             print("********* Brand Policy *********"
                   ,"\n","InCollege does not usually permit its members, organizations or individuals to use its name, trademarks, logos, web pages, "
                   ,"\n","screenshots nor other brand features. To be able to use it, members or organizations must obtain prior approval from CollegeIn.")
+        elif selection == '9':
+            # if the user is signed in, they are allow to adjust the guest controls
+            if signed_in:
+                pass
+            else:
+                print("You must be signed in to your InCollege account to access Guest Controls")
         elif selection == 'q':
             print("\n")
             break

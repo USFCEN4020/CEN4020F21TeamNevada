@@ -1,5 +1,5 @@
 import csv
-#import pytest
+# import pytest
 from account_class import Account
 from important_links import important_links_groups
 from useful_links import useful_links_groups
@@ -24,7 +24,6 @@ def passwd_valid(accounts, user, user_pass):
 
 # Function for the HomeScreen
 def home_screen():
-
     # "Homepage" Menu
     menu = {"1": "Welcome Video",
             "2": "Login/Register"}
@@ -38,7 +37,7 @@ def home_screen():
         # prints menu options
         options = menu.keys()
         for x in options:
-            print("\t",x, ")", menu[x]) 
+            print("\t", x, ")", menu[x])
         selection = input("\t Choose an option:")
         if selection == '1':
             print("\nVideo is now Playing.\n")
@@ -68,6 +67,7 @@ def options_screen(accounts):
     menu_opt = {"1": "Search for a Job",
                 "2": "Find Someone you know",
                 "3": "Learn a new skill",
+                "4": "InCollege Useful Links",
                 "5": "InCollege Important Links",
                 "q": "Logout and Quit InCollege"}
 
@@ -114,8 +114,11 @@ def options_screen(accounts):
                     break
                 else:
                     print("Unknown Selection, Try Again!")
+        elif selection == '4':
+            while useful_links_groups():
+                print("\nYou are already signed in, please sign out to create a new account")
         elif selection == '5':
-            signup_selected = important_links_groups()
+            important_links_groups(True)
         elif selection == 'q':
             print("\nHave a nice day!")
             break
@@ -152,11 +155,11 @@ def user_exists(accounts, firstname, lastname):
 def main_screen(accounts):
     print("\nWELCOME TO InCollege!")
     main_screen_opt = {"1": "Create a new account",
-                "2": "Login to existing account",
-                "3": "Connect with friends",
-                "4": "Useful Links",
-                "5": "InCollege Important Links",
-                "q": "Quit InCollege"}
+                       "2": "Login to existing account",
+                       "3": "Connect with friends",
+                       "4": "InCollege Useful Links",
+                       "5": "InCollege Important Links",
+                       "q": "Quit InCollege"}
 
     # accepts user input and will bring them to the appropriate screen
     logged_in = False
@@ -206,7 +209,7 @@ def main_screen(accounts):
                 create_account(accounts)
                 logged_in = login_screen(accounts)
         elif selection == '5':
-            signup_selected = important_links_groups()
+            important_links_groups(False)
         elif selection == 'q':
             main_condition = False
             print("\nHave a nice day!")
