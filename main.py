@@ -1,6 +1,7 @@
 import csv
-import pytest
+#import pytest
 from account_class import Account
+from important_links import important_links_groups
 from useful_links import useful_links_groups
 
 
@@ -67,6 +68,7 @@ def options_screen(accounts):
     menu_opt = {"1": "Search for a Job",
                 "2": "Find Someone you know",
                 "3": "Learn a new skill",
+                "5": "InCollege Important Links",
                 "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
@@ -112,6 +114,8 @@ def options_screen(accounts):
                     break
                 else:
                     print("Unknown Selection, Try Again!")
+        elif selection == '5':
+            signup_selected = important_links_groups()
         elif selection == 'q':
             print("\nHave a nice day!")
             break
@@ -151,6 +155,7 @@ def main_screen(accounts):
                 "2": "Login to existing account",
                 "3": "Connect with friends",
                 "4": "Useful Links",
+                "5": "InCollege Important Links",
                 "q": "Quit InCollege"}
 
     # accepts user input and will bring them to the appropriate screen
@@ -200,6 +205,8 @@ def main_screen(accounts):
                 main_condition = False
                 create_account(accounts)
                 logged_in = login_screen(accounts)
+        elif selection == '5':
+            signup_selected = important_links_groups()
         elif selection == 'q':
             main_condition = False
             print("\nHave a nice day!")
