@@ -1,7 +1,6 @@
 from main import *
 import unittest
 import mock
-from account_class import Account
 
 
 class TestCases(unittest.TestCase):
