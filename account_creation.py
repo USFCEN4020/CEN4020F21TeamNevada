@@ -93,4 +93,3 @@ def is_secure(passwd):
     if not contain_non_alpha:
         return False, "Error: password must contain at least 1 non-alpha character"
     return True, ''
-

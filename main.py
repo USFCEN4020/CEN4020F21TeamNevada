@@ -44,7 +44,7 @@ def main_screen(accounts):
                        "q": "Quit InCollege"}
 
     # accepts user input and will bring them to the appropriate screen
-    logged_in = False
+    logged_in_user = None
     main_condition = True
 
     while main_condition:
@@ -57,10 +57,10 @@ def main_screen(accounts):
         if selection == '1':
             main_condition = False
             create_account(accounts)
-            logged_in = login_screen(accounts)
+            logged_in_user = login_screen(accounts)
         elif selection == '2':
             main_condition = False
-            logged_in = login_screen(accounts)
+            logged_in_user = login_screen(accounts)
         elif selection == '3':
             # if the user is able to connect with an existing account, they are given the option to login or sign up
             if connect_with_users(accounts):
@@ -71,13 +71,13 @@ def main_screen(accounts):
                     connected_selection = input("(Enter 'l' to login, 's' for sign up or 'q' to go back): ")
                     if connected_selection == 'l':  # user selected login
                         connected_condition = False
-                        logged_in = login_screen(accounts)
-                        main_condition = not logged_in
+                        logged_in_user = login_screen(accounts)
+                        main_condition = not logged_in_user
                     elif connected_selection == 's':  # user selected sign up
                         connected_condition = False
                         create_account(accounts)
-                        logged_in = login_screen(accounts)
-                        main_condition = not logged_in
+                        logged_in_user = login_screen(accounts)
+                        main_condition = not logged_in_user
                     elif connected_selection == 'q':  # user selected go back
                         connected_condition = False
                     else:
@@ -89,7 +89,7 @@ def main_screen(accounts):
             if signup_selected:
                 main_condition = False
                 create_account(accounts)
-                logged_in = login_screen(accounts)
+                logged_in_user = login_screen(accounts)
         elif selection == '5':
             important_links_groups(False)
         elif selection == 'q':
@@ -98,12 +98,14 @@ def main_screen(accounts):
         else:
             print("\nUnknown Selection, Try Again!\n")
 
-    if logged_in:
-        options_screen(accounts)
+    if logged_in_user is not None:
+        options_screen(logged_in_user, accounts)
 
 
 # Function to pull up the options menu
-def options_screen(accounts):
+# The user argument is the Account object for the user that is logged in
+# The accounts argument is the accounts list
+def options_screen(user, accounts):
     menu_opt = {"1": "Search for a Job",
                 "2": "Find Someone you know",
                 "3": "Learn a new skill",
@@ -157,7 +159,7 @@ def options_screen(accounts):
             while useful_links_groups():
                 print("\nYou are already signed in, please sign out to create a new account")
         elif selection == '5':
-            important_links_groups(True)
+            important_links_groups(account)
         elif selection == 'q':
             print("\nHave a nice day!")
             break
