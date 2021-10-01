@@ -52,7 +52,3 @@ class Account:
     # returns a list of the Account class object properties for the guest controls
     def get_account_controls(self):
         return [self.incollege_email, self.sms, self.targeted_ads]
-
-    # returns the Account's selected language
-    def get_account_language(self):
-        return self.language
