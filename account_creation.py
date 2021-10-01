@@ -1,4 +1,5 @@
 from account_class import Account
+from csv_read_write import save_accounts_to_csv
 import csv
 
 
@@ -56,13 +57,8 @@ def create_account(accounts):
     created_account_ = Account(username_, password_, firstname_, lastname_)
     accounts.append(created_account_)
 
-    # following code updates the database file
-    with open('accounts.txt', 'w', newline='') as write_file:
-        csv_writer = csv.writer(write_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-
-        # loops through the accounts and writes them to the csv file
-        for account in accounts:
-            csv_writer.writerow(account.get_account_details())
+    # write the accounts to the csv
+    save_accounts_to_csv(accounts)
 
     print("You've Successfully created an account!\n")
 

@@ -1,10 +1,9 @@
-import csv
 # import pytest
-from account_class import Account
-from important_links import important_links_groups
+from important_links import important_links_groups, guest_controls, update_guest_controls, account_language, update_account_language
 from useful_links import useful_links_groups
 from account_creation import create_account, is_secure
 from account_login import passwd_valid, login_screen
+from csv_read_write import get_accounts_from_csv
 
 
 # Function for the HomeScreen
@@ -159,7 +158,10 @@ def options_screen(user, accounts):
             while useful_links_groups():
                 print("\nYou are already signed in, please sign out to create a new account")
         elif selection == '5':
-            important_links_groups(account)
+            important_links_groups(user, accounts)
+            print("return to main options links")
+            for account in accounts:
+                print(account.get_account_details())
         elif selection == 'q':
             print("\nHave a nice day!")
             break
@@ -195,15 +197,7 @@ def user_exists(accounts, firstname, lastname):
 # PROGRAM START #
 accounts_list = []  # global variable that holds all of the account objects
 if __name__ == '__main__':
-    # following code reads the csv file and stores the accounts
-    with open('accounts.txt') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=",")
-        try:
-            # stores the data from the csv file to the accounts list
-            for row in csv_reader:
-                accounts_list.append(Account(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]))
-        except IndexError:  # handles the error if the csv file is empty
-            pass
+    accounts_list = get_accounts_from_csv()
 
     home_screen()
     main_screen(accounts_list)
