@@ -144,6 +144,25 @@ class TestCases(unittest.TestCase):
         with mock.patch('builtins.input', side_effect=['2', 'john', 'John123!', '5', '9', 'd', 'e', 'q', 'q', 'q']):
             main_screen(test_accounts)
 
+    # Tests to make sure the important links are displayed when logged-in and logged-out
+    def test_important_links(self):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        # Tests links without login
+        with mock.patch('builtins.input', side_effect=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'q']):
+            important_links_groups(False)
+
+        # Tests links with login information with 1 link
+        with mock.patch('builtins.input',
+                        side_effect=['john', 'John123!', '1', '2', '3', '4', '5', '6', '7', '8', 'q']):
+            user = login_screen(test_accounts)
+            important_links_groups(user, test_accounts)
+
+        # Tests Language options in important links while logged in
+        with mock.patch('builtins.input', side_effect=['john', 'John123!', '10', '2', 'q', '10', '1', 'q', 'q']):
+            user = login_screen(test_accounts)
+            important_links_groups(user, test_accounts)
+
 
 if __name__ == '__main__':
     unittest.main()
