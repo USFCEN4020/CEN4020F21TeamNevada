@@ -29,7 +29,7 @@ def important_links_groups(user=None, accounts=None):
             _licence_ = "Public Domain"
             _version_ = "1.0"
             print("********* Copyright Notice *********")
-            print("\n",_by_,"\n",_Author_,"\n", _copyright_,"\n", _licence_,"\n", _version_,"\n")
+            print("\n", _by_, "\n", _Author_, "\n", _copyright_, "\n", _licence_, "\n", _version_, "\n")
         elif selection == '2':
             print("********* About *********"
                   "\n", "In College: Welcome to In College, the world's largest college student network ",
@@ -40,41 +40,60 @@ def important_links_groups(user=None, accounts=None):
                   "\n", "building accessibility and testing our products to make sure that everyone can use InCollege")
         elif selection == '4':
             print("********* User Agreement *********"
-                  ,"\n", "Contract:"
-                  ,"\n", "When you use our Services, you agree to all our terms."
-                  ,"\n", "You agree that by clicking “Sign Up” or similar, registering, accessing or using our services, "
-                  ,"\n", "you are agreeing to enter into a legally binding contract with InCollege. If you do not agree to "
-                  ,"\n", "this contract ,do not click “Sign Up” (or similar) and do not access or otherwise use any of our "
-                  ,"\n", "Services. If you wish to terminate this contract, at any time you can do so by closing your account "
-                  ,"\n", "and no longer accessing or using our Services."
-                  ,"\n", "Content:"
-                  ,"\n", "We respect the intellectual property rights of others. We require that information posted by "
-                  ,"\n", "Members be accurate and not in violation of the intellectual property rights or other rights of"
-                  ,"\n", "third parties.")
+                  , "\n", "Contract:"
+                  , "\n", "When you use our Services, you agree to all our terms."
+                  , "\n",
+                  "You agree that by clicking “Sign Up” or similar, registering, accessing or using our services, "
+                  , "\n",
+                  "you are agreeing to enter into a legally binding contract with InCollege. If you do not agree to "
+                  , "\n",
+                  "this contract ,do not click “Sign Up” (or similar) and do not access or otherwise use any of our "
+                  , "\n",
+                  "Services. If you wish to terminate this contract, at any time you can do so by closing your account "
+                  , "\n", "and no longer accessing or using our Services."
+                  , "\n", "Content:"
+                  , "\n",
+                  "We respect the intellectual property rights of others. We require that information posted by "
+                  , "\n",
+                  "Members be accurate and not in violation of the intellectual property rights or other rights of"
+                  , "\n", "third parties.")
         elif selection == '5':
             print("********* Privacy Policy *********"
-                  ,"\n","You have choices about the information on your profile, like your level of education, skills, photo, "
-                  ,"\n","current school, city or area and endorsements. You don’t have to provide additional information on your "
-                  ,"\n","profile. It’s your choice whether to include sensitive information on your profile and to make that "
-                  ,"\n","sensitive information public. Please do not post or add personal data to your profile that you would not"
-                  ,"\n","want to be publicly available.")
+                  , "\n",
+                  "You have choices about the information on your profile, like your level of education, skills, photo, "
+                  , "\n",
+                  "current school, city or area and endorsements. You don’t have to provide additional information on your "
+                  , "\n",
+                  "profile. It’s your choice whether to include sensitive information on your profile and to make that "
+                  , "\n",
+                  "sensitive information public. Please do not post or add personal data to your profile that you would not"
+                  , "\n", "want to be publicly available.")
         elif selection == '6':
             print("********* Cookie Policy  *********"
-                  ,"\n","At InCollege, we believe in being clear and open about how we collect and use data related to you. This Cookie "
-                  ,"\n","Policy applies to any InCollege product or service that links to this policy or incorporates it by reference. "
-                  ,"\n","We use cookies and similar technologies such as pixels, local storage and mobile ad IDs (collectively referred "
-                  ,"\n","to in this policy as “cookies”) to collect and use data as part of our Services.")
+                  , "\n",
+                  "At InCollege, we believe in being clear and open about how we collect and use data related to you. This Cookie "
+                  , "\n",
+                  "Policy applies to any InCollege product or service that links to this policy or incorporates it by reference. "
+                  , "\n",
+                  "We use cookies and similar technologies such as pixels, local storage and mobile ad IDs (collectively referred "
+                  , "\n", "to in this policy as “cookies”) to collect and use data as part of our Services.")
         elif selection == '7':
             print("********* Copyright Policy *********"
-                  ,"\n","InCollege respects the intellectual property rights of others and desires to offer a platform which contains no content "
-                  ,"\n","that violates those rights. Our User Agreement requires that information posted by Members be accurate, lawful and not "
-                  ,"\n","in violation of the rights of third parties. "
-                  ,"\n","It is our policy, in appropriate circumstances and in our discretion, to disable and/or terminate the accounts of Members, "
-                  ,"\n","or groups as the case may be, who infringe or repeatedly infringe the rights of others or otherwise post unlawful content.")
+                  , "\n",
+                  "InCollege respects the intellectual property rights of others and desires to offer a platform which contains no content "
+                  , "\n",
+                  "that violates those rights. Our User Agreement requires that information posted by Members be accurate, lawful and not "
+                  , "\n", "in violation of the rights of third parties. "
+                  , "\n",
+                  "It is our policy, in appropriate circumstances and in our discretion, to disable and/or terminate the accounts of Members, "
+                  , "\n",
+                  "or groups as the case may be, who infringe or repeatedly infringe the rights of others or otherwise post unlawful content.")
         elif selection == '8':
             print("********* Brand Policy *********"
-                  ,"\n","InCollege does not usually permit its members, organizations or individuals to use its name, trademarks, logos, web pages, "
-                  ,"\n","screenshots nor other brand features. To be able to use it, members or organizations must obtain prior approval from CollegeIn.")
+                  , "\n",
+                  "InCollege does not usually permit its members, organizations or individuals to use its name, trademarks, logos, web pages, "
+                  , "\n",
+                  "screenshots nor other brand features. To be able to use it, members or organizations must obtain prior approval from CollegeIn.")
         elif selection == '9':
             # if the user is signed in, they are allow to adjust the guest controls
             if user is None or accounts is None:
@@ -86,7 +105,10 @@ def important_links_groups(user=None, accounts=None):
                 for account in accounts:
                     print(account.get_account_details())
         elif selection == '10':
-            account_language(user, accounts)
+            if user is None or accounts is None:
+                print("You must be signed in to your InCollege account to access Languages")
+            else:
+                account_language(user, accounts)
         elif selection == 'q':
             print("\n")
             break
@@ -118,7 +140,7 @@ def guest_controls(user, accounts):
                 # the following code tries to get the value of the control state from the list
                 # using some clever logic with the int() function and the fact that the menu
                 # keys are numbers, and then saves the control state as a string
-                control_state = account_controls_settings[int(x)-1]
+                control_state = account_controls_settings[int(x) - 1]
                 control_state_string = "Enabled" if control_state else "Disabled"
                 print("{0} ) {1:<25}{2}".format(x, menu_opt[x], control_state_string))
                 # print(x, ")", menu_opt[x], control_state_string)
@@ -173,9 +195,9 @@ def account_language(user, accounts):
                 "q": "Return to important links"}
     menu_condition = True
     changed = False
-    
+
     while menu_condition:
-        print("\n********* Language *********\n")       
+        print("\n********* Language *********\n")
         options = menu_opt.keys()
         for x in options:
             print(x, ")", menu_opt[x])
