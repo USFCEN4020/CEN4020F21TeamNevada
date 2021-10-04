@@ -86,7 +86,10 @@ def important_links_groups(user=None, accounts=None):
                 for account in accounts:
                     print(account.get_account_details())
         elif selection == '10':
-            account_language(user, accounts)
+            if user is None or accounts is None:
+                print("You must be signed in to your InCollege account to access Languages")
+            else:
+                account_language(user, accounts)
         elif selection == 'q':
             print("\n")
             break
