@@ -128,7 +128,8 @@ class TestCases(unittest.TestCase):
 
         # This test additionally checks to make sure that invalid user input is handled correctly (i.e user inputs 'x')
         print("-----TEST_OPTION 1-----")
-        with mock.patch('builtins.input', side_effect=['2', 'john', 'John123!', '5', 'x', '9', 'x', '1', '1', 'q', 'q', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['2', 'john', 'John123!', '5', 'x', '9', 'x', '1', '1', 'q', 'q', 'q']):
             main_screen(test_accounts)
 
         print("-----TEST_OPTION 2-----")
@@ -163,6 +164,66 @@ class TestCases(unittest.TestCase):
             user = login_screen(test_accounts)
             important_links_groups(user, test_accounts)
 
+    # Tests creating a profile
+    def test_profile_creation(self):
+        test_account = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input',
+                        side_effect=['test title', 'test major', 'test university', 'test about',
+                                     'y', 'test job title', 'test employer', 'test start date', 'test end date', 'test location', 'test job description', 'n',
+                                     'test school name', 'test degree', '5 years', 'n']):
+            profile_creation(test_account)
+
+    # Tests retrieving the profile information
+    def test_get_profile_info(self):
+        test_account = Account('mark', 'Mark123!', 'Mark', 'Smith')
+        with mock.patch('builtins.input',
+                        side_effect=['test title', 'test major', 'test university', 'test about',
+                                     'y', 'test job title', 'test employer', 'test start date', 'test end date', 'test location', 'test job description', 'n',
+                                     'test school name', 'test degree', '5 years', 'n']):
+            # first create the profile
+            profile_creation(test_account)
+
+        test_profile_obj = Profile()
+        # tests the profile was created by checking the number of profiles
+        assert len(test_profile_obj.get_profile_list()) > 0
+
+        # tests the get profile info to ensure that it is retrieving the correct profile info
+        test_profile_info = test_profile_obj.get_profile_info(test_account.username)
+        test_job_info = {
+            "job_name": "test job title",
+            "employer": "test employer",
+            "start_date": "test start date",
+            "end_date": "test end date",
+            "location": "test location",
+            "description": "test job description"
+        }
+        test_education_info = {
+            "school": "test school name",
+            "degree": "test degree",
+            "year": "5 years"
+        }
+
+        # test profile exists
+        assert test_profile_info is not None
+
+        # test basic profile information is the same as what was passed as input
+        print(test_profile_info)
+        assert test_profile_info['username'] == test_account.username
+        assert test_profile_info['title'] == 'test title'
+        assert test_profile_info['major'] == 'Test Major'
+        assert test_profile_info['university'] == 'Test University'
+        assert test_profile_info['about'] == 'test about'
+
+        # test the profile job information is the same as what was passed as input
+        assert len(test_profile_info['jobs']) > 0
+        assert test_profile_info['jobs'][0] == test_job_info
+
+        # test the profile education information is the same as what was passed as input
+        assert len(test_profile_info['education']) > 0
+        assert test_profile_info['education'][0] == test_education_info
+
+        assert test_profile_obj.get_profile_info("random account username") is None
 
 if __name__ == '__main__':
     unittest.main()
