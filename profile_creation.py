@@ -149,8 +149,3 @@ def profile_creation(user):
     pro_info = new_profile.get_profile_info(user.username)
     print_profile(pro_info)
 
-
-"""
-    print("\n",title_, "\n", capital_major,"\n", capital_university, "\n", about_ ) #Tentative for Dogni
-    print("\n",attended_school,"\n", degree_,"\n", years_attended) #Tentative for Dogni
-"""
