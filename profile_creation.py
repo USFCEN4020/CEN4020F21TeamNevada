@@ -1,7 +1,7 @@
 import string
 from profile_class import Profile
 
-
+#Code to view user's profile
 def view_profile():
     user = input("input the user you want to view:\n")
     profile_obj = Profile()
@@ -12,7 +12,7 @@ def view_profile():
     print()
     print_profile(profile)
 
-
+#Code to print the user profile
 def print_profile(pro_info):
     print("********* View Profile Information *********", '\n')
     print("Name: ", pro_info['username'], "\n")
@@ -33,7 +33,7 @@ def print_profile(pro_info):
         for e in education:
             print("\t school: ", e["school"], "\n\t degree: ", e['degree'], "\n\t year: ", e['year'], "\n")
 
-
+#Code will create user profile
 def profile_creation(user):
     old_profile = Profile(user.username)
     old_profile_info = old_profile.get_profile_info(user.username)
@@ -56,7 +56,7 @@ def profile_creation(user):
         major_ = old_profile_info['major']
     else:
         major_ = major
-    # Code so input is converted to and upper case and the rest lowercase
+    # Code so input is converted to an upper case and the rest lowercase
     capital_major = string.capwords(major_)
 
     if old_state and (old_profile_info['university'] is not None):
@@ -67,7 +67,7 @@ def profile_creation(user):
     else:
         university_ = university
     capital_university = string.capwords(
-        university_)  # Code so input is converted to and upper case and the rest lowercase
+        university_)  # Code so input is converted to an upper case and the rest lowercase
 
     if old_state and (old_profile_info['about'] is not None):
         print("Current information about you is ", old_profile_info['about'])
@@ -77,6 +77,7 @@ def profile_creation(user):
     else:
         about_ = about
 
+    #Code will ask user for experience
     print("Enter experience (y/n)")
     choice = input()
     jobs = []
@@ -118,6 +119,7 @@ def profile_creation(user):
 
     print("jobs", jobs)
 
+    #Code will ask user for Education
     print("********* Provide Education information *********")
     education = []
     print("Enter school information:", '\n')
