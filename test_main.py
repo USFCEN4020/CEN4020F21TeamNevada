@@ -181,7 +181,6 @@ class TestCases(unittest.TestCase):
                         side_effect=['test title', 'test major', 'test university', 'test about',
                                      'y', 'test job title', 'test employer', 'test start date', 'test end date', 'test location', 'test job description', 'n',
                                      'test school name', 'test degree', '5 years', 'n']):
-            # first create the profile
             profile_creation(test_account)
 
         test_profile_obj = Profile()
@@ -211,9 +210,11 @@ class TestCases(unittest.TestCase):
         print(test_profile_info)
         assert test_profile_info['username'] == test_account.username
         assert test_profile_info['title'] == 'test title'
-        assert test_profile_info['major'] == 'Test Major'
-        assert test_profile_info['university'] == 'Test University'
         assert test_profile_info['about'] == 'test about'
+
+        # test basic profile information with capitalization formatting
+        assert test_profile_info['major'] == 'Test Major'  # was in all lowercase in input
+        assert test_profile_info['university'] == 'Test University'  # was in all lowercase in input
 
         # test the profile job information is the same as what was passed as input
         assert len(test_profile_info['jobs']) > 0
@@ -223,7 +224,9 @@ class TestCases(unittest.TestCase):
         assert len(test_profile_info['education']) > 0
         assert test_profile_info['education'][0] == test_education_info
 
+        # test the get profile info returns None when a profile does not exist with the given username
         assert test_profile_obj.get_profile_info("random account username") is None
+
 
 if __name__ == '__main__':
     unittest.main()
