@@ -1,6 +1,6 @@
 # import pytest
 from important_links import important_links_groups, guest_controls, update_guest_controls, account_language, update_account_language
-from profile_creation import profile_creation, view_profile
+from profile_creation import *
 from useful_links import useful_links_groups
 from account_creation import create_account, is_secure
 from account_login import passwd_valid, login_screen

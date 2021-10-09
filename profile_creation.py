@@ -40,6 +40,7 @@ def profile_creation(user):
     old_state = False
     if old_profile_info is not None:
         old_state = True
+
     print("********* Profile Creation *********")
     if old_state and (old_profile_info['title'] is not None):
         print("Current title is ", old_profile_info['title'])
@@ -104,10 +105,10 @@ def profile_creation(user):
             })
             print("Would you like to enter another job? (y/n)")
             data = input()
-            if str.lower(data) == "y":
+            if str.lower(str(data)) == "y":
                 print("Enter another job")
                 continue
-            elif str.lower(data) == "n":
+            elif str.lower(str(data)) == "n":
                 break
             else:
                 print("Invalid entry.\n")
@@ -116,11 +117,12 @@ def profile_creation(user):
     else:
         print("Invalid Entry")
 
-    print("jobs", jobs)
+    # print("jobs", jobs)
 
-    print("********* Provide Education information *********")
     education = []
-    print("Enter school information:", '\n')
+    print("********* Provide Education information *********")
+    print("Enter school information:")
+
     while True:
         print("Enter school name:")
         attended_school = input()
@@ -135,10 +137,10 @@ def profile_creation(user):
         })
         print("Would you like to enter another education information? (y/n)")
         data = input()
-        if str.lower(data) == "y":
+        if str.lower(str(data)) == "y":
             print("Enter another education information.")
             continue
-        elif str.lower(data) == "n":
+        elif str.lower(str(data)) == "n":
             break
         else:
             print("Invalid entry.\n")
