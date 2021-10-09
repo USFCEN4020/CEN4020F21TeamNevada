@@ -25,13 +25,13 @@ def print_profile(pro_info):
     if jobs is not None:
         print("Job experience: \n")
         for job in jobs:
-            print("\t job name: ", job['job_name'], "\t employer: ",
-                  job['employer'], "\t start date: ", job['start_date'], "\t end date: ", job['end_date'], "\t location: ", job['location'], "\t description: ", job['description'], "\n")
+            print("\t job name: ", job['job_name'], "\n\t employer: ",
+                  job['employer'], "\n\t start date: ", job['start_date'], "\n\t end date: ", job['end_date'], "\n\t location: ", job['location'], "\n\t description: ", job['description'], "\n")
     education = pro_info['education']
     if education is not None:
         print("Education experience: \n")
         for e in education:
-            print("\t school: ", e["school"], "\t degree: ", e['degree'], "\t year: ", e['year'], "\n")
+            print("\t school: ", e["school"], "\n\t degree: ", e['degree'], "\n\t year: ", e['year'], "\n")
 
 
 def profile_creation(user):
