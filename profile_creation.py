@@ -19,8 +19,7 @@ def print_profile(pro_info):
     print("Title: ", pro_info['title'], '\n')
     print("Major: ", pro_info['major'], '\n')
     print("University: ", pro_info['university'], '\n')
-    print("Information: ", pro_info['about'], '\n')
-    print("Education Information: ", '\n')
+    print("Information about me: ", pro_info['about'], '\n')
     jobs = pro_info["jobs"]
     if jobs is not None:
         print("Job experience: \n")
@@ -29,7 +28,7 @@ def print_profile(pro_info):
                   job['employer'], "\n\t start date: ", job['start_date'], "\n\t end date: ", job['end_date'], "\n\t location: ", job['location'], "\n\t description: ", job['description'], "\n")
     education = pro_info['education']
     if education is not None:
-        print("Education experience: \n")
+        print("Education: \n")
         for e in education:
             print("\t school: ", e["school"], "\n\t degree: ", e['degree'], "\n\t year: ", e['year'], "\n")
 
@@ -82,7 +81,7 @@ def profile_creation(user):
     choice = input()
     jobs = []
     if choice == "y":
-        while True:
+        for i in range(3):
             print("Enter job title: ")
             job_title_ = input()
             print("Enter Employer: ")
@@ -106,12 +105,11 @@ def profile_creation(user):
             print("Would you like to enter another job? (y/n)")
             data = input()
             if str.lower(data) == "y":
-                print("Enter another job")
                 continue
             elif str.lower(data) == "n":
                 break
             else:
-                print("Invalid entry.\n")
+                print("Invalid entry. Try again!\n")
     elif choice == "n":
         print("\n")
     else:
