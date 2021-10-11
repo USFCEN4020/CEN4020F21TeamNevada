@@ -1,0 +1,465 @@
+commit 3035e853af2ebae84b4f2ef99e0089e90f29829d
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sat Oct 9 18:06:36 2021 -0400
+
+    fixed some comments
+
+commit c7706a34265149a2d502ac4085b6721f21782d40
+Merge: 305b1b0 4469e4c
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sat Oct 9 18:02:33 2021 -0400
+
+    Merge pull request #5 from USFCEN4020/profile_creation_testing
+    
+    completed testing for profile creation
+
+commit 4469e4c30b04cb39227d57f7b7e96d16b22cc6f4
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sat Oct 9 18:01:59 2021 -0400
+
+    completed testing for profile creation
+
+commit 305b1b0bb2cbd1398af4de445e02eb6777af7e79
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sat Oct 9 16:43:05 2021 -0400
+
+    pushing up the developers completed tickets for profile creation
+
+commit 08b62cf2c4709d153b8e731f3bbb2ba05cfaf39f
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Sat Oct 9 06:25:10 2021 -0400
+
+    add profile creation and viewing profile
+
+commit 2bd25f33b527d7b69824e283650e179a6a208e49
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Oct 3 22:54:44 2021 -0400
+
+    pushing up testing changes for nicolas
+
+commit 22ebf0e946c2fccdb2482b1a39360b826e95aee2
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Oct 3 22:52:56 2021 -0400
+
+    pushing up testing changes for nicolas
+
+commit 9a69621fe72040f1ac67eb877a182834aeccb99a
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Oct 3 21:53:06 2021 -0400
+
+    pushing up testing changes for kameron
+
+commit 5c25b18f6990f76dbbe1645e5aa2e095339bfb42
+Merge: 58c0fc9 eede369
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 13:16:02 2021 -0400
+
+    Merge pull request #3 from USFCEN4020/guest_controls
+    
+    Guest controls
+
+commit eede369462b0082eb13334c65fca128ea35df3a2
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 13:15:21 2021 -0400
+
+    fixed import issue with testing file
+
+commit eb7e92846d2aca8455b5414e384b6a4039235d77
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 13:12:15 2021 -0400
+
+    added guest controls and language options and logic
+
+commit efb69ecf83d08d37c3008d301d4e21795d371aa7
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 13:11:44 2021 -0400
+
+    created csv_read_write file and updated code to use functions from that file
+
+commit 092cc6c5a54c031bbad530588cc883f724669710
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 13:11:09 2021 -0400
+
+    removed unused function
+
+commit e3e3430b8a6915af2a32c3963f851d456eca27de
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 11:38:55 2021 -0400
+
+    changed login screen logic to return the account that was successfully logged in to
+
+commit 0ee78e11adf85a48edc25ebc871d0d2d3ac7ed6a
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 11:29:01 2021 -0400
+
+    removed unused import from testing file
+
+commit 7cbcdcbcb92d5f26efbb4c0eec4660569da546ce
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 11:28:10 2021 -0400
+
+    moved account login and account creation functions to their respective files
+
+commit 86eb604609b2e084a93312330c10cfe5ffcc0f3a
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 11:27:19 2021 -0400
+
+    added account class properties for the account controls
+
+commit c256625644387667c2129c1deaf7d30e4d6e7fe5
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 09:59:21 2021 -0400
+
+    added logic for guest controls to check user signed in status
+
+commit 58c0fc9a42177d69fc735c5f25c2b868294b09b3
+Merge: d8daed0 674a9de
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 09:45:07 2021 -0400
+
+    Merge pull request #2 from USFCEN4020/important_links
+    
+    Important links
+
+commit 674a9de9f4c464ae80e74d23de3ce0e1c902873e
+Merge: ec324c1 d8daed0
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 09:44:59 2021 -0400
+
+    Merge branch 'master' into important_links
+
+commit d8daed0a3f498cc62e3367ef9d5d7b31c5772799
+Merge: 901d085 325da5f
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Fri Oct 1 09:42:52 2021 -0400
+
+    Merge pull request #1 from USFCEN4020/useful_links
+    
+    added useful links and menu logic
+
+commit ec324c1b67497ab186871be14642f624bd1dd2f1
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Fri Oct 1 01:48:20 2021 -0400
+
+    Added own Content to "Important Links"
+
+commit bd1ea30dd399fc6943dcdd798c8b3c33021f1778
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Thu Sep 30 20:07:06 2021 -0400
+
+    Added important_links.py and incorporated it in main
+
+commit 325da5fe8c2872fea7baea9be8fec57c44d23888
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 29 15:57:16 2021 -0400
+
+    added useful links and menu logic
+
+commit 901d085d7befbc6820549e61bbeda4d56b6c4b73
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Sun Sep 26 14:11:21 2021 -0400
+
+    added test for 'home screen' function
+
+commit 508080a0af38aad96ed5b58fe622f5e02aefcb20
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Sun Sep 26 13:49:45 2021 -0400
+
+    added test cases for 'option for contacts' functionality in the main screen
+
+commit 9d6d01824bc029438040f0f71deb2fa1fd81414c
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Sun Sep 26 13:00:54 2021 -0400
+
+    added comments for 'connect with users and user exists' tests
+
+commit 527605c9f6b8c88802952a8b1e33887a62d58f20
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Sun Sep 26 12:47:04 2021 -0400
+
+    added test cases for the 'connect with users' function
+
+commit c2d0270960fdc5a1f57fb260ccc81630a99dd7cf
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Sat Sep 25 16:55:57 2021 -0400
+
+    added an extra test case for the 'user exists' function
+
+commit 2848f7b0231b891efd3a8a8b3651af66541f5f4e
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Fri Sep 24 15:44:41 2021 -0400
+
+    added test for the 'user_exists' function
+
+commit 5ef6511cd2348d13bcb2783f246521521eefc86c
+Merge: 108afce f66f2f1
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Thu Sep 23 14:12:29 2021 -0400
+
+    Merge pull request #7 from lynnhanananer/connect_with_users
+    
+    Connect with users
+
+commit f66f2f14c2dedc4b290911dd1a2b62a5e76413cf
+Merge: bef23f3 108afce
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Thu Sep 23 14:12:15 2021 -0400
+
+    Merge branch 'master' into connect_with_users
+
+commit bef23f370f5bb77013f08e815d3a3c041a9cd5b0
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Thu Sep 23 14:08:22 2021 -0400
+
+    added option to login or create account on connect with friend
+
+commit 108afce40404d2d0db93f84446d568b9487c8ab6
+Merge: d3ddd72 408f4ea
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Wed Sep 22 22:36:58 2021 -0400
+
+    Merge branch 'master' of https://github.com/lynnhanananer/inCollege-TeamNevada
+
+commit d3ddd720db5523e66b3864d6b66404f379bc1847
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:21:19 2021 -0400
+
+    revert
+
+commit 408f4eafbfb7e33d90364befc3ab61239bd0709c
+Merge: 4505be2 aa68c94
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Wed Sep 22 22:33:58 2021 -0400
+
+    Merge branch 'master' of https://github.com/lynnhanananer/inCollege-TeamNevada
+
+commit 4505be2971f6c25881b94318937812696c1bac03
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:21:19 2021 -0400
+
+    Commit reverted
+
+commit aa68c946ed10652467e69f73c457264322ecfa1f
+Merge: 763954d 06284d5
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Wed Sep 22 22:23:37 2021 -0400
+
+    Merge branch 'master' of https://github.com/lynnhanananer/inCollege-TeamNevada
+
+commit 763954dc65185293277de38ea45546e649d64e21
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Wed Sep 22 22:23:32 2021 -0400
+
+    Added Welcome Video and Homepage story
+
+commit 06284d5d1418f3c92c0a13f9f662ca98ad7d6b6f
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Wed Sep 22 22:12:11 2021 -0400
+
+    Added Welcome Video and Homepage story
+
+commit ef39acd519e3830cc2384ff38c57cc378dc9202c
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 11:25:53 2021 -0400
+
+    added dialogs and logic for connecting with users by first and last name
+
+commit 5fd44524e64422cf9ebecaefd52d3a5ee5200874
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:21:19 2021 -0400
+
+    just added some comments
+
+commit f8903e29d4dca6ecbad3ae87ad22e8f4b047f9fe
+Merge: ee0638d 49bea60
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:14:20 2021 -0400
+
+    Merge pull request #6 from lynnhanananer/enhance-account-creation
+    
+    Enhance account creation
+
+commit 49bea60b8920117cc48b6cb9ba6c8b5d8109a1b2
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:12:29 2021 -0400
+
+    updated test changleog
+
+commit e5771ac11d0ff74d89aaa9f64853eabc4e254522
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:11:28 2021 -0400
+
+    updated test login screen to use Account class
+
+commit 86cca13b0e587bdeb33718607693604070115550
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:09:13 2021 -0400
+
+    updated main.py to use new account class
+
+commit 4d9da8437cf36811b6c2b911bbcac3000583023c
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 22 10:09:01 2021 -0400
+
+    created the account class
+
+commit f86da7b4f7b1a48ba9d53c31466d78272bf7a60e
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Sep 20 20:06:08 2021 -0400
+
+    added first and last name inputs for account creation
+
+commit ee0638d5fb650e95b7f72ba24f0ca326eec1192c
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 20:00:46 2021 -0400
+
+    fixed spelling error
+
+commit 9cad4df938c798d1df8b2e902bd899ae799e4b55
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 19:31:57 2021 -0400
+
+    Added testing changelog markdown file
+
+commit 64b93d2df79de6b17c2da2bd2dbd34ad7340a9c7
+Merge: b5ddd39 1099fdc
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 19:18:47 2021 -0400
+
+    Merge pull request #5 from lynnhanananer/options_changed
+    
+    merging Options changed
+
+commit 1099fdc9fc12d92557f283210a45de3284bb5574
+Merge: a85e07b b5ddd39
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 19:18:35 2021 -0400
+
+    Merge branch 'master' into options_changed
+
+commit b5ddd395e9cfeabaf4500cf18f0befea3333cc9c
+Merge: 9fe3cbf 642ec6c
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 19:17:39 2021 -0400
+
+    Merge pull request #4 from lynnhanananer/Options
+    
+    merging Options with master
+
+commit 642ec6c9786a1301ed24dfed2e4bec51adc08247
+Merge: 246fccb 9fe3cbf
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 19:17:14 2021 -0400
+
+    Merge branch 'master' into Options
+
+commit 9fe3cbfe24bbb2832035531a96d3b02209152a39
+Merge: b04152f 54796ec
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 19:13:45 2021 -0400
+
+    Merge pull request #3 from lynnhanananer/main/create_screens
+    
+    merging in Main/create screens
+
+commit 54796ec7e4ca787df9744d0881d513f5b645ceae
+Merge: 631c4b5 b04152f
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Sep 19 19:13:30 2021 -0400
+
+    Merge branch 'master' into main/create_screens
+
+commit a85e07ba8d4d48876099e5742c1a39a0023ac939
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Sun Sep 19 13:41:54 2021 -0400
+
+    fixed bug with program not running if accounts.txt was initially empty
+
+commit b60c4c7b5d5012629140f4604cefa8a01a8a6607
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Sun Sep 19 11:30:56 2021 -0400
+
+    Create accounts.txt
+
+commit 599e6a60014e19f010907b4d81b4fec21d8d6254
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Sun Sep 19 11:30:04 2021 -0400
+
+    Update test_main.py
+
+commit 083037da88433c8e7009efa1d4d1bc1dc460863f
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Sun Sep 19 11:29:32 2021 -0400
+
+    Create test_main.py
+
+commit d83d495e29a4388556bb615892f42132c08a3ea4
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Sun Sep 19 11:28:45 2021 -0400
+
+    Update main.py
+    
+    Added some changes, so that it complies with Test_main
+
+commit 246fccbef47260f417af2f5305b26725b6cca40f
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Sun Sep 19 11:21:33 2021 -0400
+
+    Create accounts.txt
+
+commit 883c010d2b29be4bccd3af4514fa968b76f2f5e2
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Sun Sep 19 11:20:44 2021 -0400
+
+    Update main.py
+
+commit b04152fd4dbcd12f6dc7c868504e5cbfe2731867
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Fri Sep 17 23:38:40 2021 -0400
+
+    Testing
+
+commit 631c4b5a15db883de683ec2cec03670febfdd0f3
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Fri Sep 17 13:12:12 2021 -0400
+
+    committed accounts.txt
+
+commit 3767eec1b4f6ce289b9cacbc7681c629d307aea3
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Fri Sep 17 11:59:01 2021 -0400
+
+    fixed small bug with writing username and password to file
+
+commit 98331e0904d8c1fd8247e9854083757f8900c14d
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Fri Sep 17 01:57:27 2021 -0400
+
+    main/account creation are mostly completed
+
+commit 427d29f0704a95dcf5b2b94bee2788a3c67d0eac
+Author: KameronIng <kamisda1@outlook.com>
+Date:   Thu Sep 16 01:27:56 2021 -0400
+
+    started creation of main screen and account creation screen
+
+commit 11bf816c3ec6fc22536d36df861a4d6ce5a9697f
+Merge: c5f5e9d a6bc15e
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 15 09:48:18 2021 -0400
+
+    Merge pull request #1 from lynnhanananer/Test_Branch
+    
+    TExt changed to hello world
+
+commit a6bc15ef5aea0dfbac282c8e58d3f079038262ff
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 15 09:46:16 2021 -0400
+
+    TExt changed to hello world
+
+commit c5f5e9d04068753105eefe1c1096d3296aaabcf9
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Wed Sep 15 09:42:51 2021 -0400
+
+    First commit, main.py created
