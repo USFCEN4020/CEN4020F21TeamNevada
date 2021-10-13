@@ -1,6 +1,7 @@
 # import pytest
 from important_links import important_links_groups, guest_controls, update_guest_controls, account_language, update_account_language
 from profile_creation import *
+from search_students import *
 from useful_links import useful_links_groups
 from account_creation import create_account, is_secure
 from account_login import passwd_valid, login_screen
@@ -113,6 +114,7 @@ def options_screen(user, accounts):
                 "5": "InCollege Important Links",
                 "6": "Create Profile",
                 "7": "View Profile",
+                "8": "Search Students",
                 "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
@@ -169,6 +171,8 @@ def options_screen(user, accounts):
             profile_creation(user)
         elif selection == '7':
             view_profile()
+        elif selection == '8':
+            search_students(user, accounts)
         elif selection == 'q':
             print("\nHave a nice day!")
             break
