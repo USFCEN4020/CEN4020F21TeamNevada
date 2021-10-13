@@ -8,9 +8,9 @@ def create_account(accounts):
     username_ = " "
     password_ = " "
 
-    # following code checks if there are 5 stored passwords already
+    # following code checks if there are 10 stored passwords already
     line_count = len(accounts)
-    if line_count >= 5:
+    if line_count >= 10:
         print("All permitted accounts have been created, please come back later")
         return
 
