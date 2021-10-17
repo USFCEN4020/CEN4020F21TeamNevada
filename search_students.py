@@ -16,6 +16,7 @@ def get_profiles_list(user=None):
 def view_student_list(s_list, user):
     if len(s_list) == 0:
         print("There are no students.")
+        return None
     else:
         print("********* View Student Information *********", '\n')
         print("Username \t Firstname \t Lastname \t Major \t University \t Introduction \n")
@@ -48,9 +49,13 @@ def view_student_list(s_list, user):
             with open("friend_connection.json", 'w') as f:
                 json.dump(connection, f)
 
+            return new_connection
+
 
 # Function to let user search for users to connect with
 def search_students(user, accounts):
+    # print(user.get_account_details())
+    # print(list(map(lambda a: a.get_account_details(), accounts)))
     if len(accounts) == 0:
         print("There are no accounts.")
 
@@ -84,7 +89,7 @@ def search_students(user, accounts):
                         "introduction": None
                     }
                 s_list.append(student)
-        view_student_list(s_list, user)
+        return view_student_list(s_list, user)
     elif option == "university":
         s_list = []
         university = input("input the university:\n")
@@ -102,7 +107,7 @@ def search_students(user, accounts):
                             "introduction": profile["about"]
                         }
                         s_list.append(student)
-        view_student_list(s_list, user)
+        return view_student_list(s_list, user)
     elif option == "major":
         s_list = []
         major = input("input the major:\n")
@@ -120,6 +125,6 @@ def search_students(user, accounts):
                             "introduction": profile["about"]
                         }
                         s_list.append(student)
-        view_student_list(s_list, user)
+        return view_student_list(s_list, user)
     else:
         print("Invalid Entry")
