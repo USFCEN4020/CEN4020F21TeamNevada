@@ -1,6 +1,7 @@
 from account_class import Account
 from csv_read_write import save_accounts_to_csv
 import csv
+import json
 
 
 # function to pull up account creation screen
@@ -8,9 +9,9 @@ def create_account(accounts):
     username_ = " "
     password_ = " "
 
-    # following code checks if there are 5 stored passwords already
+    # following code checks if there are 10 stored passwords already
     line_count = len(accounts)
-    if line_count >= 5:
+    if line_count >= 10:
         print("All permitted accounts have been created, please come back later")
         return
 
@@ -59,6 +60,20 @@ def create_account(accounts):
 
     # write the accounts to the csv
     save_accounts_to_csv(accounts)
+
+    # Creates an empty friends list for the new user
+    # Adds friends list to 'friends_list.json'
+    friends_list = {
+        "user": username_,
+        "friends": []
+    }
+    with open("friends_list.json", 'r') as f:
+        contents = json.loads(f.read())
+
+    contents.append(friends_list)
+
+    with open("friends_list.json", 'w') as f:
+        json.dump(contents, f)
 
     print("You've Successfully created an account!\n")
 

@@ -47,7 +47,7 @@ class Account:
 
     # returns a list of the Account class object properties to be used for writing to the csv file
     def get_account_details(self):
-        return [self.username, self.password, self.lastname, self.firstname, self.incollege_email, self.sms, self.targeted_ads, self.language]
+        return [self.username, self.password, self.firstname, self.lastname, self.incollege_email, self.sms, self.targeted_ads, self.language]
 
     # returns a list of the Account class object properties for the guest controls
     def get_account_controls(self):

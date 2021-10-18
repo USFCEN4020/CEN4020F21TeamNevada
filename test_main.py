@@ -2,7 +2,8 @@ from main import *
 import unittest
 import mock
 from account_class import Account
-
+from account_login import login_screen
+from show_network import show_network
 
 class TestCases(unittest.TestCase):
     def test_login_screen(self, ):
@@ -226,6 +227,83 @@ class TestCases(unittest.TestCase):
 
         # test the get profile info returns None when a profile does not exist with the given username
         assert test_profile_obj.get_profile_info("random account username") is None
+
+    #Tests network
+    def test_show_network(self):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        # Tests links with log in information with 1 link
+        with mock.patch('builtins.input',
+                        side_effect=['john', 'John123!', '1', '2', 'q']):
+            user = login_screen(test_accounts)
+            show_network(user, test_accounts)
+
+        # Tests if user is in the network and displays him if so
+        main.get_profiles_list("Mark")
+        assert show_network['name'] == 'Mark'
+        assert show_network['result'] == 'fail'
+
+        # Tests user's network
+        assert show_network('John') == 'Mark'
+        assert not show_network('John') == 'Dana'
+
+    # Test search for students
+    def test_student_friend_connections(self):
+        # check to see if the test accounts john and mark have been created
+        accounts = get_accounts_from_csv()
+        if len(accounts) < 1:
+            print("\n** Creating test accounts using the test important links test **")
+            self.test_important_links()  # this test creates the test accounts for john and mark
+        elif not (user_exists(accounts, "John", "Doe") and user_exists(accounts, "Mark", "Smith")):
+            print("\n** Creating test accounts using the test important links test **")
+            self.test_important_links()  # this test creates the test accounts for john and mark
+
+        # check to see if the profiles for these two accounts exist
+        test_account1 = Account('john', 'John123!', 'John', 'Doe')
+        test_account2 = Account('mark', 'Mark123!', 'Mark', 'Smith')
+        accounts = [test_account1, test_account2]
+
+        test_profile_obj = Profile()
+        # if their profiles don't exist, run the tests that create them
+        if test_profile_obj.get_profile_info(test_account1.username) is None:
+            print("\n** Creating test profile for John using the test profile creation test **")
+            self.test_profile_creation()
+
+        if test_profile_obj.get_profile_info(test_account2.username) is None:
+            print("\n** Creating test profile for Mark using the test get profile info test **")
+            self.test_get_profile_info()
+
+        # once we have created the accounts and the profiles to test with, now we can test search students
+
+        # test search students by last name
+        with mock.patch('builtins.input',
+                        side_effect=['last name', 'Smith', 'mark', 'Oh, Hi Mark']):
+            connection = search_students(test_account1, accounts)
+            assert connection["username"] is "john"
+            assert connection["c_user"] is "mark"
+            assert connection["content"] is "Oh, Hi Mark"
+
+        # test search students by university
+        with mock.patch('builtins.input',
+                        side_effect=['university', 'Test University', 'mark', 'Oh, Hi Mark']):
+            connection = search_students(test_account1, accounts)
+            assert connection["username"] is "john"
+            assert connection["c_user"] is "mark"
+            assert connection["content"] is "Oh, Hi Mark"
+
+        # test search students by major
+        with mock.patch('builtins.input',
+                        side_effect=['major', 'Test Major', 'mark', 'Oh, Hi Mark']):
+            connection = search_students(test_account1, accounts)
+            assert connection["username"] is "john"
+            assert connection["c_user"] is "mark"
+            assert connection["content"] is "Oh, Hi Mark"
+
+        # test search for student that does not exist
+        with mock.patch('builtins.input',
+                        side_effect=['last name', 'nothing']):
+            connection = search_students(test_account1, accounts)
+            assert connection is None
 
 
 if __name__ == '__main__':

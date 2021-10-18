@@ -1,6 +1,9 @@
 # import pytest
 from important_links import important_links_groups, guest_controls, update_guest_controls, account_language, update_account_language
 from profile_creation import *
+from search_students import *
+from pending_requests import *
+from show_network import *
 from useful_links import useful_links_groups
 from account_creation import create_account, is_secure
 from account_login import passwd_valid, login_screen
@@ -106,6 +109,12 @@ def main_screen(accounts):
 # The user argument is the Account object for the user that is logged in
 # The accounts argument is the accounts list
 def options_screen(user, accounts):
+
+    # Determines if the logged in user has any pending friend requests and notifies them if so
+    requests = at_least_1_pending(user)
+    if requests > 0:
+        print("\n*** YOU HAVE PENDING FRIEND REQUESTS! CHOOSE OPTION 9 FOR MORE INFO! ***")
+
     menu_opt = {"1": "Search for a Job",
                 "2": "Find Someone you know",
                 "3": "Learn a new skill",
@@ -113,6 +122,9 @@ def options_screen(user, accounts):
                 "5": "InCollege Important Links",
                 "6": "Create Profile",
                 "7": "View Profile",
+                "8": "Search Students",
+                "9": "Pending Friend Requests",
+                "10": "Show My Network",
                 "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
@@ -169,6 +181,12 @@ def options_screen(user, accounts):
             profile_creation(user)
         elif selection == '7':
             view_profile()
+        elif selection == '8':
+            search_students(user, accounts)
+        elif selection == '9':
+            pending_requests(user, accounts)
+        elif selection == '10':
+            show_network(user)
         elif selection == 'q':
             print("\nHave a nice day!")
             break
