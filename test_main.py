@@ -2,7 +2,8 @@ from main import *
 import unittest
 import mock
 from account_class import Account
-
+from account_login import login_screen
+from show_network import show_network
 
 class TestCases(unittest.TestCase):
     def test_login_screen(self, ):
@@ -226,6 +227,25 @@ class TestCases(unittest.TestCase):
 
         # test the get profile info returns None when a profile does not exist with the given username
         assert test_profile_obj.get_profile_info("random account username") is None
+
+    #Tests network
+    def test_show_network(self):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        # Tests links with log in information with 1 link
+        with mock.patch('builtins.input',
+                        side_effect=['john', 'John123!', '1', '2', 'q']):
+            user = login_screen(test_accounts)
+            show_network(user, test_accounts)
+
+        # Tests if user is in the network and displays him if so
+        main.get_profiles_list("Mark")
+        assert show_network['name'] == 'Mark'
+        assert show_network['result'] == 'fail'
+
+        # Tests user's network
+        assert show_network('John') == 'Mark'
+        assert not show_network('John') == 'Dana'
 
     # Test search for students
     def test_student_friend_connections(self):
