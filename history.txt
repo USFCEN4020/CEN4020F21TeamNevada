@@ -22,6 +22,31 @@ Date:   Wed Oct 13 12:41:04 2021 -0400
 
     add search students choice
 
+commit f1514a92c970e72249cca2b5f000387e28587d0e
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Wed Oct 13 12:38:56 2021 -0400
+
+    increases student accounts support to 10
+
+commit 420944d0510e073ac811dab14b0f4cd5c30e728e
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Wed Oct 13 12:33:59 2021 -0400
+
+    json file for friend connection
+
+commit 46d64cd58c718269fc07c31d5ad04ad3f58e960c
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Wed Oct 13 12:28:22 2021 -0400
+
+    add search student and option of sending request
+
+commit dca89d021bbc02bd8bc5d9ef02e092042de86f86 (origin/master, origin/HEAD)
+Author: Kameron Ingraham <ingrahamk@usf.edu>
+Date:   Sun Oct 10 23:44:11 2021 -0400
+
+    Added history.txt git log to the project
+
+
 commit 3035e853af2ebae84b4f2ef99e0089e90f29829d
 Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
 Date:   Sat Oct 9 18:06:36 2021 -0400
