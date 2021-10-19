@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4f8254d3-69c1-45e6-86cf-16b8298734da" name="Changes" comment="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="incollege-sprint-6" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1z0oQzyhEesQu9fIgyQTK926eqt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CEN4020F21TeamNevada" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_main.TestCases.test_main_screen" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CEN4020F21TeamNevada" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_main_screen&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_main.TestCases.test_show_network" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CEN4020F21TeamNevada" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_show_network&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_main.TestCases.test_useful_links_groups_option1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CEN4020F21TeamNevada" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_useful_links_groups_option1&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_main.TestCases.test_useful_links_groups_options2_thru_4" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CEN4020F21TeamNevada" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_useful_links_groups_options2_thru_4&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_show_network" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_useful_links_groups_options2_thru_4" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_useful_links_groups_option1" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_main_screen" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f8254d3-69c1-45e6-86cf-16b8298734da" name="Changes" comment="" />
+      <created>1633294353275</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633294353275</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Created tests for 'useful links' and 'guest controls' functionality; commented out two for loops that seemed to print unnecessary info">
+      <created>1633310096880</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1633310096880</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created tests for 'useful links' and 'guest controls' functionality; commented out two for loops that seemed to print unnecessary info">
+      <created>1633310256703</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1633310256703</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Created tests for 'useful links' and 'guest controls' functionality">
+      <created>1633313669806</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1633313669806</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Commented out loops that printed unnecessary account info when exiting the guest controls or important links menus">
+      <created>1633313896476</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1633313896476</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added history.txt git log to the project">
+      <created>1633923851061</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633923851061</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Created 'pending friend request' and 'show my network' functionality. Updated account class to return first name before last name. Updated account creation to create empty friend list for new user. When running program with no stored data, the json files must have empty brackets.">
+      <created>1634328305936</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1634328305936</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon.">
+      <created>1634685928873</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634685928874</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="incollege-sprint-6" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created tests for 'useful links' and 'guest controls' functionality; commented out two for loops that seemed to print unnecessary account info when exiting guest controls or important links menus" />
+    <MESSAGE value="Created tests for 'useful links' and 'guest controls' functionality; commented out two for loops that seemed to print unnecessary info" />
+    <MESSAGE value="Created tests for 'useful links' and 'guest controls' functionality" />
+    <MESSAGE value="Commented out loops that printed unnecessary account info when exiting the guest controls or important links menus" />
+    <MESSAGE value="Added history.txt git log to the project" />
+    <MESSAGE value="Created 'pending friend request' and 'show my network' functionality. Updated account class to return first name before last name. Updated account creation to create empty friend list for new user. When running program with no stored data, the json files must have empty brackets." />
+    <MESSAGE value="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon." />
+  </component>
+</project>
