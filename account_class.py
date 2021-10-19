@@ -5,6 +5,7 @@ class Account:
         self.password = password
         self.firstname = firstname
         self.lastname = lastname
+        self.num_applied = 0
 
         # logic for account controls defaults
         if incollege_email is None:
