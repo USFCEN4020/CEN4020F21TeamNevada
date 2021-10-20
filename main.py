@@ -6,8 +6,11 @@ from pending_requests import *
 from show_network import *
 from useful_links import useful_links_groups
 from account_creation import create_account, is_secure
+from job_creation import create_job
+from job_deletion import *
+from job_apply import apply_job
 from account_login import passwd_valid, login_screen
-from csv_read_write import get_accounts_from_csv
+from csv_read_write import get_accounts_from_csv, get_jobs_from_csv
 
 
 # Function for the HomeScreen
@@ -37,7 +40,7 @@ def home_screen():
 
 
 # function to pull up main screen
-def main_screen(accounts):
+def main_screen(accounts, jobs):
     print("\nWELCOME TO InCollege!")
     main_screen_opt = {"1": "Create a new account",
                        "2": "Login to existing account",
@@ -102,20 +105,21 @@ def main_screen(accounts):
             print("\nUnknown Selection, Try Again!\n")
 
     if logged_in_user is not None:
-        options_screen(logged_in_user, accounts)
+        options_screen(logged_in_user, accounts, jobs)
 
 
 # Function to pull up the options menu
 # The user argument is the Account object for the user that is logged in
 # The accounts argument is the accounts list
-def options_screen(user, accounts):
+# The jobs argument is the jobs list
+def options_screen(user, accounts, jobs):
 
     # Determines if the logged in user has any pending friend requests and notifies them if so
     requests = at_least_1_pending(user)
     if requests > 0:
         print("\n*** YOU HAVE PENDING FRIEND REQUESTS! CHOOSE OPTION 9 FOR MORE INFO! ***")
 
-    menu_opt = {"1": "Search for a Job",
+    menu_opt = {"1": "Job Search/Internship",
                 "2": "Find Someone you know",
                 "3": "Learn a new skill",
                 "4": "InCollege Useful Links",
@@ -134,6 +138,11 @@ def options_screen(user, accounts):
                    "5": "Design",
                    "q": "Quit"}
 
+    menu_jobs = {"1": "Post a Job",
+                 "2": "View Job Listings",
+                 "3": "Delete a Job You Posted",
+                 "q": "Quit"}
+
     while True:
         print("\n ********* InCollege Options ********* \n")
 
@@ -143,7 +152,32 @@ def options_screen(user, accounts):
 
         selection = input("Select an Option: ")
         if selection == '1':
-            print("\nUnder Construction\n")
+            # Pulls up the menu with options for jobs
+            while True:
+                # Determines if any jobs that the user has applied for have been deleted and notifies them if so
+                jobs_deleted = user_job_deleted(user)
+                if jobs_deleted:
+                    print("\n *** ATTENTION: A JOB YOU APPLIED FOR HAS BEEN DELETED! ***")
+
+                print("\n ********* Job Options ********* \n")
+
+                options = menu_jobs.keys()
+                for x in options:
+                    print(x, ")", menu_jobs[x])
+
+                selection = input("Select an Option: ")
+                if selection == '1':
+                    create_job(user, jobs)
+                elif selection == '2':
+                    apply_job(user, jobs)
+
+                elif selection == '3':
+                    delete_job(user, jobs)
+                elif selection == 'q':
+                    break
+                else:
+                    print("Unknown selection! Try Again!")
+
         elif selection == '2':
             print("\nUnder Construction\n")
         elif selection == '3':
@@ -221,8 +255,10 @@ def user_exists(accounts, firstname, lastname):
 
 # PROGRAM START #
 accounts_list = []  # global variable that holds all of the account objects
+jobs_list = []  # global variable that holds all of the job objects
 if __name__ == '__main__':
     accounts_list = get_accounts_from_csv()
+    jobs_list = get_jobs_from_csv()
 
     home_screen()
-    main_screen(accounts_list)
+    main_screen(accounts_list, jobs_list)

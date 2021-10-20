@@ -1,10 +1,14 @@
 class Account:
     # Account class constructor with optional arguments for username, password, firstname and lastname
-    def __init__(self, username=None, password=None, firstname=None, lastname=None, incollege_email=None, sms=None, targeted_ads=None, language=None):
+    def __init__(self, username=None, password=None, firstname=None, lastname=None, incollege_email=None, sms=None, targeted_ads=None, language=None, num_applied=0, num_applied_del=0):
         self.username = username
         self.password = password
         self.firstname = firstname
         self.lastname = lastname
+        self.num_applied = num_applied  # Number of jobs this account has applied for
+        self.num_applied_del = num_applied_del  # Number of jobs this account has applied after a job deletion,
+                                                # Decreases if a job that the user applied for is deleted, else it is
+                                                # Equal to the above value
 
         # logic for account controls defaults
         if incollege_email is None:
@@ -47,7 +51,7 @@ class Account:
 
     # returns a list of the Account class object properties to be used for writing to the csv file
     def get_account_details(self):
-        return [self.username, self.password, self.firstname, self.lastname, self.incollege_email, self.sms, self.targeted_ads, self.language]
+        return [self.username, self.password, self.firstname, self.lastname, self.incollege_email, self.sms, self.targeted_ads, self.language, self.num_applied, self.num_applied_del]
 
     # returns a list of the Account class object properties for the guest controls
     def get_account_controls(self):
