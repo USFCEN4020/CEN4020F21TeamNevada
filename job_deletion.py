@@ -1,13 +1,14 @@
-from job_class import *
-from csv_read_write import save_jobs_to_csv
+from csv_read_write import get_accounts_from_csv, save_accounts_to_csv
 import json
 
 
-def delete_job(user, jobs, accounts):
+# Function that allows a user to delete a job that they have posted
+def delete_job(user, jobs):
     menu_opt = {"1": "Select a Job to Delete",
                 "q": "Return"}
 
     while True:
+        # Finds all of the jobs that the current user has posted (potentially none)
         user_posted = []
         for x in jobs:
             if x.user == user.username:
@@ -59,20 +60,26 @@ def delete_job(user, jobs, accounts):
 
                             new_contents.close()
 
+                            # Following code removes all applications for the job from 'job_application.json'
+                            # And decreases the number of jobs that the associated applicants have applied for
                             with open("job_application.json", "r") as f:
                                 contents = json.loads(f.read())
 
+                            updated_accounts = get_accounts_from_csv()
+
                             for application in contents:
                                 if application['job_title'] == selection:
-                                    for y in accounts:
+                                    for y in updated_accounts:
                                         if y.username == application['applicant']:
-                                            if y.num_applied > 0:
-                                                y.num_applied = y.num_applied - 1
+                                            if y.num_applied_del > 0:
+                                                y.num_applied_del = y.num_applied_del - 1
 
                                     contents.remove(application)
 
                             with open("job_application.json", 'w') as f:
                                 json.dump(contents, f)
+
+                            save_accounts_to_csv(updated_accounts)
 
                             print("\n This job will no longer be posted.")
 
@@ -83,3 +90,20 @@ def delete_job(user, jobs, accounts):
                 break
             else:
                 print("Unknown Selection! Try Again!")
+
+
+# Function to determine if any jobs the user applied for have been deleted
+def user_job_deleted(user):
+    if user.num_applied > user.num_applied_del:
+        updated_accounts = get_accounts_from_csv()
+
+        for x in updated_accounts:
+            if x.username == user.username:
+                x.num_applied = x.num_applied_del   # Updates to the correct number of jobs applied for
+                break
+
+        save_accounts_to_csv(updated_accounts)
+
+        return True
+    else:
+        return False
