@@ -4,6 +4,9 @@ import mock
 from account_class import Account
 from account_login import login_screen
 from show_network import show_network
+from job_apply import apply_job
+from job_class import Job
+from unittest import mock
 
 class TestCases(unittest.TestCase):
     def test_login_screen(self, ):
@@ -238,15 +241,6 @@ class TestCases(unittest.TestCase):
             user = login_screen(test_accounts)
             show_network(user, test_accounts)
 
-        # Tests if user is in the network and displays him if so
-        main.get_profiles_list("Mark")
-        assert show_network['name'] == 'Mark'
-        assert show_network['result'] == 'fail'
-
-        # Tests user's network
-        assert show_network('John') == 'Mark'
-        assert not show_network('John') == 'Dana'
-
     # Test search for students
     def test_student_friend_connections(self):
         # check to see if the test accounts john and mark have been created
@@ -304,6 +298,54 @@ class TestCases(unittest.TestCase):
                         side_effect=['last name', 'nothing']):
             connection = search_students(test_account1, accounts)
             assert connection is None
+
+    def job_creation(test_account):
+        pass
+
+    def test_job_saved(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input', side_effect=['4', "q"]):
+            apply_job(test_user, test_jobs)
+
+    # tests that posted jobs can be viewed
+    def test_view_job(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input', side_effect=["1", "job1", "q"]):
+            apply_job(test_user, test_jobs)
+
+        test_account = Account('mark', 'Mark123!', 'Mark', 'Smith')
+        with mock.patch('builtins.input',
+                        side_effect=['test title', 'test description', 'test employer', 'test slary']):
+            self.job_creation(test_account)
+        test_job_obj = Job()
+        # tests the job was created by checking the number of jobs
+        assert len(test_job_obj.get_job_details()) > 0
+
+        # tests the get job details to ensure that it is retrieving the correct job info
+        test_job_details = test_job_obj.get_job_details(test_account.username)
+        test_job_info = {
+            "job_title": "test job title",
+            "description": "test description",
+            "employer": "test employer",
+            "salary": "test salary"
+        }
+
+        # tests that the job exists
+        assert test_job_info is not None
+
+        # tests that basic job information is the same as what is passed as input
+        print(test_job_info)
+        assert test_job_info['username'] == test_account.username
+        assert test_job_info['title'] == 'test title'
+        assert test_job_info['description'] == 'description'
 
 
 if __name__ == '__main__':
