@@ -21,7 +21,7 @@ def apply_job(user, jobs):
     for x in contents:
         if x['applicant'] == user.username:
             applied_list.append(x['job_title'])
-    
+
     with open("jobs_saved.json", "r") as fs:
         saved_jobs = json.loads(fs.read())
 
@@ -60,13 +60,13 @@ def apply_job(user, jobs):
                 elif selection in job_list:
                     for x in jobs:
                         if selection == x.title:
-                            print("\n *********",selection,"********* \n")
-                            print("Description:",x.description)
-                            print("Employeer: ",x.employer)
+                            print("\n *********", selection, "********* \n")
+                            print("Description:", x.description)
+                            print("Employeer: ", x.employer)
                             print("Location: N/A")
-                            print("Salary: ",x.salary,"\n")
-                            break       
-            # Apply for a  selection    
+                            print("Salary: ", x.salary, "\n")
+                            break
+                            # Apply for a  selection
             elif selection == '2':
                 selection = input("Select a job to apply for: ")
 
@@ -87,7 +87,8 @@ def apply_job(user, jobs):
                             print("after")
                             print("job not applied")
                             grad_date = input("Enter your graduation date (mm/dd/yyyy): ")
-                            start_date = input("Enter the date you that you can start working (mm/dd/yyyy): ")
+                            start_date = input(
+                                "Enter the date you that you can start working (mm/dd/yyyy): ")
                             # reason
 
                             application = {
@@ -107,7 +108,8 @@ def apply_job(user, jobs):
                         else:
                             been_applied = False
                             for application in contents:
-                                if application['applicant'] == user.username and application['job_title'] == selection:
+                                if application['applicant'] == user.username and application[
+                                    'job_title'] == selection:
                                     print("You have already applied for this job!")
                                     been_applied = True
                                     break
@@ -115,7 +117,8 @@ def apply_job(user, jobs):
                             if not been_applied:
                                 print("job not applied")
                                 grad_date = input("Enter your graduation date (mm/dd/yyyy): ")
-                                start_date = input("Enter the date you that you can start working (mm/dd/yyyy): ")
+                                start_date = input(
+                                    "Enter the date you that you can start working (mm/dd/yyyy): ")
                                 # reason
 
                                 application = {
@@ -139,9 +142,9 @@ def apply_job(user, jobs):
                     print("That job does not exist!")
                 elif selection in job_list and selection not in saved_list:
                     job = {
-                                "job_title": selection,
-                                "user": user.username,
-                                }
+                        "job_title": selection,
+                        "user": user.username,
+                    }
                     saved_jobs.append(job)
                     with open("jobs_saved.json", "w") as fs:
                         json.dump(saved_jobs, fs)
@@ -151,8 +154,8 @@ def apply_job(user, jobs):
                     break
             # View all saved Jobs
             elif selection == '4':
-                menu_sav = {"1":"Unsave Job",
-                            "q":"return"}
+                menu_sav = {"1": "Unsave Job",
+                            "q": "return"}
 
                 print("\n ********* Saved Jobs ********* \n")
                 for job in saved_list:
@@ -160,7 +163,7 @@ def apply_job(user, jobs):
                         print(job, "APPLIED")
                     else:
                         print(job)
-                
+
                 options = menu_sav.keys()
                 for x in options:
                     print(x, ")", menu_sav[x])
@@ -174,7 +177,8 @@ def apply_job(user, jobs):
                     else:
                         # JSON File popping
                         for i in range(len(saved_jobs)):
-                            if saved_jobs[i]['job_title'] == selection and saved_jobs[i]['user'] == user.username:
+                            if saved_jobs[i]['job_title'] == selection and saved_jobs[i][
+                                'user'] == user.username:
                                 saved_jobs.pop(i)
                                 break
 
@@ -187,10 +191,9 @@ def apply_job(user, jobs):
                     break
                 else:
                     print("Unknown Selection! Try Again!")
-                
+
             #  Quit
             elif selection == 'q':
                 break
             else:
                 print("Unknown Selection! Try Again!")
-
