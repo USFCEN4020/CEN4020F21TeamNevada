@@ -11,6 +11,8 @@ from job_deletion import *
 from job_apply import apply_job
 from account_login import passwd_valid, login_screen
 from csv_read_write import get_accounts_from_csv, get_jobs_from_csv
+from send_message import send_message_ui
+from view_message import at_least_1_new_message
 
 
 # Function for the HomeScreen
@@ -113,11 +115,15 @@ def main_screen(accounts, jobs=None):
 # The accounts argument is the accounts list
 # The jobs argument is the jobs list
 def options_screen(user, accounts, jobs):
-
     # Determines if the logged in user has any pending friend requests and notifies them if so
     requests = at_least_1_pending(user)
     if requests > 0:
         print("\n*** YOU HAVE PENDING FRIEND REQUESTS! CHOOSE OPTION 9 FOR MORE INFO! ***")
+
+    # determine if the logged in user has any new messages and notifies them if so
+    num_messages = at_least_1_new_message(user)
+    if num_messages > 0:
+        print("\n*** YOU HAVE NEW MESSAGES! CHOOSE OPTION 11 FOR MORE INFO! ***")
 
     menu_opt = {"1": "Job Search/Internship",
                 "2": "Find Someone you know",
@@ -129,6 +135,7 @@ def options_screen(user, accounts, jobs):
                 "8": "Search Students",
                 "9": "Pending Friend Requests",
                 "10": "Show My Network",
+                "11": "Messaging",
                 "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
@@ -142,6 +149,10 @@ def options_screen(user, accounts, jobs):
                  "2": "View Job Listings",
                  "3": "Delete a Job You Posted",
                  "q": "Quit"}
+
+    menu_messaging = {"1": "Send a Message", 
+                      "2": "View Messages", 
+                      "q": "Quit"}
 
     while True:
         print("\n ********* InCollege Options ********* \n")
@@ -221,6 +232,27 @@ def options_screen(user, accounts, jobs):
             pending_requests(user, accounts)
         elif selection == '10':
             show_network(user)
+        elif selection == '11':
+            while True:
+                # print messaging menu
+                print("\n ********* Messaging Options ********* \n")
+
+                options = menu_messaging.keys()
+                for x in options:
+                    print(x, ")", menu_messaging[x])
+
+                messaging_selection = input("Select an Option: ")
+                if messaging_selection == '1':
+                    send_message_ui(user, accounts)
+                elif messaging_selection == '2':
+                    pass
+                    # view_messages(user)
+                elif messaging_selection == 'q':
+                    break
+                else:
+                    print("Unknown Selection, Try Again!")
+
+
         elif selection == 'q':
             print("\nHave a nice day!")
             break
