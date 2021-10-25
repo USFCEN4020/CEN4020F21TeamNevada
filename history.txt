@@ -1,3 +1,100 @@
+commit 54f4544ec5a3700d8aa875b258611be88052d720 (HEAD -> display+jobs+saved, origin/display+jobs+saved)
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Oct 24 22:02:50 2021 -0400
+
+    uncommented failing test
+
+commit 0d4942daa4b758751138db24849900a2a8b57aaf
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Oct 24 22:00:41 2021 -0400
+
+    fixed testing issues with test_show_network and commented out test_view_job
+
+commit 50498d66cc6effb03e20126387993912e4ec70ca
+Author: Yin <70492660+printyja@users.noreply.github.com>
+Date:   Sun Oct 24 20:31:19 2021 -0400
+
+    Update test_main.py
+
+commit 39caf4c9b5dd4b83990059c190408f5a851cc883
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Sun Oct 24 19:58:29 2021 -0400
+
+    update testing for save and view jobs for Yinet
+
+commit f4f1f2e24375d8dd2afa4093d68b4eb6ac8e6399
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Sun Oct 24 02:51:41 2021 -0400
+
+    update for testing for applying and deleting jobs
+
+commit fd095e3926816f4b8db8e1f12905f23b7c28e66e
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Sun Oct 24 02:33:16 2021 -0400
+
+    Update job_apply.py
+
+commit dea8139daeed5135e73e8211bed876c7b06f8c57
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Sun Oct 24 02:31:09 2021 -0400
+
+    Update main.py
+
+commit 5916a56d11728c2f971f7e29b1d9355e91fb079a
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Sun Oct 24 02:29:20 2021 -0400
+
+    update for testing
+
+commit d36f2b6ea56f2126b34419a8fa333affeea68bef
+Author: Jiang1108 <90926041+Jiang1108@users.noreply.github.com>
+Date:   Sun Oct 24 02:28:05 2021 -0400
+
+    testing for apply and delete jobs
+
+commit 9cacfadd41f94a76ca6e934d21afb84b2c0c8c86
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Wed Oct 20 20:37:35 2021 -0400
+
+    Added functionality to View Saved jobs
+
+commit 11851ccef4f3d2d6ba41c1e196b2f558dafd527e
+Author: Kameron Ingraham <ingrahamk@usf.edu>
+Date:   Tue Oct 19 19:25:28 2021 -0400
+
+    Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon
+.
+
+commit 89f526b156104906758beb4409847d32b0df8c81 (origin/master, origin/HEAD, master, incollege-sprint-6)
+Merge: 488dc34 9ccc37a
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Oct 17 23:34:40 2021 -0400
+
+    Merge pull request #7 from USFCEN4020/friend_requests+student_network
+
+    Friend requests+student network
+
+commit 9ccc37ae721f80a411d838f6137c256403113fc9 (origin/friend_requests+student_network)
+Author: Yin <70492660+printyja@users.noreply.github.com>
+Date:   Sun Oct 17 22:40:57 2021 -0400
+
+    Update history.txt
+
+commit 05b5a3b218f8e34bc428fbccb99a40c97ebf7099
+Author: Yin <70492660+printyja@users.noreply.github.com>
+Date:   Sun Oct 17 22:31:28 2021 -0400
+
+    Update history.txt
+
+commit 488dc34cde59ad99647f7e4904f1faaedb0f6226
+Merge: dca89d0 0b8ee0c
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Sun Oct 17 22:09:48 2021 -0400
+
+    Merge pull request #6 from USFCEN4020/friend_requests+student_network
+
+    Friend requests+student network
+
 commit 0b8ee0c06f9511f52eb138d684351419db41e57c (HEAD -> friend_requests+student_network, origin/friend_requests+student_network)
 Author: printyja <70492660+printyja@users.noreply.github.com>
 Date:   Sun Oct 17 22:06:28 2021 -0400
