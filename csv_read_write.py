@@ -11,7 +11,7 @@ def get_accounts_from_csv():
         try:
             # stores the data from the file to the accounts list
             for row in csv_reader:
-                accounts.append(Account(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], int(row[8]), int(row[9])))
+                accounts.append(Account(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], int(row[8]), int(row[9]), bool(row[10])))
         except IndexError:  # handles the error if the file is empty
             pass
 
