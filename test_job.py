@@ -178,7 +178,7 @@ class TestCases(unittest.TestCase):
 
         with mock.patch('builtins.input', side_effect=['1', 'job1', "q"]):
             has_job = False
-            delete_job(test_user, test_jobs, accounts)
+            delete_job(test_user, test_jobs)
             with open("jobs.txt", 'r') as f:
                 list_json = f.readlines()
                 for line in list_json:
@@ -211,7 +211,7 @@ class TestCases(unittest.TestCase):
 
         with mock.patch('builtins.input', side_effect=['1', 'job2', "q"]):
             has_job = False
-            delete_job(test_user, test_jobs, accounts)
+            delete_job(test_user, test_jobs)
             with open("jobs.txt", 'r') as f:
                 list_json = f.readlines()
                 for line in list_json:
@@ -244,7 +244,7 @@ class TestCases(unittest.TestCase):
 
         with mock.patch('builtins.input', side_effect=['1', 'job1', "q"]):
             has_application = False
-            delete_job(test_user, test_jobs, accounts)
+            delete_job(test_user, test_jobs)
             with open("./job_application.json", 'r') as f:
                 list_json = json.loads(f.read())
                 for item in list_json:
