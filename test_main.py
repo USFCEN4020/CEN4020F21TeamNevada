@@ -4,6 +4,12 @@ import mock
 from account_class import Account
 from account_login import login_screen
 from show_network import show_network
+from job_deletion import delete_job
+from job_apply import apply_job
+from job_class import Job
+from unittest import mock
+from account_class import Account
+from job_apply import *
 
 class TestCases(unittest.TestCase):
     def test_login_screen(self, ):
@@ -29,15 +35,18 @@ class TestCases(unittest.TestCase):
 
     # Tests the three options that users are presented with when connecting with friends ('l', 's', 'q')
     def test_main_screen(self):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
         print("-----TEST OPTION 'l'-----")
-        with mock.patch('builtins.input', side_effect=['3', 'John', 'Doe', 'l', 'mark', 'Mark123!', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['3', 'John', 'Doe', 'l', 'mark', 'Mark123!', 'q']):
             main_screen(test_accounts)
 
         print("-----TEST OPTION 's'-----")
-        with mock.patch('builtins.input', side_effect=['3', 'John', 'Doe', 's', 'sally', 'Hill123!', 'Sally', 'Hill',
-                                                       'sally', 'Hill123!', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['3', 'John', 'Doe', 's', 'sally', 'Hill123!', 'Sally', 'Hill',
+                                     'sally', 'Hill123!', 'q']):
             main_screen(test_accounts)
 
         print("-----TEST OPTION 'q'-----")
@@ -46,7 +55,8 @@ class TestCases(unittest.TestCase):
 
     # Tests if the input first and last name are in the InCollege database
     def test_connect_with_users(self):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
         with mock.patch('builtins.input', side_effect=['John', 'Doe', 'Sally', 'Hill']):
             result = connect_with_users(test_accounts)
@@ -57,7 +67,8 @@ class TestCases(unittest.TestCase):
 
     # Tests that 'user_exists' functions correctly
     def test_user_exists(self, ):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
         condition = user_exists(test_accounts, 'Mark', 'Smith')
         assert condition
         condition = user_exists(test_accounts, 'John', 'Doe')
@@ -74,12 +85,14 @@ class TestCases(unittest.TestCase):
 
     # Tests the first option (general links) of the useful links functionality
     def test_useful_links_groups_option1(self):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
         # This test additionally checks to make sure that invalid user input is handled correctly (i.e user inputs 'x')
         print("-----TEST_OPTION 1.1-----")
-        with mock.patch('builtins.input', side_effect=['4', 'x', '1', 'x', '1', 'sally', 'Hill123!', 'Sally', 'Hill',
-                                                       'sally', 'Hill123!', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['4', 'x', '1', 'x', '1', 'sally', 'Hill123!', 'Sally', 'Hill',
+                                     'sally', 'Hill123!', 'q']):
             main_screen(test_accounts)
 
         print("-----TEST_OPTION 1.2-----")
@@ -108,7 +121,8 @@ class TestCases(unittest.TestCase):
 
     # Tests options 2 through 4 of the useful links functionality
     def test_useful_links_groups_options2_thru_4(self):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
         # This test additionally checks to make sure that invalid user input is handled correctly (i.e user inputs 'x')
         print("-----TEST_OPTION 2-----")
@@ -125,43 +139,52 @@ class TestCases(unittest.TestCase):
 
     # Tests that each guest control can be properly enabled and disabled
     def test_guest_controls(self):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
         # This test additionally checks to make sure that invalid user input is handled correctly (i.e user inputs 'x')
         print("-----TEST_OPTION 1-----")
         with mock.patch('builtins.input',
-                        side_effect=['2', 'john', 'John123!', '5', 'x', '9', 'x', '1', '1', 'q', 'q', 'q']):
+                        side_effect=['2', 'john', 'John123!', '5', 'x', '9', 'x', '1', '1', 'q',
+                                     'q', 'q']):
             main_screen(test_accounts)
 
         print("-----TEST_OPTION 2-----")
-        with mock.patch('builtins.input', side_effect=['2', 'john', 'John123!', '5', '9', '2', '2', 'q', 'q', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['2', 'john', 'John123!', '5', '9', '2', '2', 'q', 'q', 'q']):
             main_screen(test_accounts)
 
         print("-----TEST_OPTION 3-----")
-        with mock.patch('builtins.input', side_effect=['2', 'john', 'John123!', '5', '9', '3', '3', 'q', 'q', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['2', 'john', 'John123!', '5', '9', '3', '3', 'q', 'q', 'q']):
             main_screen(test_accounts)
 
         # This test checks that 'enable all' and 'disable all' work correctly
         print("-----TEST_OPTIONS 'd'+'e'-----")
-        with mock.patch('builtins.input', side_effect=['2', 'john', 'John123!', '5', '9', 'd', 'e', 'q', 'q', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['2', 'john', 'John123!', '5', '9', 'd', 'e', 'q', 'q', 'q']):
             main_screen(test_accounts)
 
     # Tests to make sure the important links are displayed when logged-in and logged-out
     def test_important_links(self):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
         # Tests links without login
-        with mock.patch('builtins.input', side_effect=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'q']):
             important_links_groups(False)
 
         # Tests links with login information with 1 link
         with mock.patch('builtins.input',
-                        side_effect=['john', 'John123!', '1', '2', '3', '4', '5', '6', '7', '8', 'q']):
+                        side_effect=['john', 'John123!', '1', '2', '3', '4', '5', '6', '7', '8',
+                                     'q']):
             user = login_screen(test_accounts)
             important_links_groups(user, test_accounts)
 
         # Tests Language options in important links while logged in
-        with mock.patch('builtins.input', side_effect=['john', 'John123!', '10', '2', 'q', '10', '1', 'q', 'q']):
+        with mock.patch('builtins.input',
+                        side_effect=['john', 'John123!', '10', '2', 'q', '10', '1', 'q', 'q']):
             user = login_screen(test_accounts)
             important_links_groups(user, test_accounts)
 
@@ -171,7 +194,8 @@ class TestCases(unittest.TestCase):
 
         with mock.patch('builtins.input',
                         side_effect=['test title', 'test major', 'test university', 'test about',
-                                     'y', 'test job title', 'test employer', 'test start date', 'test end date', 'test location', 'test job description', 'n',
+                                     'y', 'test job title', 'test employer', 'test start date',
+                                     'test end date', 'test location', 'test job description', 'n',
                                      'test school name', 'test degree', '5 years', 'n']):
             profile_creation(test_account)
 
@@ -180,7 +204,8 @@ class TestCases(unittest.TestCase):
         test_account = Account('mark', 'Mark123!', 'Mark', 'Smith')
         with mock.patch('builtins.input',
                         side_effect=['test title', 'test major', 'test university', 'test about',
-                                     'y', 'test job title', 'test employer', 'test start date', 'test end date', 'test location', 'test job description', 'n',
+                                     'y', 'test job title', 'test employer', 'test start date',
+                                     'test end date', 'test location', 'test job description', 'n',
                                      'test school name', 'test degree', '5 years', 'n']):
             profile_creation(test_account)
 
@@ -228,24 +253,16 @@ class TestCases(unittest.TestCase):
         # test the get profile info returns None when a profile does not exist with the given username
         assert test_profile_obj.get_profile_info("random account username") is None
 
-    #Tests network
+    # Tests network
     def test_show_network(self):
-        test_accounts = [Account('john', 'John123!', 'John', 'Doe'), Account('mark', 'Mark123!', 'Mark', 'Smith')]
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
 
         # Tests links with log in information with 1 link
         with mock.patch('builtins.input',
                         side_effect=['john', 'John123!', '1', '2', 'q']):
             user = login_screen(test_accounts)
-            show_network(user, test_accounts)
-
-        # Tests if user is in the network and displays him if so
-        main.get_profiles_list("Mark")
-        assert show_network['name'] == 'Mark'
-        assert show_network['result'] == 'fail'
-
-        # Tests user's network
-        assert show_network('John') == 'Mark'
-        assert not show_network('John') == 'Dana'
+            show_network(user)
 
     # Test search for students
     def test_student_friend_connections(self):
@@ -305,6 +322,298 @@ class TestCases(unittest.TestCase):
             connection = search_students(test_account1, accounts)
             assert connection is None
 
+    def test_view_job_true(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
 
+        print("-----TEST OPTION '1' TRUE-----")
+        with mock.patch('builtins.input', side_effect=["1", "job1", "q"]):
+            apply_job(test_user, test_jobs)
+
+    def test_view_job_false(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+
+        print("-----TEST OPTION '1' FALSE-----")
+        with mock.patch('builtins.input', side_effect=["1", "job3", "q"]):
+            apply_job(test_user, test_jobs)
+
+    def test_apply_job_success(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000"),
+                     Job("", "job3", "", "", ""), ]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+        f = open("job_application.json", 'r')
+        list_json = json.loads(f.read())
+        list_json = [item for item in list_json if
+                     item["job_title"] == 'job3' and item[
+                         "applicant"] == "john"]
+        f.close()
+        f = open("job_application.json", 'w')
+        f.write(json.dumps(list_json))
+        f.close()
+
+        with mock.patch('builtins.input',
+                        side_effect=['2', 'job3', "10/24/2021", "10/24/2021",
+                                     "q"]):
+            has_apply = False
+            apply_job(test_user, test_jobs)
+            with open("job_application.json", 'r') as f:
+                list_json = json.loads(f.read())
+                for item in list_json:
+                    if item["job_title"] == 'job3' and item[
+                        "applicant"] == "john":
+                        has_apply = True
+            assert has_apply
+
+    def test_apply_job_unavailable(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input', side_effect=['2', 'job4', "q"]):
+            has_apply = False
+            apply_job(test_user, test_jobs)
+            with open("job_application.json", 'r') as f:
+                list_json = json.loads(f.read())
+                for item in list_json:
+                    if item["job_title"] == 'job4':
+                        has_apply = True
+            assert not has_apply
+
+    def test_apply_job_posted(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+        f = open("job_application.json", 'r')
+        list_json = json.loads(f.read())
+        list_json = [item for item in list_json if
+                     not (item["job_title"] == 'job2' and item[
+                         "applicant"] == "john")]
+        f.close()
+        f = open("job_application.json", 'w')
+        f.write(json.dumps(list_json))
+        f.close()
+
+        with mock.patch('builtins.input', side_effect=['2', 'job2', "q"]):
+            has_apply = False
+            apply_job(test_user, test_jobs)
+            with open("job_application.json", 'r') as f:
+                list_json = json.loads(f.read())
+                for item in list_json:
+                    if item["job_title"] == 'job2' and item[
+                        "applicant"] == "john":
+                        has_apply = True
+            assert not has_apply
+
+    def test_apply_job_saved(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+        f = open("jobs_saved.json", 'r')
+        list_json = json.loads(f.read())
+        list_json = [item for item in list_json if
+                     not (item["job_title"] == 'job1' and item[
+                         "user"] == "john")]
+        f.close()
+        f = open("jobs_saved.json", 'w')
+        f.write(json.dumps(list_json))
+        f.close()
+
+        with mock.patch('builtins.input', side_effect=['3', 'job1', "q"]):
+            has_saved = False
+            apply_job(test_user, test_jobs)
+            with open("jobs_saved.json", 'r') as f:
+                list_json = json.loads(f.read())
+                for item in list_json:
+                    if item["job_title"] == 'job1' and item["user"] == "john":
+                        has_saved = True
+            assert has_saved
+
+    def test_apply_job_unsaved(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+        f = open("jobs_saved.json", 'r')
+        list_json = json.loads(f.read())
+        list_json = [item for item in list_json if
+                     item["job_title"] == 'job1' and item["user"] == "john"]
+        assert len(list_json) != 0
+        f.close()
+
+        with mock.patch('builtins.input', side_effect=['4', "1", 'job1', "q"]):
+            has_saved = False
+            apply_job(test_user, test_jobs)
+            with open("jobs_saved.json", 'r') as f:
+                list_json = json.loads(f.read())
+                for item in list_json:
+                    if item["job_title"] == 'job1' and item["user"] == "john":
+                        has_saved = True
+            assert not has_saved
+
+    def test_apply_job_view_saved(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input', side_effect=['4', "q"]):
+            apply_job(test_user, test_jobs)
+
+    def test_delete_job(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job("mark", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+        accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                    Account('mark', 'Mark123!', 'mark', 'Smith')]
+
+        # prepare jobs
+        with open("./jobs.txt", "w") as f:
+            job = ",".join(["john", "job1", "description", "employer", "$1000"])
+            job2 = ",".join(["mark", "job2", "description", "employer", "$1000"])
+            f.write(job + "\n" + job2)
+
+        with open("./job_application.json", "w") as f:
+            application = [
+                {"job_title": "job1", "applicant": "mark",
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021"},
+                {"job_title": "job2", "applicant": "john",
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021"}
+            ]
+            f.write(json.dumps(application))
+
+        with mock.patch('builtins.input', side_effect=['1', 'job1', "q"]):
+            has_job = False
+            delete_job(test_user, test_jobs, accounts)
+            with open("jobs.txt", 'r') as f:
+                list_json = f.readlines()
+                for line in list_json:
+                    item = line.split(",")
+                    if item[1] == 'job1' and item[0] == "john":
+                        has_job = True
+            assert not has_job
+
+    def test_delete_others_job(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job("mark", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+        accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                    Account('mark', 'Mark123!', 'mark', 'Smith')]
+
+        # prepare jobs
+        with open("./jobs.txt", "w") as f:
+            job = ",".join(["john", "job1", "description", "employer", "$1000"])
+            job2 = ",".join(["mark", "job2", "description", "employer", "$1000"])
+            f.write(job + "\n" + job2)
+
+        with open("./job_application.json", "w") as f:
+            application = [
+                {"job_title": "job1", "applicant": "mark",
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021"},
+                {"job_title": "job2", "applicant": "john",
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021"}
+            ]
+            f.write(json.dumps(application))
+
+        with mock.patch('builtins.input', side_effect=['1', 'job2', "q"]):
+            has_job = False
+            delete_job(test_user, test_jobs, accounts)
+            with open("jobs.txt", 'r') as f:
+                list_json = f.readlines()
+                for line in list_json:
+                    item = line.split(",")
+                    if item[1] == 'job2' and item[0] == "mark":
+                        has_job = True
+            assert has_job
+
+    def test_delete_job_application(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job("mark", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+        accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                    Account('mark', 'Mark123!', 'mark', 'Smith')]
+
+        # prepare jobs
+        with open("./jobs.txt", "w") as f:
+            job = ",".join(["john", "job1", "description", "employer", "$1000"])
+            job2 = ",".join(["mark", "job2", "description", "employer", "$1000"])
+            f.write(job + "\n" + job2)
+
+        with open("./job_application.json", "w") as f:
+            application = [
+                {"job_title": "job1", "applicant": "mark",
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021"},
+                {"job_title": "job2", "applicant": "john",
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021"}
+            ]
+            f.write(json.dumps(application))
+
+        with mock.patch('builtins.input', side_effect=['1', 'job1', "q"]):
+            has_application = False
+            delete_job(test_user, test_jobs, accounts)
+            with open("./job_application.json", 'r') as f:
+                list_json = json.loads(f.read())
+                for item in list_json:
+                    if item["job_title"] == 'job1':
+                        has_application = True
+            assert not has_application
+
+    # def job_creation(test_account):
+    #     pass
+
+    def test_job_saved(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input', side_effect=['4', "q"]):
+            apply_job(test_user, test_jobs)
+
+    # tests that posted jobs can be viewed
+    def test_view_job(self):
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
+                     Job(
+                         "john", "job2", "description", "employer", "$1000")]
+        test_user = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input', side_effect=["1", "job1", "q"]):
+            apply_job(test_user, test_jobs)
+
+        test_account = Account('mark', 'Mark123!', 'Mark', 'Smith')
+        with mock.patch('builtins.input',
+                        side_effect=['test title', 'test description', 'test employer', 'test slary']):
+            self.job_creation(test_account)
+        test_job_obj = Job()
+        # tests the job was created by checking the number of jobs
+        assert len(test_job_obj.get_job_details()) > 0
+
+        # tests the get job details to ensure that it is retrieving the correct job info
+        test_job_details = test_job_obj.get_job_details(test_account.username)
+        test_job_info = {
+            "job_title": "test job title",
+            "description": "test description",
+            "employer": "test employer",
+            "salary": "test salary"
+        }
+
+        # tests that the job exists
+        assert test_job_info is not None
+
+        # tests that basic job information is the same as what is passed as input
+        print(test_job_info)
+        assert test_job_info['username'] == test_account.username
+        assert test_job_info['title'] == 'test title'
+        assert test_job_info['description'] == 'description'
+        
 if __name__ == '__main__':
     unittest.main()

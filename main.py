@@ -40,7 +40,7 @@ def home_screen():
 
 
 # function to pull up main screen
-def main_screen(accounts, jobs):
+def main_screen(accounts, jobs=None):
     print("\nWELCOME TO InCollege!")
     main_screen_opt = {"1": "Create a new account",
                        "2": "Login to existing account",
