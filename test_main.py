@@ -5,7 +5,9 @@ from account_class import Account
 from account_login import login_screen
 from show_network import show_network
 from job_deletion import delete_job
+from job_apply import apply_job
 from job_class import Job
+from unittest import mock
 from account_class import Account
 from job_apply import *
 
@@ -261,15 +263,6 @@ class TestCases(unittest.TestCase):
                         side_effect=['john', 'John123!', '1', '2', 'q']):
             user = login_screen(test_accounts)
             show_network(user, test_accounts)
-
-        # Tests if user is in the network and displays him if so
-        main.get_profiles_list("Mark")
-        assert show_network['name'] == 'Mark'
-        assert show_network['result'] == 'fail'
-
-        # Tests user's network
-        assert show_network('John') == 'Mark'
-        assert not show_network('John') == 'Dana'
 
     # Test search for students
     def test_student_friend_connections(self):
