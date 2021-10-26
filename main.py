@@ -12,7 +12,7 @@ from job_apply import apply_job
 from account_login import passwd_valid, login_screen
 from csv_read_write import get_accounts_from_csv, get_jobs_from_csv
 from send_message import send_message_ui
-from view_message import at_least_1_new_message
+from view_message import at_least_1_new_message, view_messages_ui
 
 
 # Function for the HomeScreen
@@ -245,8 +245,7 @@ def options_screen(user, accounts, jobs):
                 if messaging_selection == '1':
                     send_message_ui(user, accounts)
                 elif messaging_selection == '2':
-                    pass
-                    # view_messages(user)
+                    view_messages_ui(user, accounts)
                 elif messaging_selection == 'q':
                     break
                 else:
