@@ -1,24 +1,8 @@
 import json
 
 def send_message_ui(user, accounts): 
-    messaging_list = []
-    # if the user is a standard user, they can select from their friends
-    if not user.is_plus:
-        # read in the friends list file
-        with open("friends_list.json", 'r') as f:
-            contents = json.loads(f.read())
-
-        # get the current users friends
-        for x in contents:
-            if x['user'] == user.username:
-                for y in x['friends']:
-                    messaging_list.append(y)
-    else:
-        # if the user is a plus user, they can select from all users
-        for x in accounts:
-            # add the user to the messaging list if they are not the current user
-            if x.username != user.username:
-                messaging_list.append(x.username)
+    # get the list of users that the current user can message
+    messaging_list = get_messaging_list(user, accounts)
 
     # while the user input is valid
     recipient = ""
@@ -52,11 +36,35 @@ def send_message_ui(user, accounts):
     if confirmation == "y":
         send_message(user, recipient, message)
         print("\nMessage sent.")
-        return
     else:
         # return back to the messaging menu
         return
 
 
+def get_messaging_list(user, accounts):
+    messaging_list = []
+    # if the user is a standard user, they can select from their friends
+    if user.is_plus:
+        # if the user is a plus user, they can select from all users
+        for x in accounts:
+            # add the user to the messaging list if they are not the current user
+            if x.username != user.username:
+                messaging_list.append(x.username)
+    else:
+        # read in the friends list file
+        with open("friends_list.json", 'r') as f:
+            contents = json.loads(f.read())
+
+        # get the current users friends
+        for x in contents:
+            if x['user'] == user.username:
+                for y in x['friends']:
+                    messaging_list.append(y)
+
+    # reutrn the messaging list
+    return messaging_list
+
+
 def send_message(user, recipient, message):
+    # this is where the code would go to add a new message to the new_messages.json file
     pass
