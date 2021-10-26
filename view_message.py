@@ -1,6 +1,6 @@
 import json
 
-# function to determine if there is a new message
+# function to determine if there is a new message for a user
 def at_least_1_new_message(user):
     count = 0
 
@@ -127,4 +127,13 @@ def view_new_messages(user, new_messages):
     
 def view_saved_messages(user, saved_messages):
     # while True:
+    pass
+
+def delete_new_messages(user):
+    # this function deletes all new messages for a user
+    # saved messages will do in the saved_messages.json file
+    pass
+
+def save_message(user, message):
+    # this function saves a message for a user by adding it to the saved messages file
     pass
