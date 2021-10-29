@@ -66,6 +66,17 @@ def get_messaging_list(user, accounts):
 
 
 def send_message(user, recipient, message):
-    # this is where the code would go to add a new message to the new_messages.json file
-    # I was thinking the messages dictionary would include the sender, recipient and the message
-    pass
+
+    with open("new_messages.json", "r") as f:
+        messageInfo = json.loads(f.read())
+
+    newMessage = {
+                "sender": user.username,
+                "recipient": recipient,
+                "message": message
+            }
+
+    messageInfo.append(newMessage)
+    with open("new_messages.json", "w") as f:
+        json.dump(messageInfo, f)
+    

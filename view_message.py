@@ -57,14 +57,14 @@ def view_messages_ui(user, accounts):
             count = 1
 
             # if the user has new messages, print the new messages option
-            if len(new_messages) > 0:
-                print(str(count) + ") View New Messages")
-                count += 1
+            #if len(new_messages) > 0:
+            print(str(count) + ") View New Messages")
+            count += 1
             
             # if the user has saved messages, print the saved messages option
-            if len(saved_messages) > 0:
-                print(str(count) + ") View Saved Messages")
-                count += 1
+            #if len(saved_messages) > 0:
+            print(str(count) + ") View Saved Messages")
+            #    count += 1
             
             # print the quit option
             print("q) Quit")
@@ -92,12 +92,12 @@ def view_new_messages(user, new_messages):
             print("\n ********* New Messages ********* \n")
             for num, message in enumerate(new_messages):
                 print("New message #"+str(num+1)+": ")
-                print("From: " + x["sender"] + "\n")
-                print("Message: " + x["message"] + "\n")
+                print("From: " + message["sender"] + "\n")
+                print("Message: " + message["message"] + "\n")
                 print("\n")
 
             # print the view messages options
-            message_option = print("Enter a message number to save the message\nor q to quit and delete unsaved new messages:")
+            message_option = input("Enter a message number to save the message\nor q to quit and delete unsaved new messages:")
 
             # try to convert the message option to an integer
             try:
@@ -121,19 +121,86 @@ def view_new_messages(user, new_messages):
                 else:
                     print("Unknown Selection, Try Again!")
         else:
-            print("\n ** You have no more new messages, returning to messages menu **\n")
+            print("\n ** You have no new messages, returning to messages menu **\n")
             delete_new_messages(user)
             return
     
 def view_saved_messages(user, saved_messages):
-    # while True:
-    pass
 
+    while True:
+        # if new messages length if greater than 0, print the new messages options
+        print(len(saved_messages))
+        if len(saved_messages) > 0:
+            # print the new messages
+            print("\n ********* Saved Messages ********* \n")
+            for num, message in enumerate(saved_messages):
+                print("New message #"+str(num+1)+": ")
+                print("From: " + message["sender"] + "\n")
+                print("Message: " + message["message"] + "\n")
+                print("\n")
+
+            # print the view messages options
+            message_option = input("Enter a message number to delete\n else q to quit")
+
+            # try to convert the message option to an integer
+            try:
+                message_option = int(message_option)
+
+                # if the integer is in the range of the new messages, save the message
+                if message_option <= len(saved_messages):
+                    # remove the message from the saved messages list
+                    saved_messages.remove(saved_messages[message_option-1])
+                    delete_saved_message(user)
+                else:
+                    print("Unknown Selection, Try Again!")
+            except ValueError:
+                # if message option is q, quit and delete unsaved new messages
+                if message_option == "q":
+                    return
+                else:
+                    print("Unknown Selection, Try Again!")
+        else:
+            print("\n ** You have no saved messages **\n")
+            return
+
+# this function deletes all new messages for a user
 def delete_new_messages(user):
-    # this function deletes all new messages for a user
-    # saved messages will do in the saved_messages.json file
-    pass
 
+    with open("new_messages.json", "r") as fs:
+        new_messages = json.loads(fs.read())
+
+    new_messages = [i for i in new_messages if not (i['recipient'] == user.username)]
+
+    with open("new_messages.json", "w") as fs:
+        json.dump(new_messages, fs)
+
+# this function deletes one single message for a user
+def delete_saved_message(user):
+    
+    with open("saved_messages.json", "r") as fs:
+        saved_messages = json.loads(fs.read())
+
+    # JSON File popping
+    for i in range(len(saved_messages)):
+        if saved_messages[i]['recipient'] == user.username:
+            saved_messages.pop(i)
+            break
+
+    with open("saved_messages.json", "w") as fs:
+        json.dump(saved_messages, fs)
+
+# this function saves a message for a user by adding it to the saved messages file
 def save_message(user, message):
-    # this function saves a message for a user by adding it to the saved messages file
-    pass
+    
+    with open("saved_messages.json", "r") as f:
+        messageInfo = json.loads(f.read())
+
+    savedMessage = {          
+                "recipient": user.username,
+                "sender": message["sender"],
+                "message": message["message"]
+            }
+
+    messageInfo.append(savedMessage)
+    with open("saved_messages.json", "w") as f:
+        json.dump(messageInfo, f)
