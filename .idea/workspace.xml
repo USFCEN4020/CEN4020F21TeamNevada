@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f8254d3-69c1-45e6-86cf-16b8298734da" name="Changes" comment="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon." />
+    <list default="true" id="4f8254d3-69c1-45e6-86cf-16b8298734da" name="Changes" comment="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_creation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/send_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/send_message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/view_message.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests for test_main.TestCases.test_standard_plus">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -51,7 +57,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_main_screen" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_main.TestCases.test_send_message" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -61,11 +67,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_main_screen&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_send_message&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_show_network" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_main.TestCases.test_standard_plus" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -75,11 +81,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_show_network&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_standard_plus&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_useful_links_groups_option1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_main.TestCases.test_view_new_message" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -89,11 +95,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_useful_links_groups_option1&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_view_new_message&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_useful_links_groups_options2_thru_4" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_main.TestCases.test_view_saved_messages" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -103,17 +109,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_useful_links_groups_options2_thru_4&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_view_saved_messages&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_standard_plus" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_view_saved_messages" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_view_new_message" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_send_message" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_show_network" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_useful_links_groups_options2_thru_4" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_useful_links_groups_option1" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_main_screen" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +195,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="incollege-sprint-6" />
+                        <option value="incollege-sprint-7" />
                       </list>
                     </value>
                   </entry>

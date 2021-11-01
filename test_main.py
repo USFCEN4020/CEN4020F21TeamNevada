@@ -10,6 +10,9 @@ from job_class import Job
 from unittest import mock
 from account_class import Account
 from job_apply import *
+from send_message import *
+from view_message import *
+
 
 class TestCases(unittest.TestCase):
     def test_login_screen(self, ):
@@ -567,9 +570,6 @@ class TestCases(unittest.TestCase):
                         has_application = True
             assert not has_application
 
-    # def job_creation(test_account):
-    #     pass
-
     def test_job_saved(self):
         test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
                      Job(
@@ -614,6 +614,140 @@ class TestCases(unittest.TestCase):
         assert test_job_info['username'] == test_account.username
         assert test_job_info['title'] == 'test title'
         assert test_job_info['description'] == 'description'
-        
+
+    # Tests that the send_message function correctly stores this message info in new_messages.json
+    # And that messages can be retrieved from new_messages.json
+    def test_send_message(self):
+        test_sender = Account('john', 'John123!', 'John', 'Doe')
+        test_recipient = Account('mark', 'Mark123', 'Mark', 'Smith')
+        test_message = "Hello Mark!"
+
+        with mock.patch('builtins.input', side_effect=[]):
+            send_message(test_sender, test_recipient.username, test_message)
+
+        # Function from view_message.py
+        sent_message = get_new_messages(test_recipient)
+
+        assert sent_message[0]["sender"] == test_sender.username
+        assert sent_message[0]["recipient"] == test_recipient.username
+        assert sent_message[0]["message"] == test_message
+
+        # Clears the data from new_messages.json that is created when test is ran
+        with open("new_messages.json", "r") as f:
+            messageInfo = json.loads(f.read())
+
+        messageInfo.clear()
+        with open("new_messages.json", "w") as f:
+            json.dump(messageInfo, f)
+
+    # Tests that new messages are displayed to the user
+    # Also tests that unsaved new messages are deleted properly
+    def test_view_new_message(self):
+        test_sender = Account('john', 'John123!', 'John', 'Doe')
+        test_recipient = Account('mark', 'Mark123', 'Mark', 'Smith')
+        test_message1 = "Hello Mark!"
+        test_message2 = "How are you?"
+
+        send_message(test_sender, test_recipient.username, test_message1)
+        send_message(test_sender, test_recipient.username, test_message2)
+        sent_messages = get_new_messages(test_recipient)
+
+        # delete_new_messages is called when user doesn't choose to save a new message and enters 'q'
+        # Also tests invalid input i.e 'x'
+        with mock.patch('builtins.input', side_effect=['x', 'q']):
+            view_new_messages(test_recipient, sent_messages)
+
+    # Tests that new messages can be saved and are correctly stored in saved_messages.json
+    # And that saved messages can be retrieved and viewed/deleted from saved_messages.json
+    def test_view_saved_messages(self):
+        test_sender = Account('john', 'John123!', 'John', 'Doe')
+        test_recipient = Account('mark', 'Mark123', 'Mark', 'Smith')
+        test_message1 = "Hello Mark!"
+        test_message2 = "How are you?"
+        test_message3 = "I got the job!"
+
+        send_message(test_sender, test_recipient.username, test_message1)
+        send_message(test_sender, test_recipient.username, test_message2)
+        send_message(test_sender, test_recipient.username, test_message3)
+        sent_messages = get_new_messages(test_recipient)
+
+        # Tests that 1 or more new messages can be saved
+        # Also tests invalid input i.e 'x'
+        with mock.patch('builtins.input', side_effect=['x', '1', '2', 'q']):
+            view_new_messages(test_recipient, sent_messages)
+
+        saved_message = get_saved_messages(test_recipient)
+
+        assert saved_message[0]["sender"] == test_sender.username
+        assert saved_message[0]["recipient"] == test_recipient.username
+        assert saved_message[0]["message"] == test_message1
+
+        # delete_saved_messages is called when the user chooses a message number to delete; in this case message #1
+        # Also tests invalid input i.e 'x'
+        with mock.patch('builtins.input', side_effect=['x', '1', 'q']):
+            view_saved_messages(test_recipient, saved_message)
+
+        # Clears the data from saved_messages.json that is created when test is ran
+        with open("saved_messages.json", "r") as f:
+            messageInfo = json.loads(f.read())
+
+        messageInfo.clear()
+        with open("saved_messages.json", "w") as f:
+            json.dump(messageInfo, f)
+
+    # Tests that plus members can send messages to people not in their friends list
+    # And that standard members cannot
+    def test_standard_plus(self):
+        test_acc1 = Account('john', 'John123!', 'John', 'Doe', is_plus=True)    # plus member
+        test_acc2 = Account('mark', 'Mark123', 'Mark', 'Smith', is_plus=False)  # standard member
+        test_acc3 = Account('sally', 'Sally123!', 'Sally', 'Hill', is_plus=False)   # extra third member
+
+        test_accounts_list = [test_acc1, test_acc2, test_acc3]
+
+        john_f_list = {
+            "user": test_acc1.username,
+            "friends": ["mark"]
+        }
+
+        mark_f_list = {
+            "user": test_acc2.username,
+            "friends": ["john"]
+        }
+
+        # Adds the test friend lists to friends_list.json
+        with open("friends_list.json", 'r') as f:
+            friends_lists = json.loads(f.read())
+
+        friends_lists.append(john_f_list)
+        friends_lists.append(mark_f_list)
+
+        with open("friends_list.json", 'w') as f:
+            json.dump(friends_lists, f)
+
+        # Tests that a plus member can messages anyone
+        with mock.patch('builtins.input', side_effect=['sally', 'hello', 'y', 'quit']):
+            send_message_ui(test_acc1, test_accounts_list)
+
+        # Tests that a standard member cannot message someone outside their friend list
+        with mock.patch('builtins.input', side_effect=['sally', 'quit']):
+            send_message_ui(test_acc2, test_accounts_list)
+
+        # Clears the data from new_messages.json that is created when test is ran
+        with open("new_messages.json", "r") as f:
+            messageInfo = json.loads(f.read())
+
+        messageInfo.clear()
+        with open("new_messages.json", "w") as f:
+            json.dump(messageInfo, f)
+
+        # Clears the data from friends_list.json that is created when test is ran
+        with open("friends_list.json", "r") as f:
+            contents = json.loads(f.read())
+
+        contents.clear()
+        with open("friends_list.json", "w") as f:
+            json.dump(messageInfo, f)
+
+
 if __name__ == '__main__':
     unittest.main()

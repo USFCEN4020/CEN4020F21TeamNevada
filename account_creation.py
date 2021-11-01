@@ -54,11 +54,34 @@ def create_account(accounts):
     print("Enter your last name: ")
     lastname_ = input()
 
+    # follwing code allows the user to select between standard the plus accounts
+    # loop until the input condition is met
+    while True:
+        print("\nWhich account plan would you like to select?")
+        print("   Account Type   Price       Perks")
+        print("1) Standard       free        can only send messages to friends")
+        print("2) Plus           $10/month   can send messages anyone")
+
+        # get the users input 
+        account_type_input = input("Select an Option: ")
+
+        # check if the input is valid
+        if account_type_input == '1':
+            is_plus_ = False
+            break
+        elif account_type_input == '2':
+            is_plus_ = True
+            break
+        else:
+            print("\nUnknown Selection, Try Again!\n")
+
     # following code creates an account object for the newly created account
-    created_account_ = Account(username_, password_, firstname_, lastname_)
+    created_account_ = Account(username_, password_, firstname_, lastname_, is_plus=is_plus_)
+
+    # following code adds the newly created account to the list of accounts
     accounts.append(created_account_)
 
-    # write the accounts to the csv
+    # following code saves the new account to the csv file
     save_accounts_to_csv(accounts)
 
     # Creates an empty friends list for the new user
