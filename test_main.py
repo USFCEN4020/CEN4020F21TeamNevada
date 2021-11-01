@@ -570,9 +570,6 @@ class TestCases(unittest.TestCase):
                         has_application = True
             assert not has_application
 
-    # def job_creation(test_account):
-    #     pass
-
     def test_job_saved(self):
         test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
                      Job(
