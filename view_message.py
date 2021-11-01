@@ -129,7 +129,7 @@ def view_saved_messages(user, saved_messages):
 
     while True:
         # if new messages length if greater than 0, print the new messages options
-        print(len(saved_messages))
+        # print(len(saved_messages))
         if len(saved_messages) > 0:
             # print the new messages
             print("\n ********* Saved Messages ********* \n")

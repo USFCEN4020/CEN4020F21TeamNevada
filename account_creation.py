@@ -74,7 +74,6 @@ def create_account(accounts):
             break
         else:
             print("\nUnknown Selection, Try Again!\n")
-    
 
     # following code creates an account object for the newly created account
     created_account_ = Account(username_, password_, firstname_, lastname_, is_plus=is_plus_)

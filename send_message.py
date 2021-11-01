@@ -61,7 +61,7 @@ def get_messaging_list(user, accounts):
                 for y in x['friends']:
                     messaging_list.append(y)
 
-    # reutrn the messaging list
+    # return the messaging list
     return messaging_list
 
 
