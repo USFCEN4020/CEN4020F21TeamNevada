@@ -13,6 +13,7 @@ from account_login import passwd_valid, login_screen
 from csv_read_write import get_accounts_from_csv, get_jobs_from_csv
 from send_message import send_message_ui
 from view_message import at_least_1_new_message, view_messages_ui
+from notifications import *
 
 
 # Function for the HomeScreen
@@ -116,14 +117,21 @@ def main_screen(accounts, jobs=None):
 # The jobs argument is the jobs list
 def options_screen(user, accounts, jobs):
     # Determines if the logged in user has any pending friend requests and notifies them if so
-    requests = at_least_1_pending(user)
-    if requests > 0:
-        print("\n*** YOU HAVE PENDING FRIEND REQUESTS! CHOOSE OPTION 9 FOR MORE INFO! ***")
+    
+    # requests = at_least_1_pending(user)
+    # if requests > 0:
+    #     print("\n*** YOU HAVE PENDING FRIEND REQUESTS! CHOOSE OPTION 9 FOR MORE INFO! ***")
 
     # determine if the logged in user has any new messages and notifies them if so
     num_messages = at_least_1_new_message(user)
     if num_messages > 0:
         print("\n*** YOU HAVE NEW MESSAGES! CHOOSE OPTION 11 FOR MORE INFO! ***")
+
+    # show notifications on login
+    login_notifications = get_login_notifications(user)
+    print("\n ********* Notifications(", len(login_notifications), ") ********* \n", sep="")
+    for notification in login_notifications:
+        print(" *", notification)
 
     menu_opt = {"1": "Job Search/Internship",
                 "2": "Find Someone you know",
