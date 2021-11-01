@@ -1,3 +1,96 @@
+commit dd3e6c09937887169d0ee5602b7041dac400e847 (HEAD -> master, origin/master, origin/HEAD)
+Merge: 7c027ce ed8e01e
+Author: Yin <70492660+printyja@users.noreply.github.com>
+Date:   Sun Oct 31 23:05:04 2021 -0400
+
+    Merge pull request #10 from USFCEN4020/incollege-sprint-7
+
+    Incollege sprint 7
+
+commit ed8e01e0b2c8b8dcbf8a5bc2d4c4fb9a9b649ba9 (origin/incollege-sprint-7, incollege-sprint-7)
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Sun Oct 31 22:56:51 2021 -0400
+
+    spacing arrangements
+
+commit 521e8df912db6da9aa9d088ec510a55114f77886
+Author: Kameron Ingraham <ingrahamk@usf.edu>
+Date:   Sun Oct 31 20:04:54 2021 -0400
+
+    Created test cases for sending messages, viewing new/saved messages, deleting new/saved messages, and standard/plus messaging privileges. Very minor adjustments to other files also
+
+commit 0fdc94a4c996ba1bac5257dce9a233b943ff4b83
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Fri Oct 29 11:18:36 2021 -0400
+
+    Added ability to store and delete messages
+
+commit 55f72362fd7e1aba6170288208cdf1898850a9e7
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Tue Oct 26 10:40:48 2021 -0400
+
+    added some more to the send message interface
+
+commit 95a90c842b930176823ee95131ce60835aba0777
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Tue Oct 26 09:26:37 2021 -0400
+
+    added saved messages file
+
+commit 11ffd4bff21dfbc99920f5ee366398d74e96015e
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Tue Oct 26 09:26:25 2021 -0400
+
+    added get messaging list function
+
+commit 5d5854474590b71a3f18e52dc17dae9952f016e2
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Tue Oct 26 09:25:39 2021 -0400
+
+    added view new messages ui
+
+commit 53b1d19200f48b88c4ea3428540c0d591e8dcff3
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Oct 25 17:53:39 2021 -0400
+
+    created notification for new messages on login
+
+commit 47a54c1f8e1091b15835dba630a7b438a3abaa66
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Oct 25 17:53:02 2021 -0400
+
+    created command line interface for sending messages
+
+commit 1b440cf617491def6d82413ba2a26e2eefc79d2d
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Oct 25 17:52:18 2021 -0400
+
+    fixed csv read to work with plus accounts
+
+commit 1594b5b3e3976625ecf232fb244fd67ee01bba3f
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Oct 25 16:17:25 2021 -0400
+
+    added more to gitignore
+
+commit 2bb1a567ed9c5b013d8c841a694454bb1687a676
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Oct 25 15:31:36 2021 -0400
+
+    added functionality for standard or plus accounts
+
+commit 7c027ce31423e67b602e2507dbad820f4ddb294f
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Oct 25 15:04:30 2021 -0400
+
+    removing pycache files
+
+commit 9cb6262b9414f62ecd53aa96080f9ddd17d4fe40
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Oct 25 14:54:38 2021 -0400
+
+    added git ignore file for idea and pycache folders
+
 commit 54f4544ec5a3700d8aa875b258611be88052d720 (HEAD -> display+jobs+saved, origin/display+jobs+saved)
 Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
 Date:   Sun Oct 24 22:02:50 2021 -0400
