@@ -24,8 +24,14 @@ def get_login_notifications(user):
     profile_obj = Profile()
     if profile_obj.get_profile_info(user.username) == None:
         notifications.append("Don't forget to create a profile.")
+
+    # concatenate the global notifications with the login notifications
+    notifications = get_global_notifications(user) + notifications
+
     return notifications
     
+
+# checks if the user has applied to a job in the last 7 days
 def applied_in_7days(user):
     # get the jobs the user has applied for
     with open("job_application.json", "r") as f:
@@ -53,3 +59,27 @@ def applied_in_7days(user):
             return True
     else:
         return False
+
+
+# gets the global notifications that are only shown once to the user
+# like when a new person joins InCollege or a new job is posted
+def get_global_notifications(user):
+    # read the contents of the global notifications file
+    with open("global_notifications.json", "r") as f:
+        contents = json.loads(f.read())
+
+    global_notifications = []
+    saved_notifications = []
+    # loop through the contents to find notifications for the current user
+    # and save the other notifications in a list to be written back to the json
+    for x in contents:
+        if x['username'] == user.username:
+            global_notifications.append(x['notification'])
+        else:
+            saved_notifications.append(x)
+    
+    # write the saved notifications back to the file
+    with open("global_notifications.json", "w") as f:
+        f.write(json.dumps(saved_notifications))
+
+    return global_notifications
