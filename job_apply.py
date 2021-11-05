@@ -3,6 +3,22 @@ import json
 from datetime import date
 
 
+# Function to count the amount oj jobs the user has applied for
+def count_applied_job(user):
+    count = 0
+
+    with open("job_application.json", "r") as f:
+        contents = json.loads(f.read())
+
+    # Finds all the jobs that the current user has applied for
+    for x in contents:
+        if x['applicant'] == user.username:
+            count += 1
+            continue
+
+    return count
+
+
 # Function that allows a user to apply for a job
 def apply_job(user, jobs):
     menu_opt = {"1": "Get a Job's Details",
