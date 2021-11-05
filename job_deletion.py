@@ -55,7 +55,8 @@ def delete_job(user, jobs):
 
                             new_contents = open("jobs.txt", "w")
                             for line in lines:
-                                if line.strip("\n") != user_ + "," + title_ + "," + description_ + "," + employer_ + "," + salary_:
+                                if line.strip(
+                                        "\n") != user_ + "," + title_ + "," + description_ + "," + employer_ + "," + salary_:
                                     new_contents.write(line)
 
                             new_contents.close()
@@ -71,6 +72,9 @@ def delete_job(user, jobs):
                                 if application['job_title'] == selection:
                                     for y in updated_accounts:
                                         if y.username == application['applicant']:
+                                            # create global notification for applicant of deleted jobs
+                                            job_deleted_notif(y, title_)
+
                                             if y.num_applied_del > 0:
                                                 y.num_applied_del = y.num_applied_del - 1
 
@@ -94,12 +98,13 @@ def delete_job(user, jobs):
 
 # Function to determine if any jobs the user applied for have been deleted
 def user_job_deleted(user):
+    print()
     if user.num_applied > user.num_applied_del:
         updated_accounts = get_accounts_from_csv()
 
         for x in updated_accounts:
             if x.username == user.username:
-                x.num_applied = x.num_applied_del   # Updates to the correct number of jobs applied for
+                x.num_applied = x.num_applied_del  # Updates to the correct number of jobs applied for
                 break
 
         save_accounts_to_csv(updated_accounts)
@@ -107,3 +112,21 @@ def user_job_deleted(user):
         return True
     else:
         return False
+
+
+# Notifies the user that a job that they applied for was deleted
+def job_deleted_notif(user, job_name):
+    # adds a notification in global notifications for the current accounts that a new account was created
+
+    # get the contents of the global notifications json
+    with open("global_notifications.json", "r") as f:
+        contents = json.loads(f.read())
+
+    contents.append({
+        "username": user.username,
+        "notification": ("The job "+job_name+" you applied for was deleted.")
+    })
+
+    # write the contents to the global notifications json
+    with open("global_notifications.json", "w") as f:
+        json.dump(contents, f)

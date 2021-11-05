@@ -18,7 +18,6 @@ from notifications import *
 from csv_read_write import get_jobs_from_csv
 from job_apply import count_applied_job
 
-
 # Function for the HomeScreen
 def home_screen():
     # "Homepage" Menu
@@ -179,13 +178,14 @@ def options_screen(user, accounts, jobs):
                 # Determines how many jobs the user has applied for and notifies them if so
                 if count_applied_job(user) > 0:
                     applied_count = count_applied_job(user)
-                    print("\n*** You have applied for ", applied_count, "jobs. ***")
+                    print("\n*** You have applied for ", applied_count, "job(s). ***")
 
+                """
                 # Determines if any jobs that the user has applied for have been deleted and notifies them if so
                 jobs_deleted = user_job_deleted(user)
                 if jobs_deleted:
-                    print("\n *** ATTENTION: A JOB YOU APPLIED FOR HAS BEEN DELETED! ***")
-
+                    print("\n *** A job that you applied for has been deleted*** \n", jobs_deleted)
+                """
                 print("\n ********* Job Options ********* \n")
 
                 options = menu_jobs.keys()
