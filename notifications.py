@@ -1,8 +1,10 @@
+from csv_read_write import get_jobs_from_csv
 from view_message import at_least_1_new_message
 import json
 from datetime import date, timedelta
 from profile_class import Profile
 from pending_requests import at_least_1_pending
+from csv_read_write import get_jobs_from_csv
 
 # function that gets the notifications for a specific user
 def get_login_notifications(user):
@@ -17,7 +19,8 @@ def get_login_notifications(user):
 
     # notifications for not applying to jobs in the last 7 days
     if not applied_in_7days(user):
-        notifications.append("Remember – you're going to want to have a job when you graduate.\n   Make sure that you start to apply for jobs today!")
+        notifications.append(
+            "Remember – you're going to want to have a job when you graduate.\n   Make sure that you start to apply for jobs today!")
 
     # create a profile object to check if the user has a profile created
     # notifications for no profile
@@ -29,7 +32,7 @@ def get_login_notifications(user):
     notifications = get_global_notifications(user) + notifications
 
     return notifications
-    
+
 
 # checks if the user has applied to a job in the last 7 days
 def applied_in_7days(user):
@@ -77,7 +80,7 @@ def get_global_notifications(user):
             global_notifications.append(x['notification'])
         else:
             saved_notifications.append(x)
-    
+
     # write the saved notifications back to the file
     with open("global_notifications.json", "w") as f:
         f.write(json.dumps(saved_notifications))

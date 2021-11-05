@@ -131,6 +131,7 @@ def is_secure(passwd):
         return False, "Error: password must contain at least 1 non-alpha character"
     return True, ''
 
+
 def new_user_notif(accounts, new_user): 
     # adds a notification in global notifications for the current accounts that a new account was created
     

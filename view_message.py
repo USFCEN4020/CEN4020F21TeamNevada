@@ -1,5 +1,6 @@
 import json
 
+
 # function to determine if there is a new message for a user
 def at_least_1_new_message(user):
     count = 0
@@ -24,7 +25,7 @@ def get_new_messages(user):
     for x in contents:
         if x["recipient"] == user.username:
             messages.append(x)
-    
+
     return messages
 
 # gets the user's saved messages
@@ -37,7 +38,7 @@ def get_saved_messages(user):
     for x in contents:
         if x["recipient"] == user.username:
             messages.append(x)
-            
+
     return messages
 
 def view_messages_ui(user, accounts):
@@ -60,12 +61,12 @@ def view_messages_ui(user, accounts):
             #if len(new_messages) > 0:
             print(str(count) + ") View New Messages")
             count += 1
-            
+
             # if the user has saved messages, print the saved messages option
             #if len(saved_messages) > 0:
             print(str(count) + ") View Saved Messages")
             #    count += 1
-            
+
             # print the quit option
             print("q) Quit")
 
@@ -124,7 +125,7 @@ def view_new_messages(user, new_messages):
             print("\n ** You have no new messages, returning to messages menu **\n")
             delete_new_messages(user)
             return
-    
+
 def view_saved_messages(user, saved_messages):
 
     while True:
@@ -176,7 +177,7 @@ def delete_new_messages(user):
 
 # this function deletes one single message for a user
 def delete_saved_message(user):
-    
+
     with open("saved_messages.json", "r") as fs:
         saved_messages = json.loads(fs.read())
 
@@ -191,11 +192,11 @@ def delete_saved_message(user):
 
 # this function saves a message for a user by adding it to the saved messages file
 def save_message(user, message):
-    
+
     with open("saved_messages.json", "r") as f:
         messageInfo = json.loads(f.read())
 
-    savedMessage = {          
+    savedMessage = {
                 "recipient": user.username,
                 "sender": message["sender"],
                 "message": message["message"]
