@@ -12,17 +12,19 @@ from notifications import *
 
 class TestCases(unittest.TestCase):
     
+     # Tests the notifications for jobs you currently have applied for.
     def test_notification_currently_applied(self):
         pass
 
-
+    # Tests Notifications for a new job posted (Global Notifications)
     def test_notification_new_job_posted(self):
         pass
 
+    # Tests Notifications for a deleted job (Global Notifications)
     def test_notification_deleted_applied_job(self):
         pass
 
-    # Tests notifications for new student membership in Incollege.
+    # Tests notifications for new student membership in Incollege. (Global Notifications)
     def test_notification_new_student_join(self):
         test_accounts = [Account('john', 'John123!', 'John', 'Doe', is_plus=True)]
         new_test_acct = Account('mark', 'Mark123', 'Mark', 'Smith', is_plus=False)
@@ -39,8 +41,8 @@ class TestCases(unittest.TestCase):
                      Job("mark", "job2", "description", "employer", "$1000")]
 
         self.assertEqual(get_login_notifications(test_acc1),["Remember – you're going to want to have a job when you graduate.\n   Make sure that you start to apply for jobs today!"])
-        
 
+    # Tests the notifications when a new message is recieved
     def test_notifcation_new_message(self):
         pass
 
