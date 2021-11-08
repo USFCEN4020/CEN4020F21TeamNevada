@@ -1,6 +1,5 @@
 import unittest
 import mock
-from account_creation import create_account
 from job_class import Job
 from account_class import Account
 from send_message import *
@@ -22,11 +21,19 @@ class TestCases(unittest.TestCase):
 
     # Tests Notifications for a new job posted (Global Notifications)
     def test_notification_new_job_posted(self):
+
+        #Kameron's Code
         pass
 
     # Tests Notifications for a deleted job (Global Notifications)
     def test_notification_deleted_applied_job(self):
-        pass
+
+        test_job = Job("mark", "job1", "description", "employer", "$1000")
+        test_acc = Account('john', 'John123!', 'John', 'Doe', is_plus=True)
+
+        job_deleted_notif(test_acc, test_job.title)
+
+        self.assertIn('The job job1 you applied for was deleted.', get_global_notifications(test_acc))
 
     # Tests notifications for new student membership in Incollege. (Global Notifications)
     def test_notification_new_student_join(self):
@@ -36,7 +43,7 @@ class TestCases(unittest.TestCase):
         new_user_notif(test_accounts, new_test_acct)
 
         # Shows test account 1 that test account 2, mark smith, has joined inCollege
-        self.assertEqual(get_global_notifications(test_accounts[0]),['Mark Smith has joined InCollege.'])
+        self.assertIn('Mark Smith has joined InCollege.', get_global_notifications(test_accounts[0]))
 
     # Tests notifications to apply for a job soon after 7 days of inactivity
     def test_notifcation_apply_to_jobs_soon(self):
@@ -47,7 +54,7 @@ class TestCases(unittest.TestCase):
         # User notifications must include "must apply to job"
         self.assertIn("Remember – you're going to want to have a job when you graduate.\n   Make sure that you start to apply for jobs today!", get_login_notifications(test_acc1))
 
-    # Tests the notifications when a new message is recieved
+    # Tests the notifications when a new message is received
     def test_notifcation_new_message(self):
 
         test_sender = Account('john', 'John123!', 'John', 'Doe')
