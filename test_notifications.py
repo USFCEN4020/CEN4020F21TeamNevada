@@ -2,6 +2,7 @@ import unittest
 import mock
 from job_class import Job
 from account_class import Account
+from job_creation import new_job_notif
 from send_message import *
 from view_message import *
 from profile_creation import *
@@ -22,8 +23,14 @@ class TestCases(unittest.TestCase):
     # Tests Notifications for a new job posted (Global Notifications)
     def test_notification_new_job_posted(self):
 
-        #Kameron's Code
-        pass
+        test_accs = [Account('john', 'John123!', 'John', 'Doe', is_plus=True),Account('mark', 'Mark123', 'Mark', 'Smith', is_plus=False)]
+        new_test_job = Job("Mark","job_test","Test","Test","$1000")
+
+        save_accounts_to_csv(test_accs)
+
+        new_job_notif(test_accs[0], new_test_job.title)
+
+        self.assertIn('A new job job_test has been posted.', get_global_notifications(test_accs[1]))
 
     # Tests Notifications for a deleted job (Global Notifications)
     def test_notification_deleted_applied_job(self):
