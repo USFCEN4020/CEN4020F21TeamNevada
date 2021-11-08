@@ -1,3 +1,111 @@
+commit 08b7a551cae760e79352074f85b9cf011188a86a (HEAD -> incollege-sprint-8, origin/incollege-sprint-8)
+Author: Kameron Ingraham <ingrahamk@usf.edu>
+Date:   Sun Nov 7 23:08:36 2021 -0500
+
+    Added test cases for currently applied jobs notification and create profile notification. Commented out a couple of print statements in notifications.py and account_creation.py that seemed unnecessary
+
+commit a5ad6f6769964140256d9a6d9bc2f4f430173ad3
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Nov 7 21:05:36 2021 -0500
+
+    new job testing notification
+
+commit 47178e844fedc60fc81fb0de1f0cc357fe141645
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Nov 7 20:43:00 2021 -0500
+
+    deleted job notification test added
+
+commit 5dfd2cca28565b7d76158f3d076d66d0ee1ed7e8
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Nov 7 19:55:44 2021 -0500
+
+    Testing
+
+commit 7bec89443a5eabac4b4cb83adaa96785ff9873b1
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Nov 7 13:32:33 2021 -0500
+
+    comments and testing
+
+commit eb4a03afc6f1300e4f78992b721def16e975dfab
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Nov 7 13:29:26 2021 -0500
+
+    New Student Join Test
+
+commit 8044a0fc5f6afe7d20f62b0435a75a55292bd4ac
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Nov 7 09:26:34 2021 -0500
+
+    Test cases added
+
+commit 5245685bc07363ceaa527548a6cd2a8f59554ef7
+Author: NickH2017 <NicolasHernandezOne@gmail.com>
+Date:   Sun Nov 7 09:11:56 2021 -0500
+
+    Added Testing File for Notifications
+
+commit 287decd08498cbaa5227eea71b959dc59f54bb83
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Fri Nov 5 15:23:56 2021 -0400
+
+    Added 'new_job_notif' to notify when a job has been created
+
+commit e65460cf11583aa6353283372eba763b48655ce1
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Fri Nov 5 15:23:41 2021 -0400
+
+    Added 'new_job_notif' to notify when a job has been created
+
+commit e23d3db3e87336e296a37cc04b1bc23149c0abe1
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Fri Nov 5 15:22:41 2021 -0400
+
+    Added 'job_deleted_notif' to notify when a job was delelted
+
+commit b9f5350e47433117a18fa45cdec829d62a0dc5f7
+Author: printyja <70492660+printyja@users.noreply.github.com>
+Date:   Thu Nov 4 20:28:48 2021 -0400
+
+    Added 'Count_applied_jobs' to count how many jobs the user has applied to
+
+commit 3c3ca757ae0867700e0c41d09f3cf3c58299063f
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Nov 1 20:16:55 2021 -0400
+
+    added global notif json for one time notif to all users
+
+commit b4b8c60994b6060fcfff4be18c9d8fb0c34f3a6a
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Nov 1 20:16:36 2021 -0400
+
+    added notification for new student join
+
+commit 7271c4950cda41b5f4b7b9f4fb807141d97e96a8
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Nov 1 19:52:00 2021 -0400
+
+    added file for global notifications for new users and new jobs
+
+commit 80eca3eff84fcef295a54870aee4aa99ce172c2a
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Nov 1 19:42:18 2021 -0400
+
+    added notifications for applying jobs, creating profile and messages on options screen
+
+commit 70d727330febfdd7983df42a1e8b6557178db2b7
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Nov 1 19:41:16 2021 -0400
+
+    added notifications ui to options screen
+
+commit aff88b13875c2d7df3405745580f4c51015ef346
+Author: Lyle Hanner <66330100+lynnhanananer@users.noreply.github.com>
+Date:   Mon Nov 1 19:40:30 2021 -0400
+
+    add date applied to job applications
+
 commit dd3e6c09937887169d0ee5602b7041dac400e847 (HEAD -> master, origin/master, origin/HEAD)
 Merge: 7c027ce ed8e01e
 Author: Yin <70492660+printyja@users.noreply.github.com>
