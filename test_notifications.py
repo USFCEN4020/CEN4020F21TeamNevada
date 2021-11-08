@@ -3,7 +3,8 @@ import mock
 from account_creation import create_account
 from job_class import Job
 from account_class import Account
-from profile_class import Profile
+from send_message import *
+from view_message import *
 from profile_creation import *
 from account_creation import new_user_notif
 from job_apply import *
@@ -14,6 +15,9 @@ class TestCases(unittest.TestCase):
     
      # Tests the notifications for jobs you currently have applied for.
     def test_notification_currently_applied(self):
+
+        # Kameron's Code
+
         pass
 
     # Tests Notifications for a new job posted (Global Notifications)
@@ -39,12 +43,31 @@ class TestCases(unittest.TestCase):
         test_acc1 = Account('john', 'John123!', 'John', 'Doe', is_plus=True)
         test_jobs = [Job("mark", "job1", "description", "employer", "$1000"),
                      Job("mark", "job2", "description", "employer", "$1000")]
-
-        self.assertEqual(get_login_notifications(test_acc1),["Remember – you're going to want to have a job when you graduate.\n   Make sure that you start to apply for jobs today!"])
+        
+        # User notifications must include "must apply to job"
+        self.assertIn("Remember – you're going to want to have a job when you graduate.\n   Make sure that you start to apply for jobs today!", get_login_notifications(test_acc1))
 
     # Tests the notifications when a new message is recieved
     def test_notifcation_new_message(self):
-        pass
+
+        test_sender = Account('john', 'John123!', 'John', 'Doe')
+        test_recipient = Account('mark', 'Mark123', 'Mark', 'Smith')
+        test_message = "Hello Mark!"
+
+        with mock.patch('builtins.input', side_effect=[]):
+            send_message(test_sender, test_recipient.username, test_message)
+
+        # testing for new notification
+        self.assertIn('You have messages waiting for you.', get_login_notifications(test_recipient))
+
+        # Clears the data from new_messages.json that is created when test is ran
+        with open("new_messages.json", "r") as f:
+            messageInfo = json.loads(f.read())
+
+        messageInfo.clear()
+        with open("new_messages.json", "w") as f:
+            json.dump(messageInfo, f)
+
 
 if __name__ == '__main__':
     unittest.main()
