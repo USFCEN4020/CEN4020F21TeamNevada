@@ -51,9 +51,9 @@ def applied_in_7days(user):
     # get the number of days between today and the last job application
     if len(job_dates) > 0:
         last_job_date = max(job_dates)
-        print(last_job_date.isoformat())
+        # print(last_job_date.isoformat())
         days_since_last_job = (today - last_job_date).days
-        print(days_since_last_job)
+        # print(days_since_last_job)
 
         # if the user has not applied for a job in the last 7 days, notify them
         if days_since_last_job > 7:

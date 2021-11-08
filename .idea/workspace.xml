@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f8254d3-69c1-45e6-86cf-16b8298734da" name="Changes" comment="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon.">
+    <list default="true" id="4f8254d3-69c1-45e6-86cf-16b8298734da" name="Changes" comment="Created test cases for sending messages, viewing new/saved messages, deleting new/saved messages, and standard/plus messaging privileges. Very minor adjustments to other files also">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_creation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/send_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/send_message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global_notifications.json" beforeDir="false" afterPath="$PROJECT_DIR$/global_notifications.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/notifications.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/view_message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_notifications.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="incollege-sprint-6" />
+        <entry key="$PROJECT_DIR$" value="incollege-sprint-7" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,29 +36,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_main.TestCases.test_standard_plus">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="CEN4020F21TeamNevada" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_send_message" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_notifications.TestCases.test_profile_notification">
+    <configuration name="Python tests for test_main.TestCases.test_applied_for_x_jobs_notif" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -67,11 +47,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_send_message&quot;" />
+      <option name="_new_target" value="&quot;test_main.TestCases.test_applied_for_x_jobs_notif&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_standard_plus" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_notifications.TestCases.test_notification_currently_applied" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -81,11 +61,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_standard_plus&quot;" />
+      <option name="_new_target" value="&quot;test_notifications.TestCases.test_notification_currently_applied&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_view_new_message" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_notifications.TestCases.test_notification_deleted_applied_job" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -95,11 +75,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_view_new_message&quot;" />
+      <option name="_new_target" value="&quot;test_notifications.TestCases.test_notification_deleted_applied_job&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main.TestCases.test_view_saved_messages" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_notifications.TestCases.test_notification_new_job_posted" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -109,17 +89,31 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_view_saved_messages&quot;" />
+      <option name="_new_target" value="&quot;test_notifications.TestCases.test_notification_new_job_posted&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_notifications.TestCases.test_profile_notification" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CEN4020F21TeamNevada" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_notifications.TestCases.test_profile_notification&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_standard_plus" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_view_saved_messages" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_view_new_message" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_send_message" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_profile_notification" />
+        <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_notification_currently_applied" />
+        <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_notification_deleted_applied_job" />
+        <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_notification_new_job_posted" />
+        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_applied_for_x_jobs_notif" />
       </list>
     </recent_temporary>
   </component>
@@ -181,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634685928874</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created test cases for sending messages, viewing new/saved messages, deleting new/saved messages, and standard/plus messaging privileges. Very minor adjustments to other files also">
+      <created>1635725094418</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1635725094418</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,7 +196,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="incollege-sprint-7" />
+                        <option value="incollege-sprint-8" />
                       </list>
                     </value>
                   </entry>
@@ -216,6 +217,7 @@
     <MESSAGE value="Added history.txt git log to the project" />
     <MESSAGE value="Created 'pending friend request' and 'show my network' functionality. Updated account class to return first name before last name. Updated account creation to create empty friend list for new user. When running program with no stored data, the json files must have empty brackets." />
     <MESSAGE value="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created 'apply for job' and 'delete a job' functionality. As before, json files need to have empty brackets if there is no data. Will add comments soon." />
+    <MESSAGE value="Created test cases for sending messages, viewing new/saved messages, deleting new/saved messages, and standard/plus messaging privileges. Very minor adjustments to other files also" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created test cases for sending messages, viewing new/saved messages, deleting new/saved messages, and standard/plus messaging privileges. Very minor adjustments to other files also" />
   </component>
 </project>

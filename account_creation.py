@@ -141,7 +141,7 @@ def new_user_notif(accounts, new_user):
 
     # loop through all accounts
     for account in accounts:
-        print(account.get_account_details())
+        # print(account.get_account_details())
         contents.append({
             "username": account.username,
             "notification": (new_user.firstname + " " + new_user.lastname + " has joined InCollege.")

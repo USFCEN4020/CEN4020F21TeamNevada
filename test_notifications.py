@@ -1,5 +1,6 @@
 import unittest
 import mock
+from main import *
 from job_class import Job
 from account_class import Account
 from job_creation import new_job_notif
@@ -11,14 +12,45 @@ from job_apply import *
 from job_deletion import *
 from notifications import *
 
+
 class TestCases(unittest.TestCase):
     
-     # Tests the notifications for jobs you currently have applied for.
+    # Tests the notifications for jobs you currently have applied for.
     def test_notification_currently_applied(self):
+        test_acc1 = Account("john", "John123!", "John", "Doe")
+        test_accounts = []
+        test_jobs = []
 
-        # Kameron's Code
+        application1 = {
+            "job_title": 'sw engineer',
+            "applicant": test_acc1.username,
+            "grad_date": '12/11/2021',
+            "start_date": '12/12/2021',
+            "reason": 'I am a hard worker.',
+            "application_date": date.today().isoformat()
+        }
 
-        pass
+        # Adds the test applications to job_application.json
+        with open("job_application.json", 'r') as f:
+            contents = json.loads(f.read())
+
+        contents.append(application1)
+
+        with open("job_application.json", 'w') as f:
+            json.dump(contents, f)
+
+        # Checks that the system notifies the user of how many jobs they have applied for when entering the job section
+        with mock.patch('builtins.input', side_effect=['1', 'q', 'q']):
+            options_screen(test_acc1, test_accounts, test_jobs)
+
+        # Clears job_application.json of the test information
+        with open("job_application.json", 'r') as f:
+            contents = json.loads(f.read())
+
+        contents.clear()
+
+        with open("job_application.json", 'w') as f:
+            json.dump(contents, f)
 
     # Tests Notifications for a new job posted (Global Notifications)
     def test_notification_new_job_posted(self):
@@ -81,6 +113,31 @@ class TestCases(unittest.TestCase):
         messageInfo.clear()
         with open("new_messages.json", "w") as f:
             json.dump(messageInfo, f)
+
+    # Tests that a user is correctly notified if they have not yet created a profile
+    # And tests that the notification is NOT displayed if a user has created a profile
+    def test_profile_notification(self):
+        test_acc1 = Account("john", "John123!", "John", "Doe")
+        test_acc2 = Account("mark", "Mark123!", "Mark", "Smith")
+
+        test_profile = Profile(test_acc2.username, 'Student', 'CS', 'USF', 'I am 4th year student at USF')
+        test_profile.write_profile_info()
+
+        # This test checks that the notification is displayed if a profile hasn't been created
+        test_notifications = get_login_notifications(test_acc1)
+        print("test_acc1", test_notifications)
+
+        # This test checks that the notification is not displayed if a profile has created
+        test_notifications = get_login_notifications(test_acc2)
+        print("test_acc2", test_notifications)
+
+        # Clears profiles.json of the test information
+        with open("profiles.json", 'r') as f:
+            contents = json.loads(f.read())
+
+        contents.clear()
+        with open("profiles.json", 'w') as f:
+            json.dump(contents, f)
 
 
 if __name__ == '__main__':
