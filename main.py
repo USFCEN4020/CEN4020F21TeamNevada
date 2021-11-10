@@ -61,7 +61,11 @@ def main_screen(accounts, jobs=None):
                     "4": "Security",
                     "q": "Quit"}
 
-
+    menu_train_education = {"1": "Workshops",
+                            "2": "Articles",
+                            "3": "Profile Optimization",
+                            "4": "Connecting",
+                            "q": "Quit"}
 
 
     # accepts user input and will bring them to the appropriate screen
@@ -123,13 +127,13 @@ def main_screen(accounts, jobs=None):
 
                 selection = input("Select an option: ")
                 if selection == '1':
-                    printf("Under construction")
+                    print("Under construction")
                 elif selection == '2':
-                    printf("Under construction")
+                    print("Under construction")
                 elif selection == '3':
-                    printf("Under construction")
+                    print("Under construction")
                 elif selection == '4':
-                    printf("Under construction")
+                    print("Under construction")
                 elif selection == 'q':
                     break
                 else:
