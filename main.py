@@ -67,6 +67,11 @@ def main_screen(accounts, jobs=None):
                             "4": "Connecting",
                             "q": "Quit"}
 
+    menu_trending_courses = {"1": "How to use In College learning",
+                             "2": "Train the trainer",
+                             "3": "Gamification of learning",
+                             "q": "Quit"}
+
 
     # accepts user input and will bring them to the appropriate screen
     logged_in_user = None
@@ -148,10 +153,34 @@ def main_screen(accounts, jobs=None):
                         else:
                             print("\nUnknown Selection, Try Again!\n")
 
+
                 elif selection == '2':
                     print("Coming Soon!")
                 elif selection == '3':
-                    print("Under construction")
+                    while True:
+                        print("\n* Not seeing what you're looking for? Sign in to see all 7,609 results\n")
+                        print("\n********* Trending Courses *********\n")
+                        # pulls up menu for Trending Courses
+                        options = menu_trending_courses.keys()
+                        for x in options:
+                            print(x, ")", menu_trending_courses[x])
+
+                        selection = input("Select an option: ")
+                        if selection == '1':
+                            main_condition = False
+                            logged_in_user = login_screen(accounts)
+                        elif selection == '2':
+                            main_condition = False
+                            logged_in_user = login_screen(accounts)
+                        elif selection == '3':
+                            main_condition = False
+                            logged_in_user = login_screen(accounts)
+                        elif selection == 'q':
+                            break
+                        else:
+                            print("\nUnknown Selection, Try Again!\n")
+
+
                 elif selection == '4':
                     print("Coming Soon!")
                 elif selection == 'q':
@@ -160,7 +189,6 @@ def main_screen(accounts, jobs=None):
                     print("\nUnknown Selection, Try Again!\n")
 
 
-                selection = input("Select an Option: ")
         elif selection == 'q':
             main_condition = False
             print("\nHave a nice day!")
