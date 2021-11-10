@@ -127,7 +127,27 @@ def main_screen(accounts, jobs=None):
 
                 selection = input("Select an option: ")
                 if selection == '1':
-                    print("Under construction")
+                    while True:
+                        print("\n********* Training and Education Options *********\n")
+                        # pulls up menu for Training and Education
+                        options = menu_train_education.keys()
+                        for x in options:
+                            print(x, ")", menu_train_education[x])
+
+                        selection = input("Select an option: ")
+                        if selection == '1':
+                            print("Under Construction")
+                        elif selection == '2':
+                            print("Under Construction")
+                        elif selection == '3':
+                            print("Under Construction")
+                        elif selection == '4':
+                            print("Under Construction")
+                        elif selection == 'q':
+                            break
+                        else:
+                            print("\nUnknown Selection, Try Again!\n")
+
                 elif selection == '2':
                     print("Under construction")
                 elif selection == '3':
