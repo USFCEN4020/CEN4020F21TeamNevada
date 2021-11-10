@@ -52,7 +52,17 @@ def main_screen(accounts, jobs=None):
                        "3": "Connect with friends",
                        "4": "InCollege Useful Links",
                        "5": "InCollege Important Links",
+                       "6": "Training",
                        "q": "Quit InCollege"}
+
+    menu_training = {"1": "Training and Education",
+                    "2": "IT Help Desk",
+                    "3": "Business Analysis and Strategy",
+                    "4": "Security",
+                    "q": "Quit"}
+
+
+
 
     # accepts user input and will bring them to the appropriate screen
     logged_in_user = None
@@ -103,6 +113,30 @@ def main_screen(accounts, jobs=None):
                 logged_in_user = login_screen(accounts)
         elif selection == '5':
             important_links_groups(False)
+        elif selection == '6':
+            while True:
+                print("\n********* Training Options *********\n")
+                # pulls up menu for Training
+                options = menu_training.keys()
+                for x in options:
+                    print(x, ")", menu_training[x])
+
+                selection = input("Select an option: ")
+                if selection == '1':
+                    printf("Under construction")
+                elif selection == '2':
+                    printf("Under construction")
+                elif selection == '3':
+                    printf("Under construction")
+                elif selection == '4':
+                    printf("Under construction")
+                elif selection == 'q':
+                    break
+                else:
+                    print("\nUnknown Selection, Try Again!\n")
+
+
+                selection = input("Select an Option: ")
         elif selection == 'q':
             main_condition = False
             print("\nHave a nice day!")
@@ -180,12 +214,6 @@ def options_screen(user, accounts, jobs):
                     applied_count = count_applied_job(user)
                     print("\n*** You have applied for ", applied_count, "job(s). ***")
 
-                """
-                # Determines if any jobs that the user has applied for have been deleted and notifies them if so
-                jobs_deleted = user_job_deleted(user)
-                if jobs_deleted:
-                    print("\n *** A job that you applied for has been deleted*** \n", jobs_deleted)
-                """
                 print("\n ********* Job Options ********* \n")
 
                 options = menu_jobs.keys()
