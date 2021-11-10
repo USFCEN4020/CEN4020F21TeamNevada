@@ -149,11 +149,11 @@ def main_screen(accounts, jobs=None):
                             print("\nUnknown Selection, Try Again!\n")
 
                 elif selection == '2':
-                    print("Under construction")
+                    print("Coming Soon!")
                 elif selection == '3':
                     print("Under construction")
                 elif selection == '4':
-                    print("Under construction")
+                    print("Coming Soon!")
                 elif selection == 'q':
                     break
                 else:
