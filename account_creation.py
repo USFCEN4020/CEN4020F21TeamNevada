@@ -78,6 +78,9 @@ def create_account(accounts):
     # following code creates an account object for the newly created account
     created_account_ = Account(username_, password_, firstname_, lastname_, is_plus=is_plus_)
 
+    # add a notification to the current accounts about the new account
+    new_user_notif(accounts, created_account_)
+
     # following code adds the newly created account to the list of accounts
     accounts.append(created_account_)
 
@@ -127,3 +130,23 @@ def is_secure(passwd):
     if not contain_non_alpha:
         return False, "Error: password must contain at least 1 non-alpha character"
     return True, ''
+
+
+def new_user_notif(accounts, new_user): 
+    # adds a notification in global notifications for the current accounts that a new account was created
+    
+    # get the contents of the global notifications json
+    with open("global_notifications.json", "r") as f:
+        contents = json.loads(f.read())
+
+    # loop through all accounts
+    for account in accounts:
+        # print(account.get_account_details())
+        contents.append({
+            "username": account.username,
+            "notification": (new_user.firstname + " " + new_user.lastname + " has joined InCollege.")
+        })
+
+    # write the contents to the global notifications json
+    with open("global_notifications.json", "w") as f:
+        json.dump(contents, f)

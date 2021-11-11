@@ -1,5 +1,22 @@
 from csv_read_write import get_accounts_from_csv, save_accounts_to_csv
 import json
+from datetime import date
+
+
+# Function to count the amount oj jobs the user has applied for
+def count_applied_job(user):
+    count = 0
+
+    with open("job_application.json", "r") as f:
+        contents = json.loads(f.read())
+
+    # Finds all the jobs that the current user has applied for
+    for x in contents:
+        if x['applicant'] == user.username:
+            count += 1
+            continue
+
+    return count
 
 
 # Function that allows a user to apply for a job
@@ -95,13 +112,16 @@ def apply_job(user, jobs):
                             start_date = input("Enter the date you that you can start working (mm/dd/yyyy): ")
                             reason = input("Explain why you would be a good fit for this job: ")
 
+                            application_date = date.today().isoformat()
+
                             # Creates application and stores it in 'job_application.json'
                             application = {
                                 "job_title": selection,
                                 "applicant": user.username,
                                 "grad_date": grad_date,
                                 "start_date": start_date,
-                                "reason": reason
+                                "reason": reason,
+                                "application_date": application_date
                             }
 
                             contents.append(application)
@@ -135,13 +155,16 @@ def apply_job(user, jobs):
                                 start_date = input("Enter the date you that you can start working (mm/dd/yyyy): ")
                                 reason = input("Explain why you would be a good fit for this job: ")
 
+                                application_date = date.today().isoformat()
+
                                 # Creates application and stores it in 'job_application.json'
                                 application = {
                                     "job_title": selection,
                                     "applicant": user.username,
                                     "grad_date": grad_date,
                                     "start_date": start_date,
-                                    "reason": reason
+                                    "reason": reason,
+                                    "application_date": application_date
                                 }
 
                                 contents.append(application)

@@ -1,5 +1,6 @@
 from job_class import *
-from csv_read_write import save_jobs_to_csv
+from csv_read_write import save_jobs_to_csv, get_accounts_from_csv
+import json
 
 
 # Function to create job posting
@@ -19,8 +20,35 @@ def create_job(user, jobs):
     created_job_ = Job(user.username, title_, description_, employer_, salary_)
     jobs.append(created_job_)
 
+    # create a notification for the new job in global_notifications.json
+    new_job_notif(user, title_)
+
+    #Saves jobs
     save_jobs_to_csv(jobs)
 
     print("Your Job was posted successfully!\n")
 
     return jobs
+
+
+# Notifies the user when a job has been posted
+def new_job_notif(user, job_name):
+    # adds a notification in global notifications for the current accounts that a new job was created
+    # get the contents of the global notifications json
+    with open("global_notifications.json", "r") as f:
+        contents = json.loads(f.read())
+
+    # get all of the accounts from csv
+    accounts = get_accounts_from_csv()
+
+    # loop through all of the accounts
+    for account in accounts:
+        if not account.username == user.username:
+            contents.append({
+                "username": account.username,
+                "notification": ("A new job " + job_name + " has been posted.")
+            })
+
+    # write the contents to the global notifications json
+    with open("global_notifications.json", "w") as f:
+        json.dump(contents, f)

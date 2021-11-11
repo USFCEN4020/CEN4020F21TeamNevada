@@ -1,5 +1,6 @@
 # import pytest
-from important_links import important_links_groups, guest_controls, update_guest_controls, account_language, update_account_language
+from important_links import important_links_groups, guest_controls, update_guest_controls, account_language, \
+    update_account_language
 from profile_creation import *
 from search_students import *
 from pending_requests import *
@@ -13,7 +14,9 @@ from account_login import passwd_valid, login_screen
 from csv_read_write import get_accounts_from_csv, get_jobs_from_csv
 from send_message import send_message_ui
 from view_message import at_least_1_new_message, view_messages_ui
-
+from notifications import *
+from csv_read_write import get_jobs_from_csv
+from job_apply import count_applied_job
 
 # Function for the HomeScreen
 def home_screen():
@@ -116,14 +119,21 @@ def main_screen(accounts, jobs=None):
 # The jobs argument is the jobs list
 def options_screen(user, accounts, jobs):
     # Determines if the logged in user has any pending friend requests and notifies them if so
-    requests = at_least_1_pending(user)
-    if requests > 0:
-        print("\n*** YOU HAVE PENDING FRIEND REQUESTS! CHOOSE OPTION 9 FOR MORE INFO! ***")
+
+    # requests = at_least_1_pending(user)
+    # if requests > 0:
+    #     print("\n*** YOU HAVE PENDING FRIEND REQUESTS! CHOOSE OPTION 9 FOR MORE INFO! ***")
 
     # determine if the logged in user has any new messages and notifies them if so
     num_messages = at_least_1_new_message(user)
     if num_messages > 0:
         print("\n*** YOU HAVE NEW MESSAGES! CHOOSE OPTION 11 FOR MORE INFO! ***")
+
+    # show notifications on login
+    login_notifications = get_login_notifications(user)
+    print("\n ********* Notifications(", len(login_notifications), ") ********* \n", sep="")
+    for notification in login_notifications:
+        print(" *", notification)
 
     menu_opt = {"1": "Job Search/Internship",
                 "2": "Find Someone you know",
@@ -150,8 +160,8 @@ def options_screen(user, accounts, jobs):
                  "3": "Delete a Job You Posted",
                  "q": "Quit"}
 
-    menu_messaging = {"1": "Send a Message", 
-                      "2": "View Messages", 
+    menu_messaging = {"1": "Send a Message",
+                      "2": "View Messages",
                       "q": "Quit"}
 
     while True:
@@ -165,11 +175,17 @@ def options_screen(user, accounts, jobs):
         if selection == '1':
             # Pulls up the menu with options for jobs
             while True:
+                # Determines how many jobs the user has applied for and notifies them if so
+                if count_applied_job(user) > 0:
+                    applied_count = count_applied_job(user)
+                    print("\n*** You have applied for ", applied_count, "job(s). ***")
+
+                """
                 # Determines if any jobs that the user has applied for have been deleted and notifies them if so
                 jobs_deleted = user_job_deleted(user)
                 if jobs_deleted:
-                    print("\n *** ATTENTION: A JOB YOU APPLIED FOR HAS BEEN DELETED! ***")
-
+                    print("\n *** A job that you applied for has been deleted*** \n", jobs_deleted)
+                """
                 print("\n ********* Job Options ********* \n")
 
                 options = menu_jobs.keys()
