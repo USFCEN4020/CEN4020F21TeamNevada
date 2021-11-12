@@ -17,6 +17,7 @@ from view_message import at_least_1_new_message, view_messages_ui
 from notifications import *
 from csv_read_write import get_jobs_from_csv
 from job_apply import count_applied_job
+from learning import learning_ui
 
 # Function for the HomeScreen
 def home_screen():
@@ -232,6 +233,7 @@ def options_screen(user, accounts, jobs):
                 "9": "Pending Friend Requests",
                 "10": "Show My Network",
                 "11": "Messaging",
+                "12": "InCollege Learning",
                 "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
@@ -346,7 +348,8 @@ def options_screen(user, accounts, jobs):
                     break
                 else:
                     print("Unknown Selection, Try Again!")
-
+        elif selection == '12':
+            learning_ui(user)
 
         elif selection == 'q':
             print("\nHave a nice day!")
