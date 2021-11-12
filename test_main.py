@@ -12,7 +12,7 @@ from account_class import Account
 from job_apply import *
 from send_message import *
 from view_message import *
-
+from learning import *
 
 class TestCases(unittest.TestCase):
     def test_login_screen(self, ):
@@ -748,6 +748,14 @@ class TestCases(unittest.TestCase):
         with open("friends_list.json", "w") as f:
             json.dump(messageInfo, f)
 
+
+    def test_learning_ui(self):
+        user = Account('john', 'John123!', 'John', 'Doe')
+
+        with mock.patch('builtins.input', side_effect=['1', '2', '3', '4', '5', '1', 'Y', '2', 'n', 'q']):
+            learning_ui(user)
+
+        assert len(get_user_courses(user)) == 5
 
 if __name__ == '__main__':
     unittest.main()

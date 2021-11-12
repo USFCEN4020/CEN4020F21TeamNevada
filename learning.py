@@ -5,16 +5,9 @@ import json
 # will be displayed. 
 
 def learning_ui(user):
-    # read the contents of the courses_taken.json file
-    with open('courses_taken.json') as json_file:
-        courses_taken = json.loads(json_file.read())
-
-    # loop through the contents of the courese taken file and print out the courses that the user has taken
-    user_courses = []
-    for courses in courses_taken:
-        if courses['user'] == user.username:
-            user_courses = courses['courses']
-            print(user_courses)
+    # get the users courses
+    user_courses = get_user_courses(user)
+    print(user_courses)
 
     # user input loop for learning courses
     while True:
@@ -130,3 +123,17 @@ def retake_course():
     else:
         print("\nCourse Cancelled")
     
+
+def get_user_courses(user): 
+    # read the contents of the courses_taken.json file
+    with open('courses_taken.json') as json_file:
+        courses_taken = json.loads(json_file.read())
+
+    # loop through the contents of the courese taken file and print out the courses that the user has taken
+    user_courses = []
+    for courses in courses_taken:
+        if courses['user'] == user.username:
+            user_courses = courses['courses']
+            return user_courses
+
+    return user_courses
