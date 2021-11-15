@@ -17,6 +17,7 @@ from view_message import at_least_1_new_message, view_messages_ui
 from notifications import *
 from csv_read_write import get_jobs_from_csv
 from job_apply import count_applied_job
+from learning import learning_ui
 
 # Function for the HomeScreen
 def home_screen():
@@ -52,7 +53,26 @@ def main_screen(accounts, jobs=None):
                        "3": "Connect with friends",
                        "4": "InCollege Useful Links",
                        "5": "InCollege Important Links",
+                       "6": "Training",
                        "q": "Quit InCollege"}
+
+    menu_training = {"1": "Training and Education",
+                    "2": "IT Help Desk",
+                    "3": "Business Analysis and Strategy",
+                    "4": "Security",
+                    "q": "Quit"}
+
+    menu_train_education = {"1": "Workshops",
+                            "2": "Articles",
+                            "3": "Profile Optimization",
+                            "4": "Connecting",
+                            "q": "Quit"}
+
+    menu_trending_courses = {"1": "How to use In College learning",
+                             "2": "Train the trainer",
+                             "3": "Gamification of learning",
+                             "q": "Quit"}
+
 
     # accepts user input and will bring them to the appropriate screen
     logged_in_user = None
@@ -103,6 +123,73 @@ def main_screen(accounts, jobs=None):
                 logged_in_user = login_screen(accounts)
         elif selection == '5':
             important_links_groups(False)
+        elif selection == '6':
+            while True:
+                print("\n********* Training Options *********\n")
+                # pulls up menu for Training
+                options = menu_training.keys()
+                for x in options:
+                    print(x, ")", menu_training[x])
+
+                selection = input("Select an option: ")
+                if selection == '1':
+                    while True:
+                        print("\n********* Training and Education Options *********\n")
+                        # pulls up menu for Training and Education
+                        options = menu_train_education.keys()
+                        for x in options:
+                            print(x, ")", menu_train_education[x])
+
+                        selection = input("Select an option: ")
+                        if selection == '1':
+                            print("Under Construction")
+                        elif selection == '2':
+                            print("Under Construction")
+                        elif selection == '3':
+                            print("Under Construction")
+                        elif selection == '4':
+                            print("Under Construction")
+                        elif selection == 'q':
+                            break
+                        else:
+                            print("\nUnknown Selection, Try Again!\n")
+
+
+                elif selection == '2':
+                    print("Coming Soon!")
+                elif selection == '3':
+                    while True:
+                        print("\n* Not seeing what you're looking for? Sign in to see all 7,609 results\n")
+                        print("\n********* Trending Courses *********\n")
+                        # pulls up menu for Trending Courses
+                        options = menu_trending_courses.keys()
+                        for x in options:
+                            print(x, ")", menu_trending_courses[x])
+
+                        selection = input("Select an option: ")
+                        if selection == '1':
+                            main_condition = False
+                            logged_in_user = login_screen(accounts)
+                        elif selection == '2':
+                            main_condition = False
+                            logged_in_user = login_screen(accounts)
+                        elif selection == '3':
+                            main_condition = False
+                            logged_in_user = login_screen(accounts)
+                        elif selection == 'q':
+                            break
+                        else:
+                            print("\nUnknown Selection, Try Again!\n")
+
+
+                elif selection == '4':
+                    print("Coming Soon!")
+                elif selection == 'q':
+                    break
+                else:
+                    print("\nUnknown Selection, Try Again!\n")
+
+
         elif selection == 'q':
             main_condition = False
             print("\nHave a nice day!")
@@ -146,6 +233,7 @@ def options_screen(user, accounts, jobs):
                 "9": "Pending Friend Requests",
                 "10": "Show My Network",
                 "11": "Messaging",
+                "12": "InCollege Learning",
                 "q": "Logout and Quit InCollege"}
 
     menu_skills = {"1": "Communication",
@@ -180,12 +268,6 @@ def options_screen(user, accounts, jobs):
                     applied_count = count_applied_job(user)
                     print("\n*** You have applied for ", applied_count, "job(s). ***")
 
-                """
-                # Determines if any jobs that the user has applied for have been deleted and notifies them if so
-                jobs_deleted = user_job_deleted(user)
-                if jobs_deleted:
-                    print("\n *** A job that you applied for has been deleted*** \n", jobs_deleted)
-                """
                 print("\n ********* Job Options ********* \n")
 
                 options = menu_jobs.keys()
@@ -266,7 +348,8 @@ def options_screen(user, accounts, jobs):
                     break
                 else:
                     print("Unknown Selection, Try Again!")
-
+        elif selection == '12':
+            learning_ui(user)
 
         elif selection == 'q':
             print("\nHave a nice day!")
