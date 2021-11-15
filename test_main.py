@@ -757,5 +757,47 @@ class TestCases(unittest.TestCase):
 
         assert len(get_user_courses(user)) == 5
 
+    def test_businessAnalytics_options(self):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        # Test Business and Analyitics Training Options.
+        with mock.patch('builtins.input', side_effect=['6','3','q','q','q']):
+            main_screen(test_accounts, jobs=[])
+
+        # Test "How to use In College learning" Option
+        with mock.patch('builtins.input', side_effect=['6','3','1','john','John123!', 'q', 'q', 'q']):
+            main_screen(test_accounts, jobs=[])
+
+        # Test the "Train the trainer" Option
+        with mock.patch('builtins.input', side_effect=['6','3','2','john','John123!', 'q', 'q', 'q']):
+            main_screen(test_accounts, jobs=[])
+
+        # Test the "Gamification of learning" Option
+        with mock.patch('builtins.input', side_effect=['6','3','3','john','John123!', 'q', 'q', 'q']):
+            main_screen(test_accounts, jobs=[])
+
+    def test_IT_Security_option(self):
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        #Test the IT Help desk Option
+        with mock.patch('builtins.input', side_effect=['6','2','q','q']):
+            main_screen(test_accounts, jobs=[])
+
+        #Test the Security Options
+        with mock.patch('builtins.input', side_effect=['6','4','q','q']):
+            main_screen(test_accounts, jobs=[])
+
+    def test_learning_options(self):
+
+        test_accounts = [Account('john', 'John123!', 'John', 'Doe'),
+                         Account('mark', 'Mark123!', 'Mark', 'Smith')]
+
+        # Test "InCollege Learning" options
+        with mock.patch('builtins.input', side_effect=['6','1','1','2','3','4','q','q','q']):
+            main_screen(test_accounts, jobs=[])
+
+
 if __name__ == '__main__':
     unittest.main()
