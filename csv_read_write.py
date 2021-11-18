@@ -2,7 +2,6 @@ import csv
 from account_class import Account
 from job_class import Job
 
-
 # This function reads the account.txt file and returns the accounts or None if no accounts are present
 def get_accounts_from_csv():
     accounts = []
