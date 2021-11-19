@@ -38,6 +38,7 @@ class TestCases(unittest.TestCase):
         list_json = [item for item in list_json if
                      item["job_title"] == 'job3' and item[
                          "applicant"] == "john"]
+        print(list_json)
         f.close()
         f = open("job_application.json", 'w')
         f.write(json.dumps(list_json))

@@ -285,11 +285,11 @@ class TestCases(unittest.TestCase):
 
         test_profile_obj = Profile()
         # if their profiles don't exist, run the tests that create them
-        if test_profile_obj.get_profile_info(test_account1.username) is None:
+        if test_profile_obj.get_profile_info(test_account1.username) == None:
             print("\n** Creating test profile for John using the test profile creation test **")
             self.test_profile_creation()
 
-        if test_profile_obj.get_profile_info(test_account2.username) is None:
+        if test_profile_obj.get_profile_info(test_account2.username) == None:
             print("\n** Creating test profile for Mark using the test get profile info test **")
             self.test_get_profile_info()
 
@@ -299,31 +299,31 @@ class TestCases(unittest.TestCase):
         with mock.patch('builtins.input',
                         side_effect=['last name', 'Smith', 'mark', 'Oh, Hi Mark']):
             connection = search_students(test_account1, accounts)
-            assert connection["username"] is "john"
-            assert connection["c_user"] is "mark"
-            assert connection["content"] is "Oh, Hi Mark"
+            assert connection["username"] == "john"
+            assert connection["c_user"] == "mark"
+            assert connection["content"] == "Oh, Hi Mark"
 
         # test search students by university
         with mock.patch('builtins.input',
                         side_effect=['university', 'Test University', 'mark', 'Oh, Hi Mark']):
             connection = search_students(test_account1, accounts)
-            assert connection["username"] is "john"
-            assert connection["c_user"] is "mark"
-            assert connection["content"] is "Oh, Hi Mark"
+            assert connection["username"] == "john"
+            assert connection["c_user"] == "mark"
+            assert connection["content"] == "Oh, Hi Mark"
 
         # test search students by major
         with mock.patch('builtins.input',
                         side_effect=['major', 'Test Major', 'mark', 'Oh, Hi Mark']):
             connection = search_students(test_account1, accounts)
-            assert connection["username"] is "john"
-            assert connection["c_user"] is "mark"
-            assert connection["content"] is "Oh, Hi Mark"
+            assert connection["username"] == "john"
+            assert connection["c_user"] == "mark"
+            assert connection["content"] == "Oh, Hi Mark"
 
         # test search for student that does not exist
         with mock.patch('builtins.input',
                         side_effect=['last name', 'nothing']):
             connection = search_students(test_account1, accounts)
-            assert connection is None
+            assert connection == None
 
     def test_view_job_true(self):
         test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
@@ -463,15 +463,6 @@ class TestCases(unittest.TestCase):
                         has_saved = True
             assert not has_saved
 
-    def test_apply_job_view_saved(self):
-        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
-                     Job(
-                         "john", "job2", "description", "employer", "$1000")]
-        test_user = Account('john', 'John123!', 'John', 'Doe')
-
-        with mock.patch('builtins.input', side_effect=['4', "q"]):
-            apply_job(test_user, test_jobs)
-
     def test_delete_job(self):
         test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
                      Job("mark", "job2", "description", "employer", "$1000")]
@@ -592,7 +583,7 @@ class TestCases(unittest.TestCase):
         test_account = Account('mark', 'Mark123!', 'Mark', 'Smith')
         with mock.patch('builtins.input',
                         side_effect=['test title', 'test description', 'test employer', 'test slary']):
-            self.job_creation(test_account)
+            job_creation(test_account)
         test_job_obj = Job()
         # tests the job was created by checking the number of jobs
         assert len(test_job_obj.get_job_details()) > 0
