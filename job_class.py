@@ -1,6 +1,6 @@
 class Job:
     # Job class constructor
-    def __init__(self, user, title, description, employer, salary, location=""):
+    def __init__(self, user, title, description, employer, salary, location="none"):
         self.user = user
         self.title = title
         self.description = description
