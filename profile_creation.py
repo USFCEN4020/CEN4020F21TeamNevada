@@ -1,5 +1,6 @@
 import string
 from profile_class import Profile
+from output_api import output_api_profile
 
 
 def view_profile():
@@ -149,6 +150,10 @@ def profile_creation(user):
                           capital_university, about_, jobs, education)
     new_profile.write_profile_info()
     pro_info = new_profile.get_profile_info(user.username)
+
+    # API call for InCollege profiles
+    output_api_profile()
+
     print_profile(pro_info)
 
 

@@ -5,10 +5,10 @@ from csv_read_write import save_accounts_to_csv
 
 def input_accounts(accounts):
     # check if the file exists
-    if not os.path.isfile("studentAccouts.txt"):
+    if not os.path.isfile("studentAccounts.txt"):
         return accounts
     else:
-        with open("studentAccouts.txt", "r") as f:
+        with open("studentAccounts.txt", "r") as f:
             context = f.readlines()
             if len(context) == 0:
                 return accounts

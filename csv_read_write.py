@@ -36,7 +36,7 @@ def get_jobs_from_csv():
         try:
             # stores the data from the file to the jobs list
             for row in csv_reader:
-                jobs.append(Job(row[0],row[1], row[2], row[3], row[4]))
+                jobs.append(Job(row[0],row[1], row[2], row[3], row[4], row[5]))
         except IndexError:  # handles the error if the file is empty
             pass
 

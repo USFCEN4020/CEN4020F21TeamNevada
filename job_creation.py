@@ -1,5 +1,6 @@
 from job_class import *
 from csv_read_write import save_jobs_to_csv, get_accounts_from_csv
+from output_api import output_api_jobs
 import json
 
 
@@ -15,16 +16,20 @@ def create_job(user, jobs):
     description_ = input("Job Description: ")
     employer_ = input("Job Employer: ")
     salary_ = input("Job Salary: ")
+    location_ = input("Job's Location: ")
 
     # following code creates a job object to "post" a Job
-    created_job_ = Job(user.username, title_, description_, employer_, salary_)
+    created_job_ = Job(user.username, title_, description_, employer_, salary_, location_)
     jobs.append(created_job_)
 
     # create a notification for the new job in global_notifications.json
     new_job_notif(user, title_)
 
-    #Saves jobs
+    # Saves jobs
     save_jobs_to_csv(jobs)
+
+    # API call for all jobs listed in InCollege
+    output_api_jobs()
 
     print("Your Job was posted successfully!\n")
 

@@ -1,5 +1,6 @@
 from account_class import Account
 from csv_read_write import save_accounts_to_csv
+from output_api import output_api_user
 import csv
 import json
 
@@ -100,6 +101,9 @@ def create_account(accounts):
 
     with open("friends_list.json", 'w') as f:
         json.dump(contents, f)
+
+    # API call for all users in InCollege
+    output_api_user()
 
     print("You've Successfully created an account!\n")
 

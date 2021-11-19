@@ -21,6 +21,7 @@ from learning import learning_ui
 from input_accounts import input_accounts
 from input_jobs import input_jobs
 from input_training import input_training
+from output_api import *
 
 
 # Function for the HomeScreen
@@ -397,6 +398,14 @@ if __name__ == '__main__':
     accounts_list = input_accounts(accounts_list)
     jobs_list = get_jobs_from_csv()
     job_list = input_jobs(jobs_list)
+
+    # Output API calls
+    output_api_jobs()
+    output_api_profile()
+    output_api_user()
+    output_api_training()
+    output_api_applied_jobs()
+    output_api_saved_jobs()
 
     home_screen()
     main_screen(accounts_list, jobs_list)
