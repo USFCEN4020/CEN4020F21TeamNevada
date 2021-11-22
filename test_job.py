@@ -155,24 +155,24 @@ class TestCases(unittest.TestCase):
             apply_job(test_user, test_jobs)
 
     def test_delete_job(self):
-        test_jobs = [Job("john", "job1", "description", "employer", "$1000"),
-                     Job("mark", "job2", "description", "employer", "$1000")]
+        test_jobs = [Job("john", "job1", "description", "employer", "$1000", "location"),
+                     Job("mark", "job2", "description", "employer", "$1000", "location")]
         test_user = Account('john', 'John123!', 'John', 'Doe')
         accounts = [Account('john', 'John123!', 'John', 'Doe'),
                     Account('mark', 'Mark123!', 'mark', 'Smith')]
 
         # prepare jobs
         with open("./jobs.txt", "w") as f:
-            job = ",".join(["john", "job1", "description", "employer", "$1000"])
-            job2 = ",".join(["mark", "job2", "description", "employer", "$1000"])
+            job = ",".join(["john", "job1", "description", "employer", "$1000", "location"])
+            job2 = ",".join(["mark", "job2", "description", "employer", "$1000", "location"])
             f.write(job + "\n" + job2)
 
         with open("./job_application.json", "w") as f:
             application = [
                 {"job_title": "job1", "applicant": "mark",
-                 "grad_date": "10/24/2021", "start_date": "10/24/2021"},
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021", "application_date": "2021-11-19"},
                 {"job_title": "job2", "applicant": "john",
-                 "grad_date": "10/24/2021", "start_date": "10/24/2021"}
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021", "application_date": "2021-11-19"}
             ]
             f.write(json.dumps(application))
 
@@ -181,6 +181,7 @@ class TestCases(unittest.TestCase):
             delete_job(test_user, test_jobs)
             with open("jobs.txt", 'r') as f:
                 list_json = f.readlines()
+
                 for line in list_json:
                     item = line.split(",")
                     if item[1] == 'job1' and item[0] == "john":
@@ -203,9 +204,9 @@ class TestCases(unittest.TestCase):
         with open("./job_application.json", "w") as f:
             application = [
                 {"job_title": "job1", "applicant": "mark",
-                 "grad_date": "10/24/2021", "start_date": "10/24/2021"},
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021", "application_date": "2021-11-19"},
                 {"job_title": "job2", "applicant": "john",
-                 "grad_date": "10/24/2021", "start_date": "10/24/2021"}
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021", "application_date": "2021-11-19"}
             ]
             f.write(json.dumps(application))
 
@@ -236,9 +237,9 @@ class TestCases(unittest.TestCase):
         with open("./job_application.json", "w") as f:
             application = [
                 {"job_title": "job1", "applicant": "mark",
-                 "grad_date": "10/24/2021", "start_date": "10/24/2021"},
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021", "application_date": "2021-11-19"},
                 {"job_title": "job2", "applicant": "john",
-                 "grad_date": "10/24/2021", "start_date": "10/24/2021"}
+                 "grad_date": "10/24/2021", "start_date": "10/24/2021", "application_date": "2021-11-19"}
             ]
             f.write(json.dumps(application))
 

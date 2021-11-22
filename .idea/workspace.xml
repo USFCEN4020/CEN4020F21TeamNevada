@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f8254d3-69c1-45e6-86cf-16b8298734da" name="Changes" comment="Created test cases for sending messages, viewing new/saved messages, deleting new/saved messages, and standard/plus messaging privileges. Very minor adjustments to other files also">
+      <change afterPath="$PROJECT_DIR$/MyCollege_appliedJobs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyCollege_jobs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyCollege_profiles.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyCollege_savedJobs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyCollege_training.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyCollege_users.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_creation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global_notifications.json" beforeDir="false" afterPath="$PROJECT_DIR$/global_notifications.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/notifications.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_notifications.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv_read_write.py" beforeDir="false" afterPath="$PROJECT_DIR$/csv_read_write.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input_accounts.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_accounts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job_apply.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_apply.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job_creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_creation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job_deletion.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_deletion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/profile_creation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentAccouts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/studentAccounts.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,19 +50,26 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_notifications.TestCases.test_profile_notification">
-    <configuration name="Python tests for test_main.TestCases.test_applied_for_x_jobs_notif" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CEN4020F21TeamNevada" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main.TestCases.test_applied_for_x_jobs_notif&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests for test_notifications.TestCases.test_notification_currently_applied" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -109,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_profile_notification" />
         <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_notification_currently_applied" />
         <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_notification_deleted_applied_job" />
         <item itemvalue="Python tests.Python tests for test_notifications.TestCases.test_notification_new_job_posted" />
-        <item itemvalue="Python tests.Python tests for test_main.TestCases.test_applied_for_x_jobs_notif" />
       </list>
     </recent_temporary>
   </component>
@@ -184,6 +205,17 @@
     </task>
     <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

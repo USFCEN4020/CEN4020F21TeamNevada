@@ -18,6 +18,11 @@ from notifications import *
 from csv_read_write import get_jobs_from_csv
 from job_apply import count_applied_job
 from learning import learning_ui
+from input_accounts import input_accounts
+from input_jobs import input_jobs
+from input_training import input_training
+from output_api import *
+
 
 # Function for the HomeScreen
 def home_screen():
@@ -61,6 +66,8 @@ def main_screen(accounts, jobs=None):
                     "3": "Business Analysis and Strategy",
                     "4": "Security",
                     "q": "Quit"}
+    
+    menu_training = input_training(menu_training)
 
     menu_train_education = {"1": "Workshops",
                             "2": "Articles",
@@ -388,7 +395,17 @@ accounts_list = []  # global variable that holds all of the account objects
 jobs_list = []  # global variable that holds all of the job objects
 if __name__ == '__main__':
     accounts_list = get_accounts_from_csv()
+    accounts_list = input_accounts(accounts_list)
     jobs_list = get_jobs_from_csv()
+    job_list = input_jobs(jobs_list)
+
+    # Output API calls
+    output_api_jobs()
+    output_api_profile()
+    output_api_user()
+    output_api_training()
+    output_api_applied_jobs()
+    output_api_saved_jobs()
 
     home_screen()
     main_screen(accounts_list, jobs_list)

@@ -1,6 +1,7 @@
 from csv_read_write import get_accounts_from_csv, save_accounts_to_csv
 import json
 from datetime import date
+from output_api import output_api_applied_jobs, output_api_saved_jobs
 
 
 # Function to count the amount oj jobs the user has applied for
@@ -128,6 +129,9 @@ def apply_job(user, jobs):
                             with open("job_application.json", 'w') as f:
                                 json.dump(contents, f)
 
+                            # API call for all applied jobs
+                            output_api_applied_jobs()
+
                             # Increases the number of jobs that the user has applied for
                             updated_accounts = get_accounts_from_csv()
                             for x in updated_accounts:
@@ -171,6 +175,9 @@ def apply_job(user, jobs):
                                 with open("job_application.json", 'w') as f:
                                     json.dump(contents, f)
 
+                                # API call for all applied jobs
+                                output_api_applied_jobs()
+
                                 # Increases the number of jobs that the user has applied for
                                 updated_accounts = get_accounts_from_csv()
                                 for x in updated_accounts:
@@ -194,6 +201,10 @@ def apply_job(user, jobs):
                     saved_jobs.append(job)
                     with open("jobs_saved.json", "w") as fs:
                         json.dump(saved_jobs, fs)
+
+                    # API call for jobs saved
+                    output_api_saved_jobs()
+
                     break
                 else:
                     print("You have already saved this job!")

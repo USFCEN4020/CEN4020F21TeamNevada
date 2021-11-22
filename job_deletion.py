@@ -1,4 +1,5 @@
 from csv_read_write import get_accounts_from_csv, save_accounts_to_csv
+from output_api import output_api_jobs
 import json
 
 
@@ -44,6 +45,7 @@ def delete_job(user, jobs):
                             description_ = x.description
                             employer_ = x.employer
                             salary_ = x.salary
+                            location_ = x.location
 
                             # Removes job from the job list
                             jobs.remove(x)
@@ -56,7 +58,7 @@ def delete_job(user, jobs):
                             new_contents = open("jobs.txt", "w")
                             for line in lines:
                                 if line.strip(
-                                        "\n") != user_ + "," + title_ + "," + description_ + "," + employer_ + "," + salary_:
+                                        "\n") != user_ + "," + title_ + "," + description_ + "," + employer_ + "," + salary_ + "," + location_:
                                     new_contents.write(line)
 
                             new_contents.close()
@@ -84,6 +86,9 @@ def delete_job(user, jobs):
                                 json.dump(contents, f)
 
                             save_accounts_to_csv(updated_accounts)
+
+                            # API call for all jobs listed in InCollege
+                            output_api_jobs()
 
                             print("\n This job will no longer be posted.")
 

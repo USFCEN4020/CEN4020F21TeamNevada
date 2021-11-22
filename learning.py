@@ -1,4 +1,5 @@
 import json
+from output_api import output_api_training
 # When they select this option, they will be presented with a list of courses that they can take. This list will 
 # include "How to use In College learning", "Train the trainer", and "Gamification of learning".  
 # Additionally, "Understanding the Architectural Design Process" and "Project Management Simplified" 
@@ -39,30 +40,45 @@ def learning_ui(user):
             if "How to use InCollege learning" not in user_courses:
                 # add the course to the user's courses taken
                 add_course(user, user_courses, "How to use InCollege learning")
+
+                # API call for training courses
+                output_api_training()
             else:
                 retake_course()
         elif user_input == "2":
             if "Train the trainer" not in user_courses:
                 # add the course to the user's courses taken
                 add_course(user, user_courses, "Train the trainer")
+
+                # API call for training courses
+                output_api_training()
             else:
                 retake_course()
         elif user_input == "3":
             if "Gamification of learning" not in user_courses:
                 # add the course to the user's courses taken
                 add_course(user, user_courses, "Gamification of learning")
+
+                # API call for training courses
+                output_api_training()
             else:
                 retake_course()
         elif user_input == "4":
             if "Understanding the Architectural Design Process" not in user_courses:
                 # add the course to the user's courses taken
                 add_course(user, user_courses, "Understanding the Architectural Design Process")
+
+                # API call for training courses
+                output_api_training()
             else:
                 retake_course()
         elif user_input == "5":
             if "Project Management Simplified" not in user_courses:
                 # add the course to the user's courses taken
                 add_course(user, user_courses, "Project Management Simplified")
+
+                # API call for training courses
+                output_api_training()
             else:
                 retake_course()
         elif user_input == "q":
@@ -109,6 +125,7 @@ def add_course(user, user_courses, course):
         # write the new courses_taken list to the courses_taken.json file
         with open('courses_taken.json', 'w') as outfile:
             json.dump(courses_taken, outfile)
+
 
 # If a student selects to take a course again that they have already taken, the application will ask them 
 # "You have already taken this course, do you want to take it again?" If the student says yes, then the 
