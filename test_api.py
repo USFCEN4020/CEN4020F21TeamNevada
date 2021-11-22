@@ -32,7 +32,7 @@ class TestApi(unittest.TestCase):
             f.write(job)
         output_api_jobs()
 
-        # open job_applications.json and add a job application for john
+        # open job_applications.json and add job application for john
         with open("job_application.json", "w") as f:
             application = [{
                 "job_title": "job1", "applicant": "john", "grad_date": "10/24/2021", "start_date": "10/24/2021", "reason": "some reason", "application_date": "2021-11-19"
